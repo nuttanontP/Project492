@@ -9,9 +9,16 @@ namespace TestAmmy
 {
     public partial class loginRegister : System.Web.UI.Page
     {
+       public String inputEmail1;
+        String Password;
+        String name;
+        String surname;
+        String Company;
+        String Position;
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+        
     }
 }

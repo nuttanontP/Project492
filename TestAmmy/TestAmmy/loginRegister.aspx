@@ -8,9 +8,9 @@
            <h4>Sign in</h4> 
            <form class="form-horizontal">
                <div class="form-group">
-                   <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                   <label  for="inputEmail3" class="col-sm-2 control-label">Email</label>
                    <div class="col-sm-10">
-                       <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                       <input  type="email" class="form-control" id=<%inputEmail1%> placeholder="Email">
                    </div>
                </div>
                <div class="form-group">
@@ -31,7 +31,8 @@
                </div>
                <div class="form-group">
                    <div class="col-sm-offset-2 col-sm-10">
-                       <button type="submit" class="btn btn-default">Sign in</button>
+                  <%--     <button type="submit" class="btn btn-default">Sign in</button>--%>
+                       <asp:Button ID="Button1" class="btn btn-default" runat="server" Text="Sign" />
                    </div>
                </div>
            </form>

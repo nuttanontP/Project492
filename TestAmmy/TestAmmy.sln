@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAmmy", "TestAmmy\TestAmmy.csproj", "{0F6A1DF7-C9B1-4614-8697-F730C61257CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "..\..\..\Documents\Visual Studio 2015\test_01\TEST2\TestAmmy\API\API\API.csproj", "{033437CB-DCA1-4A04-B454-3C584446C96B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "..\..\Visual Studio 2015\test_01\TEST2\TestAmmy\API\API\API.csproj", "{033437CB-DCA1-4A04-B454-3C584446C96B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MODEL", "..\..\..\Documents\Visual Studio 2015\test_01\TEST2\TestAmmy\API\MODEL\MODEL.csproj", "{37CC47F9-606F-45D1-85C1-97FF002FFAAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MODEL", "MODEL\MODEL.csproj", "{EBCF73F3-4C1D-4004-857E-547B9EEEC10F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{033437CB-DCA1-4A04-B454-3C584446C96B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{033437CB-DCA1-4A04-B454-3C584446C96B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{033437CB-DCA1-4A04-B454-3C584446C96B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{37CC47F9-606F-45D1-85C1-97FF002FFAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37CC47F9-606F-45D1-85C1-97FF002FFAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37CC47F9-606F-45D1-85C1-97FF002FFAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37CC47F9-606F-45D1-85C1-97FF002FFAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCF73F3-4C1D-4004-857E-547B9EEEC10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCF73F3-4C1D-4004-857E-547B9EEEC10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCF73F3-4C1D-4004-857E-547B9EEEC10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCF73F3-4C1D-4004-857E-547B9EEEC10F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
