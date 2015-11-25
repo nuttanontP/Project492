@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAmmy", "TestAmmy\TestAmmy.csproj", "{0F6A1DF7-C9B1-4614-8697-F730C61257CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "..\..\..\..\forammyVS2015Project\API\API\API.csproj", "{033437CB-DCA1-4A04-B454-3C584446C96B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "..\..\..\Documents\Visual Studio 2015\test_01\TEST2\TestAmmy\API\API\API.csproj", "{033437CB-DCA1-4A04-B454-3C584446C96B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MODEL", "..\..\..\..\forammyVS2015Project\API\MODEL\MODEL.csproj", "{37CC47F9-606F-45D1-85C1-97FF002FFAAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MODEL", "..\..\..\Documents\Visual Studio 2015\test_01\TEST2\TestAmmy\API\MODEL\MODEL.csproj", "{37CC47F9-606F-45D1-85C1-97FF002FFAAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
