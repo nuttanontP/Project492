@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mydb2ModelStoreContainer" CdmEntityContainer="mydb2Entities">
+    <EntitySetMapping Name="electrical_db">
+      <EntityTypeMapping TypeName="mydb2Model.electrical_db">
+        <MappingFragment StoreEntitySet="electrical_db">
+          <ScalarProperty Name="idelectrical_db" ColumnName="idelectrical_db" />
+          <ScalarProperty Name="electrical_datetime" ColumnName="electrical_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
