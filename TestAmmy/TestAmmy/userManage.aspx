@@ -22,16 +22,15 @@
                 <div class="col-xs-4 col-sm-6">
                     <%--              Level 2: .col-xs-4 .col-sm-6--%>
                     <div class="center-block">
-                        <p>NAME :"<%=name%>"</p>
-
+                        <p>NAME : _______________</p>
                         <br />
-                        <p>SURNAME :"<%=surname%>"</p>
+                        <p>SURNAME : ____________</p>
                         <br />
-                        <p>E-MAIL : "<%=email1%>"</p>
+                        <p>E-MAIL : _____________</p>
                         <br />
-                        <p>COMPANY :"<%=company%>"</p>
+                        <p>COMPANY : ____________</p>
                         <br />
-                        <p>POSITION :"<%=position%>"</p>
+                        <p>POSITION : ___________</p>
                         <br />
                         <button type="button" class="btn btn-info">edit</button>
 
