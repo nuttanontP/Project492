@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <h4>Import Excel File </h4>
             <%--start form import--%>
-            <form>
+            <div>
                 <div class="form-group">
                     <label for="exampleInputFile">File input</label>
                     <input type="file" id="exampleInputFile">
@@ -19,7 +19,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            </div>
             <%--end import--%>
         </div>
         <%--./end col-md-12--%>
@@ -47,47 +47,51 @@
                         </tr>
                         <tr>
                             <td class="active">01-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder="Current Meter Number">--%>
+                                <asp:TextBox ID="txtmeter1" runat="server" class="form-control" placeholder="Current Meter Number"> </asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">02-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder="Current Meter Number">--%>
+                                <asp:TextBox ID="txtmeter2" runat="server" class="form-control" placeholder="Current Meter Number"> </asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">03-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder="Current Meter Number">--%>
+                                <asp:TextBox ID="txtmeter3" runat="server" class="form-control" placeholder="Current Meter Number"> </asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">04-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder="Current Meter Number">--%>
+                                <asp:TextBox ID="txtmeter4" runat="server" class="form-control" placeholder="Current Meter Number"> </asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">05-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder="Current Meter Number">--%>
+                                <asp:TextBox ID="txtmeter5" runat="server" class="form-control" placeholder="Current Meter Number"> </asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">06-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder="Current Meter Number">--%>
+                                <asp:TextBox ID="txtmeter6" runat="server" class="form-control" placeholder="Current Meter Number"> </asp:TextBox>
+                            </td>
                         </tr>
-                        <tr>
-                            <td class="active">07-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
-                        </tr>
-                        <tr>
-                            <td class="active">08-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
-                        </tr>
-                        <tr>
-                            <td class="active">09-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
-                        </tr>
-                        <tr>
-                            <td class="active">10-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder="Current Meter Number"></td>
-                        </tr>
+                        
                     </table>
                    <div style="text-align: right ; padding-bottom: 10px;">
-                        <button type="button" class="btn btn-info">Save</button>
+                        <%--<button type="button" class="btn btn-info">Save</button>--%>
+                       <asp:Button ID="Button1" runat="server"   class="btn btn-info" Text="Save" OnClick="Button1_Click" />
                    </div>
 
                 </div>

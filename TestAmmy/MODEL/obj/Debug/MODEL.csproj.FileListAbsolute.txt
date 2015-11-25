@@ -3,6 +3,6 @@ C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\bin\Debug\MODEL.dll
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\bin\Debug\MODEL.pdb
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\bin\Debug\EntityFramework.dll
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\bin\Debug\EntityFramework.xml
-C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\obj\Debug\MODEL.dll
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\obj\Debug\MODEL.pdb
+C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache

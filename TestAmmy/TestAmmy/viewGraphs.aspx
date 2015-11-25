@@ -17,30 +17,49 @@
                         </tr>
                         <tr>
                             <td class="active">01-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder=" Meter Number" readonly></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder=" Meter Number" readonly>--%>
+                                <asp:TextBox ID="txtenergy1" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                            </td>
+
                         </tr>
                         <tr>
                             <td class="active">02-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder=" Meter Number" readonly></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder=" Meter Number" readonly>--%>
+                                 <asp:TextBox ID="txtenergy2" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">03-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder=" Meter Number" readonly></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder=" Meter Number" readonly>--%>
+                                <asp:TextBox ID="txtenergy3" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">04-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder=" Meter Number" readonly></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder=" Meter Number" readonly>--%>
+                                <asp:TextBox ID="txtenergy4" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">05-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder=" Meter Number" readonly></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder=" Meter Number" readonly>--%>
+                                 <asp:TextBox ID="txtenergy5" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td class="active">06-JAN-15</td>
-                            <td><input class="form-control" type="text" placeholder=" Meter Number" readonly></td>
+                            <td>
+                                <%--<input class="form-control" type="text" placeholder=" Meter Number" readonly>--%>
+                                  <asp:TextBox ID="txtenergy6" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
-                            <td class="active">07-JAN-15</td>
+                            <%--<td class="active">07-JAN-15</td>
                             <td><input class="form-control" type="text" placeholder=" Meter Number" readonly></td>
                         </tr>
                         <tr>
@@ -54,7 +73,7 @@
                         <tr>
                             <td class="active">10-JAN-15</td>
                             <td><input class="form-control" type="text" placeholder=" Meter Number" readonly></td>
-                        </tr>
+                        </tr>--%>
                     </table>
                    <div style="text-align: right ; padding-bottom: 10px;">
                         <button type="button" class="btn btn-info">back</button>
