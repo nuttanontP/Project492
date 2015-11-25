@@ -29,11 +29,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <asp:ContentPlaceHolder ID="head2" runat="server"> 
 
+    </asp:ContentPlaceHolder>
 </head>
 
 <body>
-
+    <form id="form1" runat="server">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
@@ -45,16 +47,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">MIS for Energy Management</a>
+                <a class="navbar-brand topnav" href="firstPage.aspx">MIS for Energy Management</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">Manage User</a>
+                        <a href="userManage.aspx">Manage User</a>
                     </li>
                     <li>
-                        <a href="#services">Manage Energy</a>
+                        <a href="addData.aspx">Manage Energy</a>
                     </li>
                     <li>
                         <a href="#contact">Sign in</a>
@@ -99,7 +101,7 @@
                 <div class="col-lg-12">
                     <ul class="list-inline">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="firstPage.aspx">Home</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
@@ -125,7 +127,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="assets/js/bootstrap.min.js"></script>
-
+</form>
 </body>
 
 </html>

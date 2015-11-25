@@ -46,16 +46,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">Home</a>
+                        <a class="page-scroll" href="firstPage.aspx">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">User</a>
+                        <a class="page-scroll" href="userManage.aspx">User</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Manage</a>
+                        <a class="page-scroll" href="addData.aspx">Manage</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Sign up</a>
+                        <a class="page-scroll" href="loginRegister.aspx">Sign up</a>
                     </li>
                 </ul>
             </div>
@@ -81,7 +81,7 @@
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
+                    <a href="userManage.aspx" class="portfolio-box">
                         <img src="assets/img/portfolio/user.jpg" class="img-responsive" alt=""/>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -94,7 +94,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
+                    <a href="addData.aspx" class="portfolio-box">
                         <img src="assets/img/portfolio/energy.jpg" class="img-responsive" alt=""/>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -108,7 +108,6 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="assets/img/portfolio/3.jpg" class="img-responsive" alt=""/>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">

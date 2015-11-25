@@ -13,5 +13,22 @@ namespace TestAmmy
         {
 
         }
+
+
+        protected void addData(object sender, EventArgs e)
+        {
+            Response.Redirect("addData.aspx");
+        }
+
+        protected void showGraph(object sender, EventArgs e)
+        {
+            Response.Redirect("viewGraphs.aspx");
+        }
+
+        protected void showFiles(object sender, EventArgs e)
+        {
+            Response.Redirect("viewFiles.aspx");
+
+        }
     }
 }

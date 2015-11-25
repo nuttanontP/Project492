@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include="addData.aspx" />
     <Content Include="forTest.aspx" />
+    <Content Include="homePage.aspx" />
     <Content Include="loginRegister.aspx" />
     <Content Include="packages.config" />
     <Content Include="masterp.Master" />
@@ -84,6 +85,8 @@
   <ItemGroup>
     <Content Include="firstPage.aspx" />
     <Content Include="userManage.aspx" />
+    <Content Include="viewFiles.aspx" />
+    <Content Include="viewGraphs.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +111,13 @@
     <Compile Include="forTest.aspx.designer.cs">
       <DependentUpon>forTest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="homePage.aspx.cs">
+      <DependentUpon>homePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="homePage.aspx.designer.cs">
+      <DependentUpon>homePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="loginRegister.aspx.cs">
       <DependentUpon>loginRegister.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +139,20 @@
     </Compile>
     <Compile Include="userManage.aspx.designer.cs">
       <DependentUpon>userManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewFiles.aspx.cs">
+      <DependentUpon>viewFiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewFiles.aspx.designer.cs">
+      <DependentUpon>viewFiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewGraphs.aspx.cs">
+      <DependentUpon>viewGraphs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewGraphs.aspx.designer.cs">
+      <DependentUpon>viewGraphs.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
