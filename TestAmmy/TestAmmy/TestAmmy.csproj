@@ -158,6 +158,16 @@
   <ItemGroup>
     <Folder Include="assets\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\API\API\API.csproj">
+      <Project>{033437cb-dca1-4a04-b454-3c584446c96b}</Project>
+      <Name>API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{ebcf73f3-4c1d-4004-857e-547b9eeec10f}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

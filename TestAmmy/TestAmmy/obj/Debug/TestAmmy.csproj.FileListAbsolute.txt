@@ -58,3 +58,16 @@ C:\Users\NONT\Documents\Project492\TestAmmy\TestAmmy\bin\Microsoft.CodeDom.Provi
 C:\Users\NONT\Documents\Project492\TestAmmy\TestAmmy\obj\Debug\TestAmmy.csprojResolveAssemblyReference.cache
 C:\Users\NONT\Documents\Project492\TestAmmy\TestAmmy\obj\Debug\TestAmmy.dll
 C:\Users\NONT\Documents\Project492\TestAmmy\TestAmmy\obj\Debug\TestAmmy.pdb
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\API.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\MODEL.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\MySql.Data.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\System.Web.Http.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\System.Net.Http.Formatting.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\System.Web.Http.WebHost.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\EntityFramework.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\API.pdb
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\MODEL.pdb
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\System.Web.Http.xml
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\System.Net.Http.Formatting.xml
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\System.Web.Http.WebHost.xml
+\\Mac\Home\Desktop\GIT\TestAmmy\TestAmmy\bin\EntityFramework.xml
