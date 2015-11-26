@@ -13,5 +13,16 @@ namespace TestAmmy
         {
 
         }
+
+        protected void userManage(object sender, EventArgs e)
+        {
+            Response.Redirect("userManage.aspx");
+        }
+
+        protected void addData(object sender, EventArgs e)
+        {
+            Response.Redirect("addData.aspx");
+
+        }
     }
 }

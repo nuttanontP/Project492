@@ -27,3 +27,31 @@ c:\users\nont\documents\visual studio 2015\Projects\API\API\obj\Debug\API.csproj
 c:\users\nont\documents\visual studio 2015\Projects\API\API\obj\Debug\API.dll
 c:\users\nont\documents\visual studio 2015\Projects\API\API\obj\Debug\API.pdb
 c:\users\nont\documents\visual studio 2015\Projects\API\API\bin\MySql.Data.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\csc.exe
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.CSharp.Core.targets
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\System.Collections.Immutable.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\System.Reflection.Metadata.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\vbc.exe
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe.config
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\API.dll.config
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\API.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\API.pdb
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\Newtonsoft.Json.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Net.Http.Formatting.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Web.Http.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Web.Http.WebHost.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\Newtonsoft.Json.xml
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Net.Http.Formatting.xml
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Web.Http.xml
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Web.Http.WebHost.xml
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\obj\Debug\API.csprojResolveAssemblyReference.cache
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\obj\Debug\API.dll
+\\Mac\Home\Desktop\GIT\TestAmmy\API\API\obj\Debug\API.pdb
