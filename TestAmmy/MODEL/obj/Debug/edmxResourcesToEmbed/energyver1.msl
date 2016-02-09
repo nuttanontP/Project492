@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="energyver1ModelStoreContainer" CdmEntityContainer="energyver1Entities">
+    <EntitySetMapping Name="buildings">
+      <EntityTypeMapping TypeName="energyver1Model.building">
+        <MappingFragment StoreEntitySet="building">
+          <ScalarProperty Name="buidlingid" ColumnName="buidlingid" />
+          <ScalarProperty Name="building_name" ColumnName="building_name" />
+          <ScalarProperty Name="building_detail" ColumnName="building_detail" />
+          <ScalarProperty Name="company_companycode" ColumnName="company_companycode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="energyver1Model.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="companycode" ColumnName="companycode" />
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="diesels">
+      <EntityTypeMapping TypeName="energyver1Model.diesel">
+        <MappingFragment StoreEntitySet="diesel">
+          <ScalarProperty Name="randomID" ColumnName="randomID" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="purchased" ColumnName="purchased" />
+          <ScalarProperty Name="DGSet" ColumnName="DGSet" />
+          <ScalarProperty Name="Vehicle" ColumnName="Vehicle" />
+          <ScalarProperty Name="OtherPurpose" ColumnName="OtherPurpose" />
+          <ScalarProperty Name="Runningtime" ColumnName="Runningtime" />
+          <ScalarProperty Name="Dieselcost" ColumnName="Dieselcost" />
+          <ScalarProperty Name="permission_building_company_companycode" ColumnName="permission_building_company_companycode" />
+          <ScalarProperty Name="permission_building_buidlingid" ColumnName="permission_building_buidlingid" />
+          <ScalarProperty Name="permission_energy_energy_id" ColumnName="permission_energy_energy_id" />
+          <ScalarProperty Name="permission_user_id" ColumnName="permission_user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="electricals">
+      <EntityTypeMapping TypeName="energyver1Model.electrical">
+        <MappingFragment StoreEntitySet="electrical">
+          <ScalarProperty Name="randomID" ColumnName="randomID" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="current_meter" ColumnName="current meter" />
+          <ScalarProperty Name="peak" ColumnName="peak" />
+          <ScalarProperty Name="off_peak" ColumnName="off peak" />
+          <ScalarProperty Name="holiday" ColumnName="holiday" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="permission_building_company_companycode" ColumnName="permission_building_company_companycode" />
+          <ScalarProperty Name="permission_building_buidlingid" ColumnName="permission_building_buidlingid" />
+          <ScalarProperty Name="permission_energy_energy_id" ColumnName="permission_energy_energy_id" />
+          <ScalarProperty Name="permission_user_id" ColumnName="permission_user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="energies">
+      <EntityTypeMapping TypeName="energyver1Model.energy">
+        <MappingFragment StoreEntitySet="energy">
+          <ScalarProperty Name="energy_id" ColumnName="energy_id" />
+          <ScalarProperty Name="energy_name" ColumnName="energy_name" />
+          <ScalarProperty Name="energy_detail" ColumnName="energy_detail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permissions">
+      <EntityTypeMapping TypeName="energyver1Model.permission">
+        <MappingFragment StoreEntitySet="permission">
+          <ScalarProperty Name="building_company_companycode" ColumnName="building_company_companycode" />
+          <ScalarProperty Name="building_buidlingid" ColumnName="building_buidlingid" />
+          <ScalarProperty Name="energy_energy_id" ColumnName="energy_energy_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="energyver1Model.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="company_companycode" ColumnName="company_companycode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

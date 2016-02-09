@@ -24,7 +24,7 @@ public class DBConnect
     public void Initialize()
     {
         server = "localhost";
-        database = "mydb2";
+        database = "energyver1";
         uid = "root";
         password = "1234";
         string connectionString;

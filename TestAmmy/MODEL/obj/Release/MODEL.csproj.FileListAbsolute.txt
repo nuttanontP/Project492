@@ -1,0 +1,8 @@
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Release\MODEL.dll.config
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Release\MODEL.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Release\MODEL.pdb
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Release\EntityFramework.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Release\EntityFramework.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Release\MODEL.csprojResolveAssemblyReference.cache
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Release\MODEL.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Release\MODEL.pdb

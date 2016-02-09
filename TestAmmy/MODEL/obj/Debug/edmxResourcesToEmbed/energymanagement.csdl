@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="energymanagementdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="energymanagementdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="buildings" EntityType="energymanagementdbModel.building" />
+    <EntitySet Name="companies" EntityType="energymanagementdbModel.company" />
+    <EntitySet Name="electrics" EntityType="energymanagementdbModel.electric" />
+    <EntitySet Name="energytypes" EntityType="energymanagementdbModel.energytype" />
+    <EntitySet Name="permissions" EntityType="energymanagementdbModel.permission" />
+    <EntitySet Name="users" EntityType="energymanagementdbModel.user" />
+    <AssociationSet Name="building_id" Association="energymanagementdbModel.building_id">
+      <End Role="building" EntitySet="buildings" />
+      <End Role="permission" EntitySet="permissions" />
+    </AssociationSet>
+    <AssociationSet Name="energy_id" Association="energymanagementdbModel.energy_id">
+      <End Role="energytype" EntitySet="energytypes" />
+      <End Role="permission" EntitySet="permissions" />
+    </AssociationSet>
+    <AssociationSet Name="user_id" Association="energymanagementdbModel.user_id">
+      <End Role="user" EntitySet="users" />
+      <End Role="permission" EntitySet="permissions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="building">
+    <Key>
+      <PropertyRef Name="idBuilding" />
+    </Key>
+    <Property Name="idBuilding" Type="Int32" Nullable="false" />
+    <Property Name="building_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="company_code" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="permissions" Relationship="energymanagementdbModel.building_id" FromRole="building" ToRole="permission" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="idcompany" />
+    </Key>
+    <Property Name="idcompany" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_code" Type="Int32" Nullable="false" />
+    <Property Name="company_name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="company_address" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="electric">
+    <Key>
+      <PropertyRef Name="day" />
+      <PropertyRef Name="month" />
+      <PropertyRef Name="year" />
+      <PropertyRef Name="building_id" />
+      <PropertyRef Name="energy_id" />
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="day" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="month" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="year" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="building_id" Type="Int32" Nullable="false" />
+    <Property Name="energy_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="current_meter" Type="Single" />
+    <Property Name="off_peak" Type="Single" />
+    <Property Name="holiday" Type="Single" />
+    <Property Name="timestamp" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="energytype">
+    <Key>
+      <PropertyRef Name="idEnergytype" />
+    </Key>
+    <Property Name="idEnergytype" Type="Int32" Nullable="false" />
+    <Property Name="energy_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="permissions" Relationship="energymanagementdbModel.energy_id" FromRole="energytype" ToRole="permission" />
+  </EntityType>
+  <EntityType Name="permission">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="building" />
+      <PropertyRef Name="energy_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="building" Type="Int32" Nullable="false" />
+    <Property Name="energy_id" Type="Int32" Nullable="false" />
+    <Property Name="company_code" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="building1" Relationship="energymanagementdbModel.building_id" FromRole="permission" ToRole="building" />
+    <NavigationProperty Name="energytype" Relationship="energymanagementdbModel.energy_id" FromRole="permission" ToRole="energytype" />
+    <NavigationProperty Name="user" Relationship="energymanagementdbModel.user_id" FromRole="permission" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="surname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="company" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="position" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="permissions" Relationship="energymanagementdbModel.user_id" FromRole="user" ToRole="permission" />
+  </EntityType>
+  <Association Name="building_id">
+    <End Type="energymanagementdbModel.building" Role="building" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="energymanagementdbModel.permission" Role="permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="building">
+        <PropertyRef Name="idBuilding" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="building" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="energy_id">
+    <End Type="energymanagementdbModel.energytype" Role="energytype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="energymanagementdbModel.permission" Role="permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="energytype">
+        <PropertyRef Name="idEnergytype" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="energy_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_id">
+    <End Type="energymanagementdbModel.user" Role="user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="energymanagementdbModel.permission" Role="permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

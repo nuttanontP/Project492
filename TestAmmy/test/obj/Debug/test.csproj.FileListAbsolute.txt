@@ -1,0 +1,5 @@
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\test\bin\Debug\test.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\test\bin\Debug\test.pdb
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\test\obj\Debug\test.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\test\obj\Debug\test.pdb

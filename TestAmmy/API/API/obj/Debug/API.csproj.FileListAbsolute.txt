@@ -27,31 +27,131 @@ c:\users\nont\documents\visual studio 2015\Projects\API\API\obj\Debug\API.csproj
 c:\users\nont\documents\visual studio 2015\Projects\API\API\obj\Debug\API.dll
 c:\users\nont\documents\visual studio 2015\Projects\API\API\obj\Debug\API.pdb
 c:\users\nont\documents\visual studio 2015\Projects\API\API\bin\MySql.Data.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\csc.exe
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.CSharp.Core.targets
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\Microsoft.VisualBasic.Core.targets
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\System.Collections.Immutable.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\System.Reflection.Metadata.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\vbc.exe
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe.config
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\API.dll.config
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\API.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\API.pdb
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\Newtonsoft.Json.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Net.Http.Formatting.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Web.Http.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Web.Http.WebHost.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\Newtonsoft.Json.xml
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Net.Http.Formatting.xml
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Web.Http.xml
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\bin\System.Web.Http.WebHost.xml
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\obj\Debug\API.csprojResolveAssemblyReference.cache
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\obj\Debug\API.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\API\API\obj\Debug\API.pdb
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\csc.exe
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\vbc.exe
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\API.dll.config
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\API.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\API.pdb
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\MySql.Data.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\Newtonsoft.Json.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\System.Net.Http.Formatting.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\System.Web.Http.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\System.Web.Http.WebHost.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\Newtonsoft.Json.xml
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\System.Net.Http.Formatting.xml
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\System.Web.Http.xml
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\System.Web.Http.WebHost.xml
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\obj\Debug\API.csprojResolveAssemblyReference.cache
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\obj\Debug\API.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\obj\Debug\API.pdb
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\MODEL.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\EntityFramework.dll
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\MODEL.pdb
+C:\Users\NONT\Documents\Project492\TestAmmy\API\API\bin\EntityFramework.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\csc.exe
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\vbc.exe
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\API.dll.config
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\API.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\API.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\MODEL.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\Newtonsoft.Json.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\System.Net.Http.Formatting.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\System.Web.Http.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\System.Web.Http.WebHost.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\MODEL.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\Newtonsoft.Json.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\System.Net.Http.Formatting.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\System.Web.Http.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\bin\System.Web.Http.WebHost.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\obj\Debug\API.csprojResolveAssemblyReference.cache
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\obj\Debug\API.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\API\API\obj\Debug\API.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\obj\Debug\API.csprojResolveAssemblyReference.cache
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\obj\Debug\API.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\obj\Debug\API.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\csc.exe
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\vbc.exe
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\API.dll.config
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\API.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\API.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\MODEL.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\Newtonsoft.Json.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\System.Net.Http.Formatting.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\System.Web.Http.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\System.Web.Http.WebHost.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\EntityFramework.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\MODEL.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\Newtonsoft.Json.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\System.Net.Http.Formatting.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\System.Web.Http.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\System.Web.Http.WebHost.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\API\API\bin\EntityFramework.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\csc.exe
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\vbc.exe
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\API.dll.config
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\API.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\API.pdb
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\MODEL.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\Newtonsoft.Json.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\System.Net.Http.Formatting.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\System.Web.Http.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\System.Web.Http.WebHost.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\EntityFramework.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\MODEL.pdb
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\Newtonsoft.Json.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\System.Net.Http.Formatting.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\System.Web.Http.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\System.Web.Http.WebHost.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\EntityFramework.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\obj\Debug\API.csprojResolveAssemblyReference.cache
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\obj\Debug\API.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\obj\Debug\API.pdb
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\API\API\bin\MySql.Data.dll

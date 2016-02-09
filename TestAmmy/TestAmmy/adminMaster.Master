@@ -1,0 +1,142 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="adminMaster.master.cs" Inherits="TestAmmy.adminMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="head1" runat="server"></asp:ContentPlaceHolder>
+    </title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="assets/css/bootstrap_dash.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    <link href="assets/css/styles_dash.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head2" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <!-- Header -->
+            <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-toggle"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">MIS For Energy Management</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                                    <i class="glyphicon glyphicon-user"></i>&nbsp;Admin&nbsp; <%=Session["email"]%> <span class="caret"></span></a>
+                                <ul id="g-account-menu" class="dropdown-menu" role="menu">
+                                    <li><a href="#">My Profile</a></li>
+                                    <%--<li><a href="#"><i class="glyphicon glyphicon-lock"></i>Logout</a></li>--%>
+                                    <li>
+                                        <asp:LinkButton ID="SignOut" class="glyphicon glyphicon-lock" runat="server" OnClick="SignOut_Click">Logout</asp:LinkButton></li>
+                                    <%--<li><a href="#"><i ></i>Logout</a></li>--%>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /Header -->
+
+            <!-- Main -->
+            <div class="container">
+
+                <!-- upper section -->
+                <div class="row">
+                    <div class="col-sm-3">
+                        <!-- left -->
+                        <h3><i class="glyphicon glyphicon-th-list"></i>&nbsp;MENU</h3>
+                        <hr />
+
+                        <ul class="nav nav-stacked">
+                            <li><a href="permissionPage.aspx" target="ext"><i class="glyphicon glyphicon-lock"></i>&nbsp;Change permission</a></li>
+                            <li><a href="addBuilding.aspx" target="ext"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add building</a></li>
+
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tasks"></i>&nbsp;Manage energy data</a><ul class="dropdown-menu" role="menu">
+                                <li><a href="addData.aspx">Electricity</a></li>
+                                <li><a href="addData.aspx">Water Consumption</a></li>
+                                <li><a href="addData.aspx">LPG</></a></li>
+                                <li><a href="addData.aspx">Diesel</></a></li>
+                                <li><a href="addData.aspx">Occupancy</></a></li>
+                                <asp:ContentPlaceHolder ID="rightmenu" runat="server">
+                                    <%--right_menu--%>
+                                </asp:ContentPlaceHolder>
+
+                            </ul>
+                            </li>
+
+                            <li><a href="viewGraphs.aspx" target="ext"><i class="glyphicon glyphicon-stats"></i>&nbsp;Data Summary</a></li>
+                            <li><a href="viewFiles.aspx" target="ext"><i class="glyphicon glyphicon-folder-close"></i>&nbsp;Library</a></li>
+
+                        </ul>
+
+                        <hr />
+
+                    </div>
+                    <!-- /span-3 -->
+
+                    <div class="col-sm-9">
+
+                        <asp:ContentPlaceHolder ID="content_col9" runat="server">
+                            <%--class="col-sm-9"// center of page--%>
+                        </asp:ContentPlaceHolder>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <asp:ContentPlaceHolder ID="content_col12" runat="server">
+                                <%--class="col-md-12" // lowerpage--%>
+                            </asp:ContentPlaceHolder>
+
+                        </div>
+                        <asp:ContentPlaceHolder ID="contentInRow_outcol12" runat="server">
+                            <%--class="row" // lowerpage--%>
+                        </asp:ContentPlaceHolder>
+
+                    </div>
+
+                    <asp:ContentPlaceHolder ID="content_inRowUpperSection" runat="server">
+                        <%-- outside other in same row--%>
+                    </asp:ContentPlaceHolder>
+
+
+                </div>
+                <asp:ContentPlaceHolder ID="content_container" runat="server">
+                    <%--maincontainer--%>
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <asp:ContentPlaceHolder ID="content_footer" runat="server">
+                <%--for footer--%>
+            </asp:ContentPlaceHolder>
+                        <footer class="text-center">This Bootstrap 3 dashboard layout is compliments of <a href="http://www.bootply.com/85861"><strong>Bootply.com</strong></a></footer>
+
+        </div>
+
+
+    </form>
+
+    <!-- script references -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="assets/js/bootstrap_dash.min.js"></script>
+
+</body>
+</html>

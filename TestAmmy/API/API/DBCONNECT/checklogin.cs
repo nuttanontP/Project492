@@ -14,14 +14,17 @@ namespace MODEL_2.Respository
     public Boolean checklogins(string username, string password)
         {
             Boolean temp = false;
-            string query = "select * from dbo_tb_username where dbo_tb_usernamecol = '" + username + "' and dbo_tb_usernamePW = '" + password+ "' ";
+            StringBuilder bd = new StringBuilder();
+            bd.Append("select * from energyver1.user ");
+            bd.Append("where email='" + username + "' and password='"+password+"'");
+          //  string query = "select * from energyver1.user where idUser = '" + username + "' and password = '" + password+ "' ";
             if (dbconnect.OpenConnection() == true)
             {
-                MySqlCommand cmd = new MySqlCommand(query,dbconnect.connection);
+                MySqlCommand cmd = new MySqlCommand(bd.ToString(),dbconnect.connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    string x = dataReader["dbo_tb_usernameID"] +"";
+                    string x = dataReader["idUser"] +"";
                     temp = true;
                 }
             }

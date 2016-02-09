@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="energymanagementdbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bludding">
+    <Key>
+      <PropertyRef Name="idBludding" />
+    </Key>
+    <Property Name="idBludding" Type="int" Nullable="false" />
+    <Property Name="bludding_detail" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="electric">
+    <Key>
+      <PropertyRef Name="day" />
+      <PropertyRef Name="month" />
+      <PropertyRef Name="year" />
+      <PropertyRef Name="bludding_id" />
+      <PropertyRef Name="energy_id" />
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="day" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="month" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="year" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="bludding_id" Type="int" Nullable="false" />
+    <Property Name="energy_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="detail" Type="varchar" MaxLength="60" />
+    <Property Name="type" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="current meter" Type="float" />
+    <Property Name="off peak" Type="float" />
+    <Property Name="holiday" Type="float" />
+    <Property Name="timestamp" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="energytype">
+    <Key>
+      <PropertyRef Name="idEnergytype" />
+    </Key>
+    <Property Name="idEnergytype" Type="int" Nullable="false" />
+    <Property Name="energy_name" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="permission">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="bludding" />
+      <PropertyRef Name="energy_id" />
+    </Key>
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="bludding" Type="int" Nullable="false" />
+    <Property Name="energy_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="45" />
+    <Property Name="name" Type="varchar" MaxLength="45" />
+    <Property Name="surname" Type="varchar" MaxLength="45" />
+    <Property Name="password" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="company" Type="varchar" MaxLength="45" />
+    <Property Name="position" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <Association Name="bludding_id">
+    <End Role="bludding" Type="Self.bludding" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="permission" Type="Self.permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bludding">
+        <PropertyRef Name="idBludding" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="bludding" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="energy_id">
+    <End Role="energytype" Type="Self.energytype" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="permission" Type="Self.permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="energytype">
+        <PropertyRef Name="idEnergytype" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="energy_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_id">
+    <End Role="user" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="permission" Type="Self.permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'user_id_p' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="user_id_p" />-->
+  <EntityContainer Name="energymanagementdbModelStoreContainer">
+    <EntitySet Name="bludding" EntityType="Self.bludding" Schema="energymanagementdb" store:Type="Tables" />
+    <EntitySet Name="electric" EntityType="Self.electric" Schema="energymanagementdb" store:Type="Tables" />
+    <EntitySet Name="energytype" EntityType="Self.energytype" Schema="energymanagementdb" store:Type="Tables" />
+    <EntitySet Name="permission" EntityType="Self.permission" Schema="energymanagementdb" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="energymanagementdb" store:Type="Tables" />
+    <AssociationSet Name="bludding_id" Association="Self.bludding_id">
+      <End Role="bludding" EntitySet="bludding" />
+      <End Role="permission" EntitySet="permission" />
+    </AssociationSet>
+    <AssociationSet Name="energy_id" Association="Self.energy_id">
+      <End Role="energytype" EntitySet="energytype" />
+      <End Role="permission" EntitySet="permission" />
+    </AssociationSet>
+    <AssociationSet Name="user_id" Association="Self.user_id">
+      <End Role="user" EntitySet="user" />
+      <End Role="permission" EntitySet="permission" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

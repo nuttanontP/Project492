@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="energymanagementdbModelStoreContainer" CdmEntityContainer="energymanagementdbEntities">
+    <EntitySetMapping Name="bluddings">
+      <EntityTypeMapping TypeName="energymanagementdbModel.bludding">
+        <MappingFragment StoreEntitySet="bludding">
+          <ScalarProperty Name="idBludding" ColumnName="idBludding" />
+          <ScalarProperty Name="bludding_detail" ColumnName="bludding_detail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="electrics">
+      <EntityTypeMapping TypeName="energymanagementdbModel.electric">
+        <MappingFragment StoreEntitySet="electric">
+          <ScalarProperty Name="day" ColumnName="day" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="bludding_id" ColumnName="bludding_id" />
+          <ScalarProperty Name="energy_id" ColumnName="energy_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="detail" ColumnName="detail" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="current_meter" ColumnName="current meter" />
+          <ScalarProperty Name="off_peak" ColumnName="off peak" />
+          <ScalarProperty Name="holiday" ColumnName="holiday" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="energytypes">
+      <EntityTypeMapping TypeName="energymanagementdbModel.energytype">
+        <MappingFragment StoreEntitySet="energytype">
+          <ScalarProperty Name="idEnergytype" ColumnName="idEnergytype" />
+          <ScalarProperty Name="energy_name" ColumnName="energy_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permissions">
+      <EntityTypeMapping TypeName="energymanagementdbModel.permission">
+        <MappingFragment StoreEntitySet="permission">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="bludding" ColumnName="bludding" />
+          <ScalarProperty Name="energy_id" ColumnName="energy_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="energymanagementdbModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

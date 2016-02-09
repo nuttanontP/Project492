@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MODEL</RootNamespace>
     <AssemblyName>MODEL</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,24 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -48,57 +67,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="building.cs">
+      <DependentUpon>energy2.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
-    <Compile Include="electrical_db.cs">
-      <DependentUpon>mydb2.tt</DependentUpon>
+    <Compile Include="company.cs">
+      <DependentUpon>energy2.tt</DependentUpon>
     </Compile>
-    <Compile Include="mydb2.Context.cs">
+    <Compile Include="diesel.cs">
+      <DependentUpon>energy2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="electrical.cs">
+      <DependentUpon>energy2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="energy.cs">
+      <DependentUpon>energy2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="energy2.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mydb2.Context.tt</DependentUpon>
+      <DependentUpon>energy2.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="mydb2.cs">
+    <Compile Include="energy2.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mydb2.tt</DependentUpon>
+      <DependentUpon>energy2.tt</DependentUpon>
     </Compile>
-    <Compile Include="mydb2.Designer.cs">
+    <Compile Include="energy2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mydb2.edmx</DependentUpon>
+      <DependentUpon>energy2.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="permission.cs">
+      <DependentUpon>energy2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="permissionview.cs">
+      <DependentUpon>energy2.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="user_db.cs">
-      <DependentUpon>mydb2.tt</DependentUpon>
+    <Compile Include="user.cs">
+      <DependentUpon>energy2.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="mydb2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>mydb2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="mydb2.edmx.diagram">
-      <DependentUpon>mydb2.edmx</DependentUpon>
+    <EntityDeploy Include="energy2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>energy2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="energy2.edmx.diagram">
+      <DependentUpon>energy2.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="mydb2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>mydb2.edmx</DependentUpon>
-      <LastGenOutput>mydb2.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="mydb2.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>mydb2.edmx</DependentUpon>
-      <LastGenOutput>mydb2.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="energy2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>energy2.edmx</DependentUpon>
+      <LastGenOutput>energy2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="energy2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>energy2.edmx</DependentUpon>
+      <LastGenOutput>energy2.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

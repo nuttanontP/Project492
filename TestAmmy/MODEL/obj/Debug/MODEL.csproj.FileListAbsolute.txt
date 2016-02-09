@@ -3,14 +3,29 @@ C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\bin\Debug\MODEL.dll
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\bin\Debug\MODEL.pdb
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\bin\Debug\EntityFramework.dll
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\bin\Debug\EntityFramework.xml
-C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\obj\Debug\MODEL.dll
 C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\obj\Debug\MODEL.pdb
-\\Mac\Home\Desktop\GIT\TestAmmy\MODEL\bin\Debug\MODEL.dll.config
-\\Mac\Home\Desktop\GIT\TestAmmy\MODEL\bin\Debug\MODEL.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\MODEL\bin\Debug\MODEL.pdb
-\\Mac\Home\Desktop\GIT\TestAmmy\MODEL\bin\Debug\EntityFramework.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\MODEL\bin\Debug\EntityFramework.xml
-\\Mac\Home\Desktop\GIT\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
-\\Mac\Home\Desktop\GIT\TestAmmy\MODEL\obj\Debug\MODEL.dll
-\\Mac\Home\Desktop\GIT\TestAmmy\MODEL\obj\Debug\MODEL.pdb
+C:\Users\NONT\Documents\Project492\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\MODEL\bin\Debug\MODEL.dll.config
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\MODEL\bin\Debug\MODEL.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\MODEL\bin\Debug\MODEL.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\MODEL\bin\Debug\EntityFramework.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\MODEL\bin\Debug\EntityFramework.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\MODEL\obj\Debug\MODEL.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git\TestAmmy\MODEL\obj\Debug\MODEL.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\MODEL.dll.config
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\MODEL.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\MODEL.pdb
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\EntityFramework.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\EntityFramework.xml
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.dll
+C:\Users\Nuttanont\Documents\Visual Studio 2015\Projects\Project491and492\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.pdb
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\MODEL.dll.config
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\MODEL.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\MODEL.pdb
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\EntityFramework.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\bin\Debug\EntityFramework.xml
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.dll
+C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.pdb

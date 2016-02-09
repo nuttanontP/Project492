@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="building">
+    <Key>
+      <PropertyRef Name="buidlingid" />
+      <PropertyRef Name="company_companycode" />
+    </Key>
+    <Property Name="buidlingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="building_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="building_detail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="company_companycode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="company" Relationship="Self.fk_building_company1" FromRole="building" ToRole="company" />
+    <NavigationProperty Name="permissions" Relationship="Self.fk_permission_building1" FromRole="building" ToRole="permission" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="companycode" />
+    </Key>
+    <Property Name="companycode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="company_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="buildings" Relationship="Self.fk_building_company1" FromRole="company" ToRole="building" />
+    <NavigationProperty Name="users" Relationship="Self.fk_user_company1" FromRole="company" ToRole="user" />
+  </EntityType>
+  <EntityType Name="diesel">
+    <Key>
+      <PropertyRef Name="randomID" />
+      <PropertyRef Name="permission_user_id" />
+      <PropertyRef Name="permission_building_buidlingid" />
+      <PropertyRef Name="permission_building_company_companycode" />
+      <PropertyRef Name="permission_energy_energy_id" />
+    </Key>
+    <Property Name="randomID" Type="Guid" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" />
+    <Property Name="purchased" Type="Single" />
+    <Property Name="DGSet" Type="Single" />
+    <Property Name="Vehicle" Type="Single" />
+    <Property Name="OtherPurpose" Type="Single" />
+    <Property Name="Runningtime" Type="Single" />
+    <Property Name="Dieselcost" Type="Single" Nullable="false" />
+    <Property Name="permission_user_id" Type="Int32" Nullable="false" />
+    <Property Name="permission_building_buidlingid" Type="Int32" Nullable="false" />
+    <Property Name="permission_building_company_companycode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="permission_energy_energy_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="permission" Relationship="Self.fk_diesel_permission1" FromRole="diesel" ToRole="permission" />
+  </EntityType>
+  <EntityType Name="electrical">
+    <Key>
+      <PropertyRef Name="randomID" />
+      <PropertyRef Name="permission_user_id" />
+      <PropertyRef Name="permission_building_buidlingid" />
+      <PropertyRef Name="permission_building_company_companycode" />
+      <PropertyRef Name="permission_energy_energy_id" />
+    </Key>
+    <Property Name="randomID" Type="Guid" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="current_meter" Type="Single" />
+    <Property Name="peak" Type="Single" />
+    <Property Name="off_peak" Type="Single" />
+    <Property Name="holiday" Type="Single" />
+    <Property Name="timestamp" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="permission_user_id" Type="Int32" Nullable="false" />
+    <Property Name="permission_building_buidlingid" Type="Int32" Nullable="false" />
+    <Property Name="permission_building_company_companycode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="permission_energy_energy_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="permission" Relationship="Self.fk_electrical_permission1" FromRole="electrical" ToRole="permission" />
+  </EntityType>
+  <EntityType Name="energy">
+    <Key>
+      <PropertyRef Name="energy_id" />
+    </Key>
+    <Property Name="energy_id" Type="Int32" Nullable="false" />
+    <Property Name="energy_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="energy_detail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="permissions" Relationship="Self.fk_permission_energy1" FromRole="energy" ToRole="permission" />
+  </EntityType>
+  <EntityType Name="permission">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="building_buidlingid" />
+      <PropertyRef Name="building_company_companycode" />
+      <PropertyRef Name="energy_energy_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="building_buidlingid" Type="Int32" Nullable="false" />
+    <Property Name="building_company_companycode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="energy_energy_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="building" Relationship="Self.fk_permission_building1" FromRole="permission" ToRole="building" />
+    <NavigationProperty Name="diesels" Relationship="Self.fk_diesel_permission1" FromRole="permission" ToRole="diesel" />
+    <NavigationProperty Name="electricals" Relationship="Self.fk_electrical_permission1" FromRole="permission" ToRole="electrical" />
+    <NavigationProperty Name="energy" Relationship="Self.fk_permission_energy1" FromRole="permission" ToRole="energy" />
+    <NavigationProperty Name="user" Relationship="Self.fk_permission_user1" FromRole="permission" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="company_companycode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="company" Relationship="Self.fk_user_company1" FromRole="user" ToRole="company" />
+    <NavigationProperty Name="permissions" Relationship="Self.fk_permission_user1" FromRole="user" ToRole="permission" />
+  </EntityType>
+  <EntityType Name="permissionview">
+    <Key>
+      <PropertyRef Name="building_company_companycode" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+    <Property Name="building_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="energy_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="company_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="building_company_companycode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_building_company1">
+    <End Role="company" Type="Self.company" Multiplicity="1" />
+    <End Role="building" Type="Self.building" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company">
+        <PropertyRef Name="companycode" />
+      </Principal>
+      <Dependent Role="building">
+        <PropertyRef Name="company_companycode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_permission_building1">
+    <End Role="building" Type="Self.building" Multiplicity="1" />
+    <End Role="permission" Type="Self.permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="building">
+        <PropertyRef Name="buidlingid" />
+        <PropertyRef Name="company_companycode" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="building_buidlingid" />
+        <PropertyRef Name="building_company_companycode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_company1">
+    <End Role="company" Type="Self.company" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company">
+        <PropertyRef Name="companycode" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="company_companycode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_diesel_permission1">
+    <End Role="permission" Type="Self.permission" Multiplicity="1" />
+    <End Role="diesel" Type="Self.diesel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="permission">
+        <PropertyRef Name="user_id" />
+        <PropertyRef Name="building_buidlingid" />
+        <PropertyRef Name="building_company_companycode" />
+        <PropertyRef Name="energy_energy_id" />
+      </Principal>
+      <Dependent Role="diesel">
+        <PropertyRef Name="permission_user_id" />
+        <PropertyRef Name="permission_building_buidlingid" />
+        <PropertyRef Name="permission_building_company_companycode" />
+        <PropertyRef Name="permission_energy_energy_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_electrical_permission1">
+    <End Role="permission" Type="Self.permission" Multiplicity="1" />
+    <End Role="electrical" Type="Self.electrical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="permission">
+        <PropertyRef Name="user_id" />
+        <PropertyRef Name="building_buidlingid" />
+        <PropertyRef Name="building_company_companycode" />
+        <PropertyRef Name="energy_energy_id" />
+      </Principal>
+      <Dependent Role="electrical">
+        <PropertyRef Name="permission_user_id" />
+        <PropertyRef Name="permission_building_buidlingid" />
+        <PropertyRef Name="permission_building_company_companycode" />
+        <PropertyRef Name="permission_energy_energy_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_permission_energy1">
+    <End Role="energy" Type="Self.energy" Multiplicity="1" />
+    <End Role="permission" Type="Self.permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="energy">
+        <PropertyRef Name="energy_id" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="energy_energy_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_permission_user1">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="permission" Type="Self.permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="permission">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="energy20" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="buildings" EntityType="Self.building" />
+    <EntitySet Name="companies" EntityType="Self.company" />
+    <EntitySet Name="diesels" EntityType="Self.diesel" />
+    <EntitySet Name="electricals" EntityType="Self.electrical" />
+    <EntitySet Name="energies" EntityType="Self.energy" />
+    <EntitySet Name="permissions" EntityType="Self.permission" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="permissionviews" EntityType="Self.permissionview" />
+    <AssociationSet Name="fk_building_company1" Association="Self.fk_building_company1">
+      <End Role="company" EntitySet="companies" />
+      <End Role="building" EntitySet="buildings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_permission_building1" Association="Self.fk_permission_building1">
+      <End Role="building" EntitySet="buildings" />
+      <End Role="permission" EntitySet="permissions" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_company1" Association="Self.fk_user_company1">
+      <End Role="company" EntitySet="companies" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="fk_diesel_permission1" Association="Self.fk_diesel_permission1">
+      <End Role="permission" EntitySet="permissions" />
+      <End Role="diesel" EntitySet="diesels" />
+    </AssociationSet>
+    <AssociationSet Name="fk_electrical_permission1" Association="Self.fk_electrical_permission1">
+      <End Role="permission" EntitySet="permissions" />
+      <End Role="electrical" EntitySet="electricals" />
+    </AssociationSet>
+    <AssociationSet Name="fk_permission_energy1" Association="Self.fk_permission_energy1">
+      <End Role="energy" EntitySet="energies" />
+      <End Role="permission" EntitySet="permissions" />
+    </AssociationSet>
+    <AssociationSet Name="fk_permission_user1" Association="Self.fk_permission_user1">
+      <End Role="user" EntitySet="users" />
+      <End Role="permission" EntitySet="permissions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

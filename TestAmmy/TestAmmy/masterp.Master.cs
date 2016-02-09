@@ -11,7 +11,13 @@ namespace TestAmmy
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        protected void SignOut_Click(object sender, EventArgs e)
+        {
+            Session.Remove("email");
+            Response.Redirect("loginRegister.aspx");
         }
     }
 }

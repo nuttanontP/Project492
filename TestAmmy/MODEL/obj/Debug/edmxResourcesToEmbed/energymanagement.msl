@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="energymanagementdbModelStoreContainer" CdmEntityContainer="energymanagementdbEntities">
+    <EntitySetMapping Name="buildings">
+      <EntityTypeMapping TypeName="energymanagementdbModel.building">
+        <MappingFragment StoreEntitySet="building">
+          <ScalarProperty Name="company_code" ColumnName="company_code" />
+          <ScalarProperty Name="building_name" ColumnName="building_name" />
+          <ScalarProperty Name="idBuilding" ColumnName="idBuilding" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="energymanagementdbModel.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="company_address" ColumnName="company_address" />
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+          <ScalarProperty Name="company_code" ColumnName="company_code" />
+          <ScalarProperty Name="idcompany" ColumnName="idcompany" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="electrics">
+      <EntityTypeMapping TypeName="energymanagementdbModel.electric">
+        <MappingFragment StoreEntitySet="electric">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="holiday" ColumnName="holiday" />
+          <ScalarProperty Name="off_peak" ColumnName="off peak" />
+          <ScalarProperty Name="current_meter" ColumnName="current meter" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="detail" ColumnName="detail" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="energy_id" ColumnName="energy_id" />
+          <ScalarProperty Name="building_id" ColumnName="building_id" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="day" ColumnName="day" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="energytypes">
+      <EntityTypeMapping TypeName="energymanagementdbModel.energytype">
+        <MappingFragment StoreEntitySet="energytype">
+          <ScalarProperty Name="energy_name" ColumnName="energy_name" />
+          <ScalarProperty Name="idEnergytype" ColumnName="idEnergytype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permissions">
+      <EntityTypeMapping TypeName="energymanagementdbModel.permission">
+        <MappingFragment StoreEntitySet="permission">
+          <ScalarProperty Name="company_code" ColumnName="company_code" />
+          <ScalarProperty Name="energy_id" ColumnName="energy_id" />
+          <ScalarProperty Name="building" ColumnName="building" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="energymanagementdbModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
