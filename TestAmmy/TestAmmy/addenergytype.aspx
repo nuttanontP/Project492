@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/adminMaster.Master" AutoEventWireup="true" CodeBehind="PermissionPage.aspx.cs" Inherits="TestAmmy.PermissionPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/adminMaster.Master" AutoEventWireup="true" CodeBehind="addenergytype.aspx.cs" Inherits="TestAmmy.addenergytype" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head1" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head2" runat="server">
@@ -6,9 +6,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="rightmenu" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="content_col9" runat="server">
-    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-
-
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="content_col12" runat="server">
 </asp:Content>

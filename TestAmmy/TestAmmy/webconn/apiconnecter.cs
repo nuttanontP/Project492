@@ -20,8 +20,8 @@ namespace TestAmmy.webconn
         {
             WebClient Proxy1 = new WebClient();
             Proxy1.Headers["Content-type"] = "application/json";
-            //byte[] data = Proxy1.DownloadData("http://" + mis_service_ip + ":" + mis_service_port + "/" + mis_service_name + "/" + function_name);
-            byte[] data = Proxy1.DownloadData("http://" + mis_service_ip + "/" + mis_service_name + "/" + function_name);
+            byte[] data = Proxy1.DownloadData("http://" + mis_service_ip + ":" + mis_service_port + "/" + mis_service_name + "/" + function_name);
+            //byte[] data = Proxy1.DownloadData("http://" + mis_service_ip + "/" + mis_service_name + "/" + function_name);
             Stream stream = new MemoryStream(data);
             StreamReader streamread = new StreamReader(stream);
             string result = streamread.ReadToEnd();
@@ -37,8 +37,8 @@ namespace TestAmmy.webconn
             MemoryStream ms = new MemoryStream();
             DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(string));
             serializerToUplaod.WriteObject(ms, pro_data);
-            //byte[] data = Proxy1.UploadData("http://" + mis_service_ip + ":" + mis_service_port + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
-            byte[] data = Proxy1.UploadData("http://" + mis_service_ip + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
+            byte[] data = Proxy1.UploadData("http://" + mis_service_ip + ":" + mis_service_port + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
+            //byte[] data = Proxy1.UploadData("http://" + mis_service_ip + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
             Stream stream = new MemoryStream(data);
             StreamReader streamread = new StreamReader(stream);
             string result = streamread.ReadToEnd();
@@ -53,8 +53,8 @@ namespace TestAmmy.webconn
             MemoryStream ms = new MemoryStream();
             DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(string[]));
             serializerToUplaod.WriteObject(ms, pro_data);
-            //byte[] data = Proxy1.UploadData("http://" + mis_service_ip + ":" + mis_service_port + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
-            byte[] data = Proxy1.UploadData("http://" + mis_service_ip + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
+            byte[] data = Proxy1.UploadData("http://" + mis_service_ip + ":" + mis_service_port + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
+            //byte[] data = Proxy1.UploadData("http://" + mis_service_ip + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
             Stream stream = new MemoryStream(data);
             StreamReader streamread = new StreamReader(stream);
             string result = streamread.ReadToEnd();

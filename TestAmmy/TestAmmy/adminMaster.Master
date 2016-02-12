@@ -135,8 +135,8 @@
     </form>
 
     <!-- script references -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="assets/js/bootstrap_dash.min.js"></script>
+ <%--   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="assets/js/bootstrap_dash.min.js"></script>--%>
 
 </body>
 </html>

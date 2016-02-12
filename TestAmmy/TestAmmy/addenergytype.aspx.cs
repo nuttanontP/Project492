@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TestAmmy
 {
-    public partial class PermissionPage : System.Web.UI.Page
+    public partial class addenergytype : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

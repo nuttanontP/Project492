@@ -104,6 +104,7 @@
   <ItemGroup>
     <Content Include="addBuilding.aspx" />
     <Content Include="addData.aspx" />
+    <Content Include="addenergytype.aspx" />
     <Content Include="adminDashBoard.aspx" />
     <Content Include="assets\css\animate.min.css" />
     <Content Include="assets\css\bootstrap.css" />
@@ -140,7 +141,13 @@
     <Content Include="assets\js\jquery.js" />
     <Content Include="assets\js\wow.min.js" />
     <Content Include="forTest.aspx" />
+    <Content Include="gridviewBuilding.aspx" />
     <Content Include="homePage.aspx" />
+    <Content Include="jsnont\jquery.dataTables.css" />
+    <Content Include="jsnont\jquery.dataTables.js" />
+    <Content Include="jsnont\jquery.dataTables.min.css" />
+    <Content Include="jsnont\jquery.dataTables.min.js" />
+    <Content Include="jsnont\jquery.js" />
     <Content Include="loginRegister.aspx" />
     <Content Include="managebuilding.aspx" />
     <Content Include="packages.config" />
@@ -188,6 +195,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="PermissionPage.aspx" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <None Include="Properties\PublishProfiles\ammy - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -203,10 +211,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="firstPage.aspx" />
-    <Content Include="permissionPage.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="test222222222.aspx" />
     <Content Include="test_master_cheichei.aspx" />
     <Content Include="userManage.aspx" />
     <Content Include="viewFiles.aspx" />
@@ -229,6 +235,13 @@
     </Compile>
     <Compile Include="addData.aspx.designer.cs">
       <DependentUpon>addData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addenergytype.aspx.cs">
+      <DependentUpon>addenergytype.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addenergytype.aspx.designer.cs">
+      <DependentUpon>addenergytype.aspx</DependentUpon>
     </Compile>
     <Compile Include="adminDashBoard.aspx.cs">
       <DependentUpon>adminDashBoard.aspx</DependentUpon>
@@ -258,6 +271,13 @@
     <Compile Include="forTest.aspx.designer.cs">
       <DependentUpon>forTest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="gridviewBuilding.aspx.cs">
+      <DependentUpon>gridviewBuilding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gridviewBuilding.aspx.designer.cs">
+      <DependentUpon>gridviewBuilding.aspx</DependentUpon>
+    </Compile>
     <Compile Include="homePage.aspx.cs">
       <DependentUpon>homePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -286,25 +306,18 @@
     <Compile Include="masterp.Master.designer.cs">
       <DependentUpon>masterp.Master</DependentUpon>
     </Compile>
-    <Compile Include="permissionPage.aspx.cs">
-      <DependentUpon>permissionPage.aspx</DependentUpon>
+    <Compile Include="PermissionPage.aspx.cs">
+      <DependentUpon>PermissionPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="permissionPage.aspx.designer.cs">
-      <DependentUpon>permissionPage.aspx</DependentUpon>
+    <Compile Include="PermissionPage.aspx.designer.cs">
+      <DependentUpon>PermissionPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="test222222222.aspx.cs">
-      <DependentUpon>test222222222.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test222222222.aspx.designer.cs">
-      <DependentUpon>test222222222.aspx</DependentUpon>
     </Compile>
     <Compile Include="test_master_cheichei.aspx.cs">
       <DependentUpon>test_master_cheichei.aspx</DependentUpon>

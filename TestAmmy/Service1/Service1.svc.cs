@@ -181,7 +181,7 @@ namespace Service1
             try
             {
                 conn.Open();
-                CommandText = "SELECT * FROM permissionview where building_company_companycode = @companycode";
+                CommandText = "SELECT * FROM building where company_companycode = @companycode";
                 cmd = new MySqlCommand(CommandText, conn);
                 cmd.Parameters.AddWithValue("@companycode", companycode);
                 adap = new MySqlDataAdapter(cmd);

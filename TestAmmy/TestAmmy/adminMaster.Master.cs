@@ -16,6 +16,8 @@ namespace TestAmmy
         protected void SignOut_Click(object sender, EventArgs e)
         {
             Session.Remove("email");
+            Session.Remove("status");
+            Session.Clear();
             Response.Redirect("loginRegister.aspx");
         }
     }

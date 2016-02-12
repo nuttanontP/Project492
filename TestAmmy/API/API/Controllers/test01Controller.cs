@@ -24,16 +24,19 @@ namespace API.Controllers
         // POST: api/test01
         public void Post([FromBody]string value)
         {
+            string x = value;
         }
 
         // PUT: api/test01/5
         public void Put(int id, [FromBody]string value)
         {
+            string x = value;
         }
 
         // DELETE: api/test01/5
         public void Delete(int id)
         {
+            var x = id;
         }
     }
 }
