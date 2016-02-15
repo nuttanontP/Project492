@@ -358,6 +358,7 @@
     <Compile Include="webconn\apiconnecter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\pickadate.js-3.5.6\" />
     <Folder Include="View\Admin\" />
     <Folder Include="View\User\" />
   </ItemGroup>

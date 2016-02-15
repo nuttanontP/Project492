@@ -286,6 +286,69 @@ namespace Service1
             conn.Close();
             return status;
         }
+
+        public string CheckPermission(string[] permission)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT * FROM permissionview where name = @name and building_name = @building_name and energy_name = @energy_name and building_company_companycode = @building_company_companycode ";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@name", permission [0]);
+                cmd.Parameters.AddWithValue("@building_name", permission[1]);
+                cmd.Parameters.AddWithValue("@energy_name", permission[2]);
+                cmd.Parameters.AddWithValue("@building_company_companycode", permission[3]);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
+
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+
+        }
+        public string ddlpermission(string email)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT * FROM permissionview where email = @email ";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
+
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
         private string CalculateMD5Hash(string input)
         {
             // step 1, calculate MD5 hash from input
@@ -301,5 +364,7 @@ namespace Service1
             }
             return sb.ToString();
         }
+
+
     }
 }

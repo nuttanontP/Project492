@@ -15,11 +15,12 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="content_col9" runat="server">
 
-
+   
     <%------------%>
     <div id="datePopup"></div>
     <div>
         <h3>Electricity</h3>
+         <asp:DropDownList ID="ddl_building"   class="btn btn-default btn-lg dropdown-toggle" runat="server"></asp:DropDownList>
         <hr />
         <ul class="nav nav-tabs" id="myTab">
             <li class="active"><a href="#profile" data-toggle="tab">For Non Designated Building</a></li>

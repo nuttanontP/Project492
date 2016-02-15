@@ -79,6 +79,23 @@ namespace Service1
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string Addbuilding(string[] building);
+        /// <summary>
+        /// check this email can fill in data form
+        /// </summary>
+        /// <param name="permission">{email,building_id,codecompandy,energy type}</param>
+        /// <returns>{yes,no}</returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string CheckPermission(string[] permission);
+
+        /// <summary>
+        /// Drop down list for select building in permission
+        /// </summary>
+        /// <param name="permission">email</param>
+        /// <returns>data table of this user</returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string ddlpermission(string email);
     }
 
 
