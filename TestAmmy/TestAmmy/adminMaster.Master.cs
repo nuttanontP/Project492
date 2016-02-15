@@ -17,8 +17,9 @@ namespace TestAmmy
         {
             Session.Remove("email");
             Session.Remove("status");
-            Session.Clear();
+
             Response.Redirect("loginRegister.aspx");
+
         }
     }
 }

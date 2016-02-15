@@ -45,6 +45,7 @@ namespace TestAmmy
                 DataTable myData = JsonConvert.DeserializeObject<DataTable>(s);
                 Session["email"] = myData.Rows[0]["email"].ToString();
                 Session["status"] = myData.Rows[0]["status"].ToString();
+                Session["codecompany"] = myData.Rows[0]["company_companycode"].ToString();
                 if (Session["status"].ToString().Equals("admin"))
                     Response.Redirect("adminDashBoard.aspx");
                 else
@@ -100,6 +101,7 @@ namespace TestAmmy
                     DataTable myData = JsonConvert.DeserializeObject<DataTable>(s);
                     Session["email"] = myData.Rows[0]["email"].ToString();
                     Session["status"] = myData.Rows[0]["status"].ToString();
+                    Session["codecompany"] = myData.Rows[0]["company_companycode"].ToString();
                     if (Session["status"].ToString().Equals("admin"))
                         Response.Redirect("adminDashBoard.aspx");
                     else
