@@ -9,102 +9,99 @@
     <%--<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
   <link id="bsdp-css" href="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet"/>
   <script src='http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js'></script>--%>
-    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="rightmenu" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="content_col9" runat="server">
 
-   
-    <%------------%>
-    <div id="datePopup"></div>
-    <div>
-        <h3>Electricity</h3>
-         <asp:DropDownList ID="ddl_building"   class="btn btn-default btn-lg dropdown-toggle" runat="server"></asp:DropDownList>
-        <hr />
-        <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a href="#profile" data-toggle="tab">For Non Designated Building</a></li>
-            <li><a href="#messages" data-toggle="tab">For Designated Building (As per AMR)</a></li>
-            <%--            <li><a href="#settings" data-toggle="tab">This year</a></li>--%>
-        </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="profile">
+            <%------------%>
+            <div id="datePopup"></div>
+            <div>
+                <h3>Electricity</h3>
+                <asp:DropDownList ID="ddl_building" class="btn btn-default btn-lg dropdown-toggle" runat="server"></asp:DropDownList>
+                <hr />
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active"><a href="#profile" data-toggle="tab">For Non Designated Building</a></li>
+                    <li><a href="#messages" data-toggle="tab">For Designated Building (As per AMR)</a></li>
+                    <%--            <li><a href="#settings" data-toggle="tab">This year</a></li>--%>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="profile">
 
 
-                <table class="table table-bordered table-hover" id="tab_logics">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Date   
-                            </th>
-                            <th class="text-center">Current Meter Reading
-                            </th>
+                        <table class="table table-bordered table-hover" id="tab_logics">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Date   
+                                    </th>
+                                    <th class="text-center">Current Meter Reading
+                                    </th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id='addrs0'>
-                            <td>
-                                <input type="text" name='date' placeholder='Name' class="form-control datepicker" />
-                            </td>                           
-                            <td>
-                                <input type="text" name='meter' placeholder='Name' class="form-control" />
-                            </td>
-                        </tr>
-                        <tr id='addrs1'></tr>
-                    </tbody>
-                </table>
-                <a id="add_rows" class="btn btn-default pull-left">Add Row</a>
-                <a id='delete_rows' class="pull-right btn btn-default">Delete Row</a>
-                <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-info center-block" OnClick="Button1_Click"/>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id='addrs0'>
+                                    <td>
+                                        <input type="text" name='date' placeholder='Name' class="form-control datepicker" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name='meter' placeholder='Name' class="form-control" />
+                                    </td>
+                                </tr>
+                                  <tr id='addrs1'></tr>
+                            </tbody>
+                        </table>
+                        <a id="add_rows" class="btn btn-default pull-left">Add Row</a>
+                        <a id='delete_rows' class="pull-right btn btn-default">Delete Row</a>
+                        <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-info center-block" OnClick="Button1_Click" />
+
+                    </div>
+                    <%--end tab1--%>
+
+                    <div class="tab-pane" id="messages">
+                        <table class="table table-bordered table-hover" id="tab_logic">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Date   
+                                    </th>
+                                    <th class="text-center">Peak (kwh)
+                                    </th>
+                                    <th class="text-center">Off Peak (kwh)
+                                    </th>
+                                    <th class="text-center">Holiday (kwh)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id='addr0'>
+                                    <td>
+                                        <input type="text" id="mydate2" class="form-control" />
+
+                                    </td>
+                                    <td>
+                                        <input type="text" name='name[]' placeholder='Name' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name='mail[]' placeholder='Mail' class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name='mobile0[]' placeholder='Mobile' class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a id="add_row" class="btn btn-default pull-left">Add Row</a>
+                        <a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+
+                    </div>
+
+                    <%--end tab2--%>
+                </div>
 
             </div>
-            <%--end tab1--%>
-
-            <div class="tab-pane" id="messages">
-                <table class="table table-bordered table-hover" id="tab_logic">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Date   
-                            </th>
-                            <th class="text-center">Peak (kwh)
-                            </th>
-                            <th class="text-center">Off Peak (kwh)
-                            </th>
-                            <th class="text-center">Holiday (kwh)
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id='addr0'>
-                            <td>
-                                <input type="text" id="mydate2" class="form-control" />
-
-                            </td>
-                            <td>
-                                <input type="text" name='name[]' placeholder='Name' class="form-control" />
-                            </td>
-                            <td>
-                                <input type="text" name='mail[]' placeholder='Mail' class="form-control" />
-                            </td>
-                            <td>
-                                <input type="text" name='mobile0[]' placeholder='Mobile' class="form-control" />
-                            </td>
-                        </tr>
-                        <tr id='addr1'></tr>
-                    </tbody>
-                </table>
-                <a id="add_row" class="btn btn-default pull-left">Add Row</a>
-                <a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
-
-            </div>
-            
-            <%--end tab2--%>
-        </div>
-
-    </div>
-
-
+     
 
     <%--script1--%>
 </asp:Content>
@@ -128,12 +125,12 @@
     <script src="assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/legacy.js"></script>
 
     <script>
-       
+
         //script2
         $(document).ready(function () {
             var i = 1;
             $("#add_row").click(function () {
-                $('#addr' + [i]).html("<td><input class='form-control datepicker' />"+i+"</td><td><input name='name[] ' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail" + i + "' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile" + i + "' type='text' placeholder='Mobile'  class='form-control input-md'></td>");
+                $('#addr' + [i]).html("<td><input class='form-control datepicker' />" + i + "</td><td><input name='name[] ' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail" + i + "' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile" + i + "' type='text' placeholder='Mobile'  class='form-control input-md'></td>");
                 $('#tab_logic').append('<tr id="addr[' + (i + 1) + ']"></tr>');
                 i++;
             });
@@ -148,20 +145,19 @@
 
         });
         //script1
-        
+
         $(document).ready(function () {
             var j = 1;
             functionOne();
             $("#add_rows").click(function () {
-                $('#addrs'+j).html("<td><input type 'text' name='date' placeholder='Name' class='form-control datepicker'/></td><td><input name='meter' type='text' placeholder='Name' class='form-control input-md'  /> </td>");
-
-                $('#tab_logics').append('<tr id="addrs'+(j+1)+'"></tr>');
+                $('#tab_logics').append('<tr id="addrs' + (j + 1) + '"></tr>');
+                $('#addrs' + j).html("<td><input type 'text' name='date' placeholder='Name' class='form-control datepicker'/></td><td><input name='meter' type='text' placeholder='Name' class='form-control input-md'  /> </td>");
                 j++;
                 functionOne();
             });
             $("#delete_rows").click(function () {
                 if (j > 1) {
-                    $("#addrs"+(j - 1)).html('');
+                    $("#addrs" + (j - 1)).html('');
                     j--;
                 }
             });
@@ -172,9 +168,9 @@
 
     </script>
     <script type="text/javascript">
-     
-        function  functionOne() {
-            var $input = $( '.datepicker' ).pickadate({
+
+        function functionOne() {
+            var $input = $('.datepicker').pickadate({
                 formatSubmit: 'dd/mm/yyyy',
                 // min: [2015, 7, 14],
                 container: '#datePopup',
@@ -191,7 +187,7 @@
             //     picker.set('disable', true);
             // });
         }
-        
+
 
     </script>
 </asp:Content>

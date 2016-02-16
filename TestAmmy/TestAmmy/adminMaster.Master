@@ -19,11 +19,14 @@
     <link href="assets/css/styles_dash.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head2" runat="server">
-         
+        
     </asp:ContentPlaceHolder>
+
 </head>
 <body>
+    
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div>
             <!-- Header -->
             <div id="top-nav" class="navbar navbar-inverse navbar-static-top">

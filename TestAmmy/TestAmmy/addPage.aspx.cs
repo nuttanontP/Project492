@@ -30,15 +30,21 @@ namespace TestAmmy
                     ddl_building.DataBind();
 
                 }
+                else
+                {
+                    ddl_building.DataValueField = "no!";
+                    ddl_building.DataTextField = "No Permission";
+                    ddl_building.DataBind();
+                }
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string[] date = Request.Form.GetValues("date");
-            date = date.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-            string[] meter = Request.Form.GetValues("meter");
-            meter = meter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            //string[] date = Request.Form.GetValues("date");
+            //date = date.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            //string[] meter = Request.Form.GetValues("meter");
+            //meter = meter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
         }
     }
