@@ -15,7 +15,7 @@ using System.Collections;
 
 namespace Service1
 {
-    
+
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
@@ -27,7 +27,7 @@ namespace Service1
         private static string database = ConfigurationManager.AppSettings["database"];
         private static string username = ConfigurationManager.AppSettings["username"];
         private static string password = ConfigurationManager.AppSettings["password"];
-        private static string connectionString = "Server=" + server +"; PORT = 3306 " + "; Database=" + database + "; Uid=" + username + "; Pwd=" + password + "; Charset=utf8;";
+        private static string connectionString = "Server=" + server + "; PORT = 3306 " + "; Database=" + database + "; Uid=" + username + "; Pwd=" + password + "; Charset=utf8;";
 
         /// <summary>
         /// check login
@@ -158,11 +158,11 @@ namespace Service1
             {
                 conn.Open();
                 CommandText = "INSERT INTO company (companycode,company_name) VALUES (@companycode,@companyname)";
-                cmd = new MySqlCommand(CommandText,conn);
+                cmd = new MySqlCommand(CommandText, conn);
                 cmd.Parameters.AddWithValue("@companycode", compandy[0]);
                 cmd.Parameters.AddWithValue("@companyname", compandy[1]);
                 cmd.ExecuteNonQuery();
-                
+
             }
             catch
             {
@@ -186,7 +186,7 @@ namespace Service1
                 cmd.Parameters.AddWithValue("@companycode", companycode);
                 adap = new MySqlDataAdapter(cmd);
                 adap.Fill(dt);
-                if(dt.Rows.Count>0)
+                if (dt.Rows.Count > 0)
                     json = JsonConvert.SerializeObject(dt);
                 else
                     json = "no";
@@ -194,7 +194,7 @@ namespace Service1
             }
             catch
             {
-                 throw;
+                throw;
             }
             conn.Close();
             return json;
@@ -223,7 +223,7 @@ namespace Service1
                 cmd.Parameters.AddWithValue("@status", user[4]);
                 cmd.Parameters.AddWithValue("@company_companycode", user[5]);
                 cmd.ExecuteNonQuery();
-                
+
             }
             catch
             {
@@ -300,7 +300,7 @@ namespace Service1
                 conn.Open();
                 CommandText = "SELECT * FROM permissionview where name = @name and building_name = @building_name and energy_name = @energy_name and building_company_companycode = @building_company_companycode ";
                 cmd = new MySqlCommand(CommandText, conn);
-                cmd.Parameters.AddWithValue("@name", permission [0]);
+                cmd.Parameters.AddWithValue("@name", permission[0]);
                 cmd.Parameters.AddWithValue("@building_name", permission[1]);
                 cmd.Parameters.AddWithValue("@energy_name", permission[2]);
                 cmd.Parameters.AddWithValue("@building_company_companycode", permission[3]);
@@ -375,6 +375,127 @@ namespace Service1
             catch
             {
                 throw;
+            }
+            conn.Close();
+            return json;
+        }
+
+        public string permissionadd(string codecompany)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                ////////////////////-----1---////////////////////////
+                conn.Open();
+                CommandText = "SELECT id,CONCAT(first_name,'  ',last_name) AS name FROM user where company_companycode = @code ";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@code", codecompany);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
+                json += "||";
+                dt = new DataTable();
+                conn.Close();
+                ////////////////////-----2---////////////////////////
+                conn.Open();
+                CommandText = "SELECT buidlingid,building_name FROM building where company_companycode = @code ";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@code", codecompany);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json += JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
+                json += "||";
+                dt = new DataTable();
+                conn.Close();
+                //////////////////////-----3---//////////////////////
+                conn.Open();
+                CommandText = "SELECT energy_id,energy_name FROM energy";
+                cmd = new MySqlCommand(CommandText, conn);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json += JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
+                json += "||";
+                dt = new DataTable();
+                conn.Close();
+            }
+            catch
+            {
+                throw;
+            }
+
+            return json;
+        }
+        public string Addpermission(string[] permission)
+        {
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            string json = "no";
+            try
+            {
+
+                conn.Open();
+                // (`user_id`, `building_buidlingid`, `building_company_companycode`, `energy_energy_id`) VALUES ('2', '6', '12345678', '2');
+                CommandText = "INSERT INTO permission (user_id,building_buidlingid,building_company_companycode,energy_energy_id) VALUES (@id,@building,@code,@energy)";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@id", permission[0]);
+                cmd.Parameters.AddWithValue("@building", permission[1]);
+                cmd.Parameters.AddWithValue("@code", permission[2]);
+                cmd.Parameters.AddWithValue("@energy", permission[3]);
+                cmd.ExecuteNonQuery();
+                json = "yes";
+            }
+            catch
+            {
+
+                //throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string Adddata(string[] data_pro)
+        {
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            string json = "no";
+            try
+            {
+
+                conn.Open();
+                for (int i = 5; i < data_pro.Count(); i += 2)
+                {
+                    CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,`current meter`) VALUES (@userid,@building,@code,@energy,@type,@date,@meter)";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                    cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                    cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                    cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                    cmd.Parameters.AddWithValue("@type", "Non-Design");
+                    cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                    cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
+                    cmd.ExecuteNonQuery();
+                }
+                json = "yes";
+            }
+            catch (Exception ex)
+            {
+        
+                //throw;
             }
             conn.Close();
             return json;

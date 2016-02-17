@@ -16,9 +16,12 @@ namespace TestAmmy
         {
             if (!IsPostBack)
             {
-                
-               
-                string result  = apiconnecter.PostData("ddlpermission", Session["email"].ToString());
+                if ((string)Session["email"] == null)
+                {
+                    Response.Redirect("loginRegister.aspx");
+                }
+
+                string result = apiconnecter.PostData("ddlpermission", Session["email"].ToString());
                 string s = JsonConvert.DeserializeObject<string>(result);
                 if (!s.Equals("no"))
                 {
@@ -30,22 +33,57 @@ namespace TestAmmy
                     ddl_building.DataBind();
 
                 }
-                else
-                {
-                    ddl_building.DataValueField = "no!";
-                    ddl_building.DataTextField = "No Permission";
-                    ddl_building.DataBind();
-                }
+                //else
+                //{
+                //    ddl_building.DataValueField = "no!";
+                //    ddl_building.DataTextField = "No Permission";
+                //    ddl_building.DataBind();
+                //}
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //string[] date = Request.Form.GetValues("date");
-            //date = date.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-            //string[] meter = Request.Form.GetValues("meter");
-            //meter = meter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            string[] date = Request.Form.GetValues("date");
+            date = date.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            string[] meter = Request.Form.GetValues("meter");
+            meter = meter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            List<string> list1 = new List<string>();
+            //find usrer_id 
+            string result2 = apiconnecter.GetData("getuser");
+            string s2 = JsonConvert.DeserializeObject<string>(result2);
+            DataTable dt = JsonConvert.DeserializeObject<DataTable>(s2);
+            var row = (from r in dt.AsEnumerable()
+                       where r.Field<string>("email") == (string)Session["email"]
+                       select r).First();
 
+            string user_id = (row.ItemArray[0]).ToString(); // coloum[0] = id
+            list1.Add(user_id); //primary key user_id
+            list1.Add(ddl_building.SelectedValue); // building_id
+            list1.Add(Session["codecompany"].ToString()); //companycode
+            list1.Add("1"); //{energy type } 1:electrical 2:desiel
+            list1.Add("1"); //ENUM {0 1 2 ,null non design , design}
+            string[] new_date = new string[date.Count()];
+            foreach (var item in date.Select((value, i) => new { i, value }))
+            {
+                new_date[item.i] = DateTime.Parse(item.value).ToString("yyyy-MM-dd");
+                list1.Add(new_date[item.i]);
+                list1.Add(meter[item.i]);
+            }
+            string[] data_pro = list1.ToArray();
+            string result = apiconnecter.PostData("Adddata", data_pro);
+            string s = JsonConvert.DeserializeObject<string>(result);
+            if (s != "no")
+            {
+                string s_ = "add  ok ";
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), Guid.NewGuid().ToString(), "alert('" + s_ + "');window.location.href='addPage.aspx';", true);
+            }
+            else
+            {
+                string s_ = "can't add ";
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), Guid.NewGuid().ToString(), "alert('" + s_ + "');window.location.href='adminDashBoard.aspx';", true);
+                //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('"+s_+"')", true);
+            }
         }
     }
 }

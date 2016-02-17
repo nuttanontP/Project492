@@ -107,6 +107,35 @@ namespace Service1
         string permissiongrid(string codecompany);
 
 
+        /// <summary>
+        /// ddl to show
+        /// </summary>
+        /// <param name="codecompany"></param>
+        /// <returns>dt 3 dt user buiding energy</returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string permissionadd(string codecompany);
+
+
+        /// <summary>
+        /// add permission for add data
+        /// </summary>
+        /// <param name="permission">{id,building id,company code,energy id}</param>
+        /// <returns>{yes,no}</returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string Addpermission(string[] permission);
+
+        /// <summary>
+        /// insert data electical 
+        /// </summary>
+        /// <param name="data_pro"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string Adddata(string[] data_pro);
+
+
     }
 
 

@@ -175,7 +175,7 @@
                 // min: [2015, 7, 14],
                 container: '#datePopup',
                 // editable: true,
-                closeOnSelect: false,
+                closeOnSelect: true,
                 closeOnClear: false,
             })
 

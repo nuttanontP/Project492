@@ -51,7 +51,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+          <asp:Button ID="btn_ok" runat="server" Text="Add" class="btn btn-primary"  OnClick="Button1_Click"/>
+        <%--<button type="button" class="btn btn-primary">Save</button>--%>
       </div>
     </div>
   </div>
