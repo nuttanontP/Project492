@@ -28,7 +28,8 @@
 
 
     <%--<button type="submit" class="btn btn-info">Add</button>--%>
-        <asp:Button ID="Button1" runat="server" class="btn btn-info" Text="submit" OnClick="Button1_Click" />
+        <asp:Button ID="Button1" runat="server" class="btn btn-info" Text="  --ADD--  " OnClick="Button1_Click" />
+        <asp:Button ID="Button2" runat="server" class="btn btn-danger" Text="--CANCEL--" OnClick="Button2_Click" />
     </div>
 
     <div class="col-sm-2">

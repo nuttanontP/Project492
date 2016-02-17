@@ -16,8 +16,8 @@
     <!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-    <link href="assets/css/styles_dash.css" rel="stylesheet" />
-
+    
+    <%--<link href="assets/css/styles_dash.css" rel="stylesheet" />--%>
     <asp:ContentPlaceHolder ID="head2" runat="server">
         
     </asp:ContentPlaceHolder>
@@ -70,7 +70,7 @@
 
                         <ul class="nav nav-stacked">
                             <li><a href="permissionPage.aspx" target="ext"><i class="glyphicon glyphicon-lock"></i>&nbsp;Change permission</a></li>
-                            <li><a href="addBuilding.aspx" target="ext"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add building</a></li>
+                            <li><a href="gridviewBuilding.aspx" target="ext"><i class="glyphicon glyphicon-plus"></i>&nbsp;Manage Building</a></li>
 
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tasks"></i>&nbsp;Manage energy data</a><ul class="dropdown-menu" role="menu">
                                 <li><a href="addingPage.aspx">Electricity</a></li>
@@ -109,7 +109,7 @@
                             <asp:ContentPlaceHolder ID="content_col12" runat="server">
                                 <%--class="col-md-12" // lowerpage--%>
                             </asp:ContentPlaceHolder>
-
+                            <hr />
                         </div>
                         <asp:ContentPlaceHolder ID="contentInRow_outcol12" runat="server">
                             <%--class="row" // lowerpage--%>
@@ -131,7 +131,11 @@
             <asp:ContentPlaceHolder ID="content_footer" runat="server">
                 <%--for footer--%>
             </asp:ContentPlaceHolder>
-            <footer class="text-center">This Bootstrap 3 dashboard layout is compliments of <a href="http://www.bootply.com/85861"><strong>Bootply.com</strong></a></footer>
+            
+            <footer class="text-center">
+                
+                <%--nothing yet--%>
+            </footer>
 
         </div>
 

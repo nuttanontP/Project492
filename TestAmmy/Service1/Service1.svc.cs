@@ -349,6 +349,36 @@ namespace Service1
             conn.Close();
             return json;
         }
+
+        public string permissiongrid(string codecompany)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT * FROM permissionview where building_company_companycode = @code ";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@code", codecompany);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
+
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
         private string CalculateMD5Hash(string input)
         {
             // step 1, calculate MD5 hash from input

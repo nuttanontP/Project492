@@ -56,5 +56,10 @@ namespace TestAmmy
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), Guid.NewGuid().ToString(), "alert('" + s + "');window.location.href='adminDashBoard.aspx';", true);
             }
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("gridviewBuilding.aspx");
+        }
     }
 }

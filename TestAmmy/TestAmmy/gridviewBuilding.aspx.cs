@@ -44,5 +44,10 @@ namespace TestAmmy
         {
 
         }
+
+        protected void addbuild_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("addBuilding.aspx");
+        }
     }
 }

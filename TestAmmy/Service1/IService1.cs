@@ -96,6 +96,17 @@ namespace Service1
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string ddlpermission(string email);
+
+        /// <summary>
+        /// grid permission
+        /// </summary>
+        /// <param name="codecompany">code company</param>
+        /// <returns>{datatable json,no}</returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string permissiongrid(string codecompany);
+
+
     }
 
 
