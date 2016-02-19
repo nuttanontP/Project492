@@ -69,8 +69,8 @@ namespace TestAmmy.webconn
             MemoryStream ms = new MemoryStream();
             DataContractJsonSerializer serializerToUplaod = new DataContractJsonSerializer(typeof(string[]));
             serializerToUplaod.WriteObject(ms, pro_data);
-            //byte[] data = Proxy1.UploadData("http://" + mis_service_ip + ":" + mis_service_port + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
-            byte[] data = Proxy1.UploadData("http://" + mis_service_ip + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
+            byte[] data = Proxy1.UploadData("http://" + mis_service_ip + ":" + mis_service_port + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
+            //byte[] data = Proxy1.UploadData("http://" + mis_service_ip + "/" + mis_service_name + "/" + function_name, "POST", ms.ToArray());
         }
 
     }

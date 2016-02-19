@@ -51,6 +51,14 @@ namespace TestAmmy
                     ddl_energy.DataTextField = "energy_name";
                     ddl_energy.DataBind();
 
+
+
+                    DataSet dSet = new DataSet();
+                    dSet.Tables.Add(dt);
+                    //YrChkBox.Items.Add(new ListItem(ddl_energy.DataTextField,ddl_energy.DataValueField));
+                    YrChkBox.DataSource = dSet.Tables[0].DefaultView;
+                    YrChkBox.DataBind();
+
                 }
             }
         }
@@ -70,6 +78,11 @@ namespace TestAmmy
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), Guid.NewGuid().ToString(), "alert('" + s_ + "');window.location.href='PermissionPage.aspx';", true);
                 //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('"+s_+"')", true);
             }
+
+        }
+
+        protected void YrChkBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

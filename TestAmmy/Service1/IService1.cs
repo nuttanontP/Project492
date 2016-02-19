@@ -27,7 +27,7 @@ namespace Service1
         /// </summary>
         /// <returns>json list user</returns>
         [OperationContract]
-        [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/User/GetAllUsersInfo", ResponseFormat = WebMessageFormat.Json)]
         string getuser();
 
         /// <summary>
