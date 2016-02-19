@@ -27,8 +27,8 @@ namespace Service1
         /// </summary>
         /// <returns>json list user</returns>
         [OperationContract]
-        [WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/User/GetAllUsersInfo", ResponseFormat = WebMessageFormat.Json)]
-        string getuser();
+        [WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}",ResponseFormat = WebMessageFormat.Json)]
+        string getuser(string id);
 
         /// <summary>
         /// get all company by admin of company
@@ -36,7 +36,7 @@ namespace Service1
         /// <param name="companycode">code of company</param>
         /// <returns>datable grid json, no</returns>
         [OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, UriTemplate = "/BOB", ResponseFormat = WebMessageFormat.Json)]
         string getbuilding(string companycode);
 
         /// <summary>

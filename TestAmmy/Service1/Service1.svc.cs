@@ -70,8 +70,9 @@ namespace Service1
         /// get all user 
         /// </summary>
         /// <returns>json list user</returns>
-        public string getuser()
+        public string getuser(string id)
         {
+
             string json = "";
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
