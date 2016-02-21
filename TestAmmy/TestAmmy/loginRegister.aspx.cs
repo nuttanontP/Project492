@@ -63,7 +63,7 @@ namespace TestAmmy
         {
             user model = new user();
             model.email = this.txtemail2.Text;
-            model.password = this.txtpassword.Text;
+            model.password = this.txtpassword2.Text;
             model.first_name = this.txtfirstname.Text;
             model.last_name = this.txtlastname.Text;
             string code_comp = this.txtcompanycode.Text;
@@ -92,7 +92,8 @@ namespace TestAmmy
             {
 
                 string[] pro_data = { model.email, model.password, model.first_name, model.last_name, model.status, model.company_companycode };
-                apiconnecter.PostDatanoReturn("Adduser", pro_data);
+                string check_companycode = apiconnecter.PostData("Adduser", pro_data);
+
                 string[] data_check = { model.email, model.password };
                 string result = apiconnecter.PostData("Registerstatus", data_check);
                 string s = JsonConvert.DeserializeObject<string>(result);

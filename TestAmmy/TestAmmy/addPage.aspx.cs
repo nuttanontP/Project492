@@ -20,8 +20,8 @@ namespace TestAmmy
                 {
                     Response.Redirect("loginRegister.aspx");
                 }
-
-                string result = apiconnecter.PostData("ddlpermission", Session["email"].ToString());
+                string[] data_pro = { Session["email"].ToString() ,"1"};
+                string result = apiconnecter.PostData("ddlpermission", data_pro);
                 string s = JsonConvert.DeserializeObject<string>(result);
                 if (!s.Equals("no"))
                 {
@@ -33,12 +33,14 @@ namespace TestAmmy
                     ddl_building.DataBind();
 
                 }
-                //else
-                //{
-                //    ddl_building.DataValueField = "no!";
-                //    ddl_building.DataTextField = "No Permission";
-                //    ddl_building.DataBind();
-                //}
+                else
+                {
+
+                    //ddl_building.SelectedIndex = 0;  // selecting default Text by index Number
+                    ddl_building.SelectedItem.Text = "No building"; // selecting Default Text by Text
+                    //ddl_building.SelectedValue = "Your Object Value"; // Selecting Default Text by value
+
+                }
             }
         }
 

@@ -8,20 +8,21 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="rightmenu" runat="server"></asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="content_col9" runat="server">
-<h3>Manage the building data</h3>
+    <h3>Manage the building data</h3>
     <hr />
 
-    <asp:GridView ID="buildgrid" class="table table-hover table-bordered info" runat="server" AutoGenerateColumns="False" DataKeyNames="buidlingid" OnRowCommand="buildgrid_RowCommand">
+    <asp:GridView ID="buildgrid" class="table table-hover table-bordered info" runat="server" AutoGenerateColumns="False" DataKeyNames="buidlingid" OnRowCommand="buildgrid_RowCommand" HeaderStyle-HorizontalAlign="Center" OnRowDeleting="buildgrid_RowDeleting">
         <Columns>
             <asp:TemplateField HeaderText="No">
                 <ItemTemplate><%# Container.DataItemIndex + 1 %></ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="building_name" HeaderText="name" />
             <asp:BoundField DataField="building_detail" HeaderText="detail" />
-            <asp:TemplateField HeaderText="ลบ" ShowHeader="False">
+            <asp:TemplateField ShowHeader="False">
                 <ItemTemplate>
-                    <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="deleteCourse" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('ยืนยันการลบข้อมูล ?');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                    <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('ยืนยันการลบข้อมูล ?');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                 </ItemTemplate>
+                
             </asp:TemplateField>
         </Columns>
 

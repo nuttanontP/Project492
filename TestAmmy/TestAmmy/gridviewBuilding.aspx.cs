@@ -13,8 +13,7 @@ namespace TestAmmy
     public partial class gridviewBuilding : System.Web.UI.Page
     {
         public DataTable myData = new DataTable();
-        public string xxx = "sdfsdf";
-        public string s = "45";
+        public string s = "";
         public string [] s2;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,9 +25,11 @@ namespace TestAmmy
                 {
                     Response.Redirect("loginRegister.aspx");
                 }
-                string result = apiconnecter.PostData("GetCompandyCodeByEmail", Session["email"].ToString());
-                string compandy_code = JsonConvert.DeserializeObject<string>(result);
-                string result2 = apiconnecter.PostData("getbuilding", compandy_code);
+                //string result = apiconnecter.PostData("GetCompandyCodeByEmail", Session["email"].ToString());
+                string result = (string)Session["codecompany"];
+                //string compandy_code = JsonConvert.DeserializeObject<string>(result);
+                //string result2 = apiconnecter.PostData("getbuilding", compandy_code);
+                string result2 = apiconnecter.PostData("getbuilding", result);
                 s = JsonConvert.DeserializeObject<string>(result2);
                 if (!s.Equals("no"))
                 {
@@ -48,6 +49,23 @@ namespace TestAmmy
         protected void addbuild_Click(object sender, EventArgs e)
         {
             Response.Redirect("addBuilding.aspx");
+        }
+
+        protected void buildgrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            List<string> data_del = new List<string>();
+            int rowIndex = Convert.ToInt32(e.RowIndex);
+            data_del.Add(buildgrid.DataKeys[rowIndex].Values[0].ToString());
+            string result = apiconnecter.PostData("delbuilding", data_del.ToArray());
+            string s = JsonConvert.DeserializeObject<string>(result);
+            if (s != "no")
+            {
+
+                string s_ = "del ok!";
+                Random rnd = new Random();
+                string myRandomNo = rnd.Next(10000000, 99999999).ToString();
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey"+myRandomNo, "alert('" + s_ + "');window.location.href='gridviewBuilding.aspx';", true);
+            }
         }
     }
 }

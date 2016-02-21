@@ -70,7 +70,7 @@ namespace Service1
         /// get all user 
         /// </summary>
         /// <returns>json list user</returns>
-        public string getuser(string id)
+        public string getuser(string id, string temp)
         {
 
             string json = "";
@@ -204,8 +204,9 @@ namespace Service1
         /// add user 
         /// </summary>
         /// <param name="user">{email,password,first_name,last_name,status,company_companycode}</param>
-        public void Adduser(string[] user)
+        public string Adduser(string[] user)
         {
+            var json = "no!";
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
             string CommandText;
@@ -224,13 +225,15 @@ namespace Service1
                 cmd.Parameters.AddWithValue("@status", user[4]);
                 cmd.Parameters.AddWithValue("@company_companycode", user[5]);
                 cmd.ExecuteNonQuery();
+                json = "yes";
 
             }
             catch
             {
-                throw;
+
             }
             conn.Close();
+            return json;
         }
         /// <summary>
         /// get company code by Email
@@ -321,7 +324,7 @@ namespace Service1
             return json;
 
         }
-        public string ddlpermission(string email)
+        public string ddlpermission(string[] data_pro)
         {
             string json = "no";
             MySqlCommand cmd = null;
@@ -332,9 +335,10 @@ namespace Service1
             try
             {
                 conn.Open();
-                CommandText = "SELECT * FROM permissionview where email = @email ";
+                CommandText = "SELECT * FROM permissionview where email = @email and energy_id = @energy_id ";
                 cmd = new MySqlCommand(CommandText, conn);
-                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@email", data_pro[0]);
+                cmd.Parameters.AddWithValue("@energy_id", data_pro[1]);
                 adap = new MySqlDataAdapter(cmd);
                 adap.Fill(dt);
                 if (dt.Rows.Count > 0)
@@ -415,7 +419,7 @@ namespace Service1
                 if (dt.Rows.Count > 0)
                     json += JsonConvert.SerializeObject(dt);
                 else
-                    json = "no";
+                    json += "no";
                 json += "||";
                 dt = new DataTable();
                 conn.Close();
@@ -428,7 +432,7 @@ namespace Service1
                 if (dt.Rows.Count > 0)
                     json += JsonConvert.SerializeObject(dt);
                 else
-                    json = "no";
+                    json += "no";
                 json += "||";
                 dt = new DataTable();
                 conn.Close();
@@ -451,13 +455,24 @@ namespace Service1
 
                 conn.Open();
                 // (`user_id`, `building_buidlingid`, `building_company_companycode`, `energy_energy_id`) VALUES ('2', '6', '12345678', '2');
-                CommandText = "INSERT INTO permission (user_id,building_buidlingid,building_company_companycode,energy_energy_id) VALUES (@id,@building,@code,@energy)";
-                cmd = new MySqlCommand(CommandText, conn);
-                cmd.Parameters.AddWithValue("@id", permission[0]);
-                cmd.Parameters.AddWithValue("@building", permission[1]);
-                cmd.Parameters.AddWithValue("@code", permission[2]);
-                cmd.Parameters.AddWithValue("@energy", permission[3]);
-                cmd.ExecuteNonQuery();
+                for (int i = 3; i < permission.Count(); i++)
+                {
+                    try
+                    {
+                        CommandText = "INSERT INTO permission (user_id,building_buidlingid,building_company_companycode,energy_energy_id) VALUES (@id,@building,@code,@energy)";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@id", permission[0]);
+                        cmd.Parameters.AddWithValue("@building", permission[1]);
+                        cmd.Parameters.AddWithValue("@code", permission[2]);
+                        cmd.Parameters.AddWithValue("@energy", permission[i]);
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
                 json = "yes";
             }
             catch
@@ -495,8 +510,56 @@ namespace Service1
             }
             catch (Exception ex)
             {
-        
+
                 //throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string delpermission(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "DELETE FROM permission WHERE user_id = @id and building_buidlingid = @building_id and building_company_companycode = @code and energy_energy_id = @energy_id";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@id", data_pro[0]);
+                cmd.Parameters.AddWithValue("@building_id", data_pro[1]);
+                cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                cmd.Parameters.AddWithValue("@energy_id", data_pro[3]);
+                cmd.ExecuteNonQuery();
+                json = "yes";
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+
+        }
+        public string delbuilding(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "DELETE FROM building WHERE buidlingid = @id";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@id", data_pro[0]);
+                cmd.ExecuteNonQuery();
+                json = "yes";
+            }
+            catch
+            {
+                throw;
             }
             conn.Close();
             return json;

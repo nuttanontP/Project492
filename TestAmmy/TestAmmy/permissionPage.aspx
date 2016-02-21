@@ -13,11 +13,23 @@
     <h3>Change Permission</h3>
     <hr />
 
-    <asp:GridView ID="permissionview" class="table table-hover table-bordered info" DataKeyNames="id,energy_id,building_buidlingid" runat="server" AutoGenerateColumns="False">
+    <asp:GridView ID="permissionview" class="table table-hover table-bordered info" DataKeyNames="id,building_buidlingid,building_company_companycode,energy_id" runat="server" AutoGenerateColumns="False" OnRowCommand="permissionview_RowCommand" OnRowDeleting="permissionview_RowDeleting">
         <Columns>
-            <asp:BoundField DataField="name" HeaderText="full name" />
-            <asp:BoundField DataField="building_name" HeaderText="Building Name" />
-            <asp:BoundField DataField="energy_name" HeaderText="Energy type" />
+            <asp:BoundField DataField="name" HeaderText="full name" HeaderStyle-HorizontalAlign="Center" >
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+            </asp:BoundField>
+            <asp:BoundField DataField="building_name" HeaderText="Building Name" HeaderStyle-HorizontalAlign="Center" >
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+            </asp:BoundField>
+            <asp:BoundField DataField="energy_name" HeaderText="Energy type" HeaderStyle-HorizontalAlign="Center"  >
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+            </asp:BoundField>
+            <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('ยืนยันการลบข้อมูล ?');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                </ItemTemplate>
+                
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 
@@ -36,23 +48,24 @@
                     <div class="form-group">
                         <label for="user-name" class="control-label">Responsible Person:</label>
                         <%--   <input type="text" class="form-control" id="recipient-name"/>--%>
-                        <asp:DropDownList ID="ddl_name" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddl_name" runat="server">
+                              <asp:ListItem Text="no name" Value="" />  
+                        </asp:DropDownList>
                     </div>
                     <div class="form-group">
                         <label for="building-name" class="control-label">Building Name:</label>
                         <%--<textarea class="form-control" id="message-text"></textarea>--%>
-                        <asp:DropDownList ID="ddl_building" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddl_building" runat="server">
+                            <asp:ListItem Text="no building" Value="" />   
+                        </asp:DropDownList>
                     </div>
+                
                     <div class="form-group">
-                        <label for="energy-type" class="control-label">Energy Type:</label>
-                        <%--<textarea class="form-control" id="message-text"></textarea>--%>
-                        <asp:DropDownList ID="ddl_energy" runat="server"></asp:DropDownList>
-                    </div>
-                    <div class="form-group">
-                        <label for="energy-type" class="control-label">Energy Type DDL:</label>
+                        <label for="energy-type" class="control-label">Energy Type DDL:</label> 
+                        <br />
                         <%--<textarea class="form-control" id="message-text"></textarea>--%>
                         <asp:CheckBoxList ID="YrChkBox" runat="server"
-                            OnSelectedIndexChanged="YrChkBox_SelectedIndexChanged" DataValueField="energy_id" DataTextField="energy_name" RepeatLayout="table">
+                            OnSelectedIndexChanged="YrChkBox_SelectedIndexChanged" DataValueField="energy_id" DataTextField="energy_name" RepeatLayout="Flow">
                         </asp:CheckBoxList>
                         
                     </div>

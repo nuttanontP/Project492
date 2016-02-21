@@ -27,8 +27,8 @@ namespace Service1
         /// </summary>
         /// <returns>json list user</returns>
         [OperationContract]
-        [WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}",ResponseFormat = WebMessageFormat.Json)]
-        string getuser(string id);
+        [WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}/{temp}", ResponseFormat = WebMessageFormat.Json)]
+        string getuser(string id, string temp);
 
         /// <summary>
         /// get all company by admin of company
@@ -36,7 +36,7 @@ namespace Service1
         /// <param name="companycode">code of company</param>
         /// <returns>datable grid json, no</returns>
         [OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, UriTemplate = "/BOB", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string getbuilding(string companycode);
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Service1
         /// <param name="user">{email,password,first_name,last_name,status,company_companycode}</param>
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        void Adduser(string[] user);
+        string Adduser(string[] user);
 
         /// <summary>
         /// get company code by Email
@@ -91,11 +91,11 @@ namespace Service1
         /// <summary>
         /// Drop down list for select building in permission
         /// </summary>
-        /// <param name="permission">email</param>
+        /// <param name="permission">{email,energy_id}</param>
         /// <returns>data table of this user</returns>
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        string ddlpermission(string email);
+        string ddlpermission(string[] data_pro);
 
         /// <summary>
         /// grid permission
@@ -135,9 +135,21 @@ namespace Service1
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string Adddata(string[] data_pro);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data_pro">user_id,buiding,code,energy_id</param>
+        /// <returns>{yes,no}</returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string delpermission(string[] data_pro);
 
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string delbuilding(string[] data_pro);
+        
     }
-
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     
