@@ -104,8 +104,12 @@
   <ItemGroup>
     <Content Include="addBuilding.aspx" />
     <Content Include="addData.aspx" />
+    <Content Include="addDiesel.aspx" />
     <Content Include="addenergytype.aspx" />
-    <Content Include="addPage.aspx" />
+    <Content Include="addLPG.aspx" />
+    <Content Include="addOccupancy.aspx" />
+    <Content Include="addElectric.aspx" />
+    <Content Include="addWater.aspx" />
     <Content Include="adminDashBoard.aspx" />
     <Content Include="assets\css\animate.min.css" />
     <Content Include="assets\css\bootstrap.css" />
@@ -772,7 +776,6 @@
     <Content Include="firstPage.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="test_master_cheichei.aspx" />
     <Content Include="userManage.aspx" />
     <Content Include="viewFiles.aspx" />
     <Content Include="viewGraphs.aspx" />
@@ -795,6 +798,13 @@
     <Compile Include="addData.aspx.designer.cs">
       <DependentUpon>addData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="addDiesel.aspx.cs">
+      <DependentUpon>addDiesel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addDiesel.aspx.designer.cs">
+      <DependentUpon>addDiesel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="addenergytype.aspx.cs">
       <DependentUpon>addenergytype.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -802,12 +812,33 @@
     <Compile Include="addenergytype.aspx.designer.cs">
       <DependentUpon>addenergytype.aspx</DependentUpon>
     </Compile>
-    <Compile Include="addPage.aspx.cs">
-      <DependentUpon>addPage.aspx</DependentUpon>
+    <Compile Include="addLPG.aspx.cs">
+      <DependentUpon>addLPG.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="addPage.aspx.designer.cs">
-      <DependentUpon>addPage.aspx</DependentUpon>
+    <Compile Include="addLPG.aspx.designer.cs">
+      <DependentUpon>addLPG.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addOccupancy.aspx.cs">
+      <DependentUpon>addOccupancy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addOccupancy.aspx.designer.cs">
+      <DependentUpon>addOccupancy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addElectric.aspx.cs">
+      <DependentUpon>addElectric.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addElectric.aspx.designer.cs">
+      <DependentUpon>addElectric.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addWater.aspx.cs">
+      <DependentUpon>addWater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addWater.aspx.designer.cs">
+      <DependentUpon>addWater.aspx</DependentUpon>
     </Compile>
     <Compile Include="adminDashBoard.aspx.cs">
       <DependentUpon>adminDashBoard.aspx</DependentUpon>
@@ -884,13 +915,6 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="test_master_cheichei.aspx.cs">
-      <DependentUpon>test_master_cheichei.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test_master_cheichei.aspx.designer.cs">
-      <DependentUpon>test_master_cheichei.aspx</DependentUpon>
     </Compile>
     <Compile Include="userManage.aspx.cs">
       <DependentUpon>userManage.aspx</DependentUpon>

@@ -68,26 +68,30 @@
                         <h3><i class="glyphicon glyphicon-th-list"></i>&nbsp;MENU</h3>
                         <hr />
 
-                        <ul class="nav nav-stacked">
+                        <ul class="nav nav-list">
+                            <li class="active"><a href="adminDashBoard.aspx" target="ext"><i class="glyphicon glyphicon-dashboard"></i>&nbsp;Dashboard</a></li>
                             <li><a href="permissionPage.aspx" target="ext"><i class="glyphicon glyphicon-lock"></i>&nbsp;Change permission</a></li>
                             <li><a href="gridviewBuilding.aspx" target="ext"><i class="glyphicon glyphicon-plus"></i>&nbsp;Manage Building</a></li>
-
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-tasks"></i>&nbsp;Manage energy data</a><ul class="dropdown-menu" role="menu">
-                                <li><a href="addingPage.aspx">Electricity</a></li>
-                                <li><a href="addingPage.aspx">Water Consumption</a></li>
-                                <li><a href="addingPage.aspx">LPG</></a></li>
-                                <li><a href="addingPage.aspx">Diesel</></a></li>
-                                <li><a href="addingPage.aspx">Occupancy</></a></li>
-                                <asp:ContentPlaceHolder ID="rightmenu" runat="server">
-                                    <%--right_menu--%>
-                                </asp:ContentPlaceHolder>
-
-                            </ul>
+                            <li><a href="#" target="ext"><i class="glyphicon glyphicon-tasks"></i>&nbsp;Manage Energy Data</a>
+                                <ul>
+                                    <li><a href="addElectric.aspx">Electricity</a></li>
+                                    <li><a href="addWater.aspx">Water Consumption</a></li>
+                                    <li><a href="addLPG.aspx">LPG</></a></li>
+                                    <li><a href="addDiesel.aspx">Diesel</></a></li>
+                                    <li><a href="addOccupancy.aspx">Occupancy</></a></li>
+                                </ul>
                             </li>
+
+
 
                             <li><a href="viewGraphs.aspx" target="ext"><i class="glyphicon glyphicon-stats"></i>&nbsp;Data Summary</a></li>
                             <li><a href="viewFiles.aspx" target="ext"><i class="glyphicon glyphicon-folder-close"></i>&nbsp;Library</a></li>
+                            
+                            <%--add more right menu--%>
+                            <asp:ContentPlaceHolder ID="rightmenu" runat="server">
 
+                            </asp:ContentPlaceHolder>
+                            <%--end add right menu--%>
                         </ul>
 
                         <hr />

@@ -22,13 +22,46 @@
                 <ItemTemplate>
                     <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('ยืนยันการลบข้อมูล ?');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                 </ItemTemplate>
-                
+
             </asp:TemplateField>
         </Columns>
 
     </asp:GridView>
     <br />
-    <asp:Button ID="addbuild" runat="server"  class="btn btn-info pull-left" Text="Add building" OnClick="addbuild_Click" />
+    <asp:Button ID="addbuild" runat="server" class="btn btn-info pull-left" Text="Add buildingnont" OnClick="addbuild_Click" />
+    <%--button addbuilding--%>
+    <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#exampleModal">Add Building</button>
+    <%--modal window--%>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <br />
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4>Add Building</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="building-name" class="control-label">Building Name:</label>
+                        <%--   <input type="text" class="form-control" id="recipient-name"/>--%>
+                        <asp:TextBox class="form-control" ID="txtbuildingname" runat="server"></asp:TextBox>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="details" class="control-label">Details:</label>
+                        <%--<textarea class="form-control" id="message-text"></textarea>--%>
+                        <textarea class="form-control" runat="server" rows="5" id="txtdetails"></textarea>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <asp:Button ID="btn_ok" runat="server" Text="Add" class="btn btn-primary" OnClick="Button1_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="content_col12" runat="server">
 </asp:Content>
@@ -49,6 +82,8 @@
     <script src="assets/DataTables-1.10.11/media/js/jquery.js"></script>
     <script src="assets/DataTables-1.10.11/media/js/dataTables.bootstrap.min.js"></script>
     <script src="assets/DataTables-1.10.11/media/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $(".info").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
