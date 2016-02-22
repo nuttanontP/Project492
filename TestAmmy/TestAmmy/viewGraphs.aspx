@@ -47,21 +47,31 @@
 <asp:Content ID="Content8" ContentPlaceHolderID="content_container" runat="server">
 </asp:Content>
 <asp:Content ID="Content9" ContentPlaceHolderID="content_footer" runat="server">
+
 </asp:Content>
+
 <asp:Content ID="Content10" ContentPlaceHolderID="forScripts" runat="server">
     
     <script type="text/javascript">
 
         window.onload = function () {
-
-            var testdata = [10, 50, 100, 400, 450, 660, 733, 866, 900];
+            var date= [<%foreach (var s in date){%>'<%=s%>',<%}%>];
+            var data1 = [<%foreach (var s in dg){%>'<%=s%>',<%}%>];
+            var data2 = [<%foreach (var s in Vehicle){%>'<%=s%>',<%}%>];
+            var data3=[<%foreach (var s in Other){%>'<%=s%>',<%}%>];
            // var date = [new Date('2010-01-02'), new Date('2010-01-27'), new Date('2010-02-27')];
-            var temp = [];
-            for (var i in testdata) {
-                temp.push({ x: new Date("2010-03-10"), y: testdata[i] });
-                console.log(temp);
-                new Date()
+            var temp1 = [];
+            var temp2 = [];
+            var temp3 = [];
+            for (var i in date) {
+                temp1.push({ x: new Date(date[i]), y: parseInt(data1[i]) });
+                temp2.push({ x: new Date(date[i]), y: parseInt(data2[i]) });
+                temp3.push({ x: new Date(date[i]), y: parseInt(data3[i]) });
             }
+            var xxx = ({ x: new Date('2010-01-27'), y: data3[i] });
+            console.log(xxx);
+            console.log(temp1[0]);
+            console.log({ x: new Date(2010, 0, 1), y: 20 });
 		var chart = new CanvasJS.Chart("chartContainer",
 		{
 
@@ -105,7 +115,7 @@
 				name: "for DG set",
 				markerType: "square",
 				color: "#F08080",
-				dataPoints: temp
+				dataPoints: temp1
 			},
 			{        
 				type: "line",
@@ -114,39 +124,7 @@
 				color: "#20B2AA",
 				lineThickness: 2,
 
-				dataPoints: [
-				{ x: new Date(2010,0,1), y: 510 },
-				{ x: new Date(2010,0,2), y: 560 },
-				{ x: new Date(2010,0,3), y: 540 },
-				{ x: new Date(2010,0,4), y: 558 },
-				{ x: new Date(2010,0,5), y: 544 },
-				{ x: new Date(2010,0,6), y: 693 },
-				{ x: new Date(2010,0,7), y: 657 },
-				{ x: new Date(2010,0,8), y: 663 },
-				{ x: new Date(2010,0,9), y: 639 },
-				{ x: new Date(2010, 0, 10), y: 673 },
-                { x: new Date(2010, 0, 11), y: 510 },
-				{ x: new Date(2010, 0, 12), y: 560 },
-				{ x: new Date(2010, 0, 13), y: 540 },
-				{ x: new Date(2010, 0, 14), y: 558 },
-				{ x: new Date(2010, 0, 15), y: 544 },
-				{ x: new Date(2010, 0, 16), y: 693 },
-				{ x: new Date(2010, 0, 17), y: 657 },
-				{ x: new Date(2010, 0, 18), y: 663 },
-				{ x: new Date(2010, 0, 19), y: 639 },
-				{ x: new Date(2010, 0, 20), y: 673 },
-                { x: new Date(2010, 0, 21), y: 558 },
-				{ x: new Date(2010, 0, 22), y: 544 },
-				{ x: new Date(2010, 0, 23), y: 693 },
-				{ x: new Date(2010, 0, 24), y: 657 },
-				{ x: new Date(2010, 0, 25), y: 663 },
-				{ x: new Date(2010, 0, 26), y: 639 },
-				{ x: new Date(2010, 0, 27), y: 673 },
-                { x: new Date(2010, 0, 28), y: 663 },
-				{ x: new Date(2010, 0, 29), y: 639 },
-				{ x: new Date(2010, 0, 30), y: 673 },
-				{ x: new Date(2010,0,31), y: 660 }
-				]
+				dataPoints: temp2
 			},
             {
                 type: "line",
@@ -155,39 +133,8 @@
                 color: "#000",
                 lineThickness: 2,
 
-                dataPoints: [
-				{ x: new Date(2010, 0, 1), y: 310 },
-				{ x: new Date(2010, 0, 2), y: 360 },
-				{ x: new Date(2010, 0, 3), y: 340 },
-				{ x: new Date(2010, 0, 4), y: 358 },
-				{ x: new Date(2010, 0, 5), y: 344 },
-				{ x: new Date(2010, 0, 6), y: 393 },
-				{ x: new Date(2010, 0, 7), y: 457 },
-				{ x: new Date(2010, 0, 8), y: 463 },
-				{ x: new Date(2010, 0, 9), y: 339 },
-				{ x: new Date(2010, 0, 10), y: 473 },
-                { x: new Date(2010, 0, 11), y: 410 },
-				{ x: new Date(2010, 0, 12), y: 460 },
-				{ x: new Date(2010, 0, 13), y: 340 },
-				{ x: new Date(2010, 0, 14), y: 358 },
-				{ x: new Date(2010, 0, 15), y: 344 },
-				{ x: new Date(2010, 0, 16), y: 493 },
-				{ x: new Date(2010, 0, 17), y: 457 },
-				{ x: new Date(2010, 0, 18), y: 363 },
-				{ x: new Date(2010, 0, 19), y: 339 },
-				{ x: new Date(2010, 0, 20), y: 373 },
-                { x: new Date(2010, 0, 21), y: 458 },
-				{ x: new Date(2010, 0, 22), y: 444 },
-				{ x: new Date(2010, 0, 23), y: 393 },
-				{ x: new Date(2010, 0, 24), y: 457 },
-				{ x: new Date(2010, 0, 25), y: 363 },
-				{ x: new Date(2010, 0, 26), y: 439 },
-				{ x: new Date(2010, 0, 27), y: 473 },
-                { x: new Date(2010, 0, 28), y: 463 },
-				{ x: new Date(2010, 0, 29), y: 339 },
-				{ x: new Date(2010, 0, 30), y: 373 },
-				{ x: new Date(2010, 0, 31), y: 460 }
-                ]
+                dataPoints: temp3
+				
             }
 
 			

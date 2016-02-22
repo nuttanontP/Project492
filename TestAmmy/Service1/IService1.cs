@@ -163,7 +163,17 @@ namespace Service1
         string delbuilding(string[] data_pro);
 
 
-        
+        /// <summary>
+        /// select data for show in graph
+        /// </summary>
+        /// <param name="data_pro">month</param>
+        /// <returns>dt </returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string selectdiesel(string[] data_pro);
+
+
+
 
 
 
