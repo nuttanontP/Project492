@@ -133,7 +133,16 @@ namespace Service1
         /// <returns></returns>
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        string Adddata(string[] data_pro);
+        string AddElectric(string[] data_pro);
+
+        /// <summary>
+        /// insert diesel
+        /// </summary>
+        /// <param name="data_pro"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string AddDiesel(string[] data_pro);
 
         /// <summary>
         /// 
@@ -144,11 +153,20 @@ namespace Service1
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string delpermission(string[] data_pro);
 
-
+        /// <summary>
+        /// delete building 
+        /// </summary>
+        /// <param name="data_pro"></param>
+        /// <returns></returns>
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string delbuilding(string[] data_pro);
+
+
         
+
+
+
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

@@ -16,7 +16,9 @@
         <hr />
         <div class="col-sm-4">
             <h4>Building Name:</h4>
-            <asp:DropDownList ID="ddl_building" class="form-control dropdown-toggle" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddl_building" class="form-control dropdown-toggle" runat="server">
+                 <asp:ListItem Text="No Building" Value="" />
+            </asp:DropDownList>
         </div>
         <%--<div class="col-sm-4"></div>
         <div class="col-sm-4"></div>--%>
@@ -44,7 +46,6 @@
                             <th class="text-center">LPG Consumed(KG)
                             </th>
                             <th class="text-center col-xs-3">Tools</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -67,7 +68,7 @@
                         <tr id='addrs1'></tr>
                     </tbody>
                 </table>
-                                <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
+                <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
 
                 <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-info center-block" OnClick="Button1_Click" />
 
@@ -128,7 +129,8 @@
     </script>
     <script type="text/javascript">
 
-        function functionOne() {
+        function functionOne(j) {
+            console.log(j);
             var $input = $('.datepicker').pickadate({
                 format: 'dd/mm/yyyy',
                 formatSubmit: 'dd/mm/yyyy',

@@ -16,7 +16,9 @@
         <hr />
         <div class="col-sm-4">
             <h4>Building Name:</h4>
-            <asp:DropDownList ID="ddl_building" class="form-control dropdown-toggle" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddl_building" class="form-control dropdown-toggle" runat="server">
+                 <asp:ListItem Text="No Building" Value="" />
+            </asp:DropDownList>
 
         </div>
         <br />

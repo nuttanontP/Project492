@@ -483,7 +483,7 @@ namespace Service1
             conn.Close();
             return json;
         }
-        public string Adddata(string[] data_pro)
+        public string AddElectric(string[] data_pro)
         {
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
@@ -493,25 +493,84 @@ namespace Service1
             {
 
                 conn.Open();
-                for (int i = 5; i < data_pro.Count(); i += 2)
+                if (data_pro[4] == "1")
                 {
-                    CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,`current meter`) VALUES (@userid,@building,@code,@energy,@type,@date,@meter)";
-                    cmd = new MySqlCommand(CommandText, conn);
-                    cmd.Parameters.AddWithValue("@userid", data_pro[0]);
-                    cmd.Parameters.AddWithValue("@building", data_pro[1]);
-                    cmd.Parameters.AddWithValue("@code", data_pro[2]);
-                    cmd.Parameters.AddWithValue("@energy", data_pro[3]);
-                    cmd.Parameters.AddWithValue("@type", "Non-Design");
-                    cmd.Parameters.AddWithValue("@date", data_pro[i]);
-                    cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
-                    cmd.ExecuteNonQuery();
+                    for (int i = 5; i < data_pro.Count(); i += 2)
+                    {
+                        CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,`current meter`) VALUES (@userid,@building,@code,@energy,@type,@date,@meter)";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                        cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                        cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                        cmd.Parameters.AddWithValue("@type", data_pro[4]);
+                        cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                        cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
+                        cmd.ExecuteNonQuery();
+                    }
+                    json = "yes";
                 }
-                json = "yes";
+                else
+                {
+                    for (int i = 5; i < data_pro.Count(); i += 4)
+                    {
+                        CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,peak,`off peak`,holiday) VALUES (@userid,@building,@code,@energy,@type,@date,@peak,@off,@holiday)";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                        cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                        cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                        cmd.Parameters.AddWithValue("@type", data_pro[4]);
+                        cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                        cmd.Parameters.AddWithValue("@peak", data_pro[i + 1]);
+                        cmd.Parameters.AddWithValue("@off", data_pro[i + 2]);
+                        cmd.Parameters.AddWithValue("@holiday", data_pro[i + 3]);
+                        cmd.ExecuteNonQuery();
+                    }
+                    json = "yes";
+                }
+
             }
             catch (Exception ex)
             {
 
                 //throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string AddDiesel(string[] data_pro)
+        {
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            string json = "no";
+            try
+            {
+                conn.Open();
+                for (int i = 4; i < data_pro.Count(); i += 6)
+                {
+                    CommandText = "INSERT INTO diesel (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,DGSet,Vehicle,OtherPurpose,Runningtime) VALUES (@userid,@building,@code,@energy,@date,@purchased,@dgset,@vehicle,@otherpurpose,@runtime)";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                    cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                    cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                    cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                    //date,purchased,DGSet,Vehicle,OtherPurpose,Runningtime
+                    //@date,@purchased,@dgset,@vehicle,@otherpurpose,@runtime
+                    cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                    cmd.Parameters.AddWithValue("@purchased", data_pro[i + 1]);
+                    cmd.Parameters.AddWithValue("@dgset", data_pro[i + 2]);
+                    cmd.Parameters.AddWithValue("@vehicle", data_pro[i + 3]);
+                    cmd.Parameters.AddWithValue("@otherpurpose", data_pro[i + 4]);
+                    cmd.Parameters.AddWithValue("@runtime", data_pro[i + 5]);
+                    cmd.ExecuteNonQuery();
+                }
+                json = "yes";
+            }
+            catch
+            {
+                throw;
             }
             conn.Close();
             return json;

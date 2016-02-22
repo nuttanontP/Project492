@@ -16,7 +16,9 @@
         <hr />
         <div class="col-sm-4">
             <h4>Building Name:</h4>
-            <asp:DropDownList ID="ddl_building" class="form-control dropdown-toggle" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddl_building" class="form-control dropdown-toggle" runat="server">
+                 <asp:ListItem Text="No Building" Value="" />
+            </asp:DropDownList>
         </div>
         <br />
         <br />
@@ -68,7 +70,7 @@
                                 <input type="text" name='date' placeholder='select date' class="form-control datepicker" />
                             </td>
                             <td>
-                                <input type="text" name='per' placeholder='eg. 30' class="form-control" />
+                                <input type="text" name='purchased' placeholder='eg. 30' class="form-control" />
                             </td>
                             <td>
                                 <input type="text" name='dg_con' placeholder='eg. 10' class="form-control" />
@@ -93,7 +95,7 @@
                 </table>
                                <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
 
-                <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-info center-block" OnClick="Button1_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Save" class="btn btn-info center-block" OnClick="Button1_Click" />
 
             </div>
             <%--end tab1--%>
@@ -133,7 +135,7 @@
             functionOne();
             $("#add_rows").click(function () {
                 $('#tab_logics').append('<tr id="addrs' + (j + 1) + '"></tr>');
-                $('#addrs' + j).html("<td><input type 'text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='per' type='text' placeholder='eg. 30' class='form-control input-md'  /> </td><td><input name='dg_con' type='text' placeholder='eg. 10' class='form-control input-md' /></td><td><input name='v_con' type='text' placeholder='eg. 10' class='form-control input-md' /></td><td><input name='o_con' type='text' placeholder='eg. 10' class='form-control input-md' /></td><td><input name='time' type='text' placeholder='eg. 15' class='form-control input-md' /></td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='dels(" + j + ")'></button></td>");
+                $('#addrs' + j).html("<td><input type 'text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='purchased' type='text' placeholder='eg. 30' class='form-control input-md'  /> </td><td><input name='dg_con' type='text' placeholder='eg. 10' class='form-control input-md' /></td><td><input name='v_con' type='text' placeholder='eg. 10' class='form-control input-md' /></td><td><input name='o_con' type='text' placeholder='eg. 10' class='form-control input-md' /></td><td><input name='time' type='text' placeholder='eg. 15' class='form-control input-md' /></td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='dels(" + j + ")'></button></td>");
                 j++;
                 functionOne();
             });

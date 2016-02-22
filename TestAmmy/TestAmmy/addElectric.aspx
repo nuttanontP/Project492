@@ -16,14 +16,16 @@
 
 
     <%------------%>
-    <div id="datePopup"></div>
+     <div id="datePopup"></div>
     <div>
         <h3>Daily Electricity Consumption Details</h3>
         <hr />
 
         <div class="col-sm-4">
             <h4>Building Name:</h4>
-            <asp:DropDownList ID="ddl_building" class="form-control dropdown-toggle" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddl_building" class="form-control dropdown-toggle" runat="server">
+                <asp:ListItem Text="No Building" Value="" />
+            </asp:DropDownList>
         </div>
         <%--<div class="col-sm-4"></div>
         <div class="col-sm-4"></div>--%>
@@ -70,11 +72,12 @@
                         <tr id='addrs1'></tr>
                     </tbody>
                 </table>
-                                <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
+                <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
 
-                <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-info center-block" OnClick="Button1_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Save all" class="btn btn-info center-block" OnClick="Button1_Click" />
 
             </div>
+           
             <%--end tab1--%>
 
             <div class="tab-pane" id="messages">
@@ -95,16 +98,16 @@
                     <tbody>
                         <tr id='addr0'>
                             <td>
-                                <input type='text' name='date' placeholder='select date' class='form-control datepicker' />
+                                <input type='text' name='date1' placeholder='select date' class='form-control datepicker' />
                             </td>
                             <td>
-                                <input type="text" name='name' placeholder='eg. 1250' class="form-control" />
+                                <input type="text" name='peak' placeholder='eg. 1250' class="form-control" />
                             </td>
                             <td>
-                                <input type="text" name='mail' placeholder='eg. 1200' class="form-control" />
+                                <input type="text" name='off' placeholder='eg. 1200' class="form-control" />
                             </td>
                             <td>
-                                <input type="text" name='mobile0' placeholder='eg. 1400' class="form-control" />
+                                <input type="text" name='holiday' placeholder='eg. 1400' class="form-control" />
                             </td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk"></button>
@@ -115,7 +118,8 @@
                         <tr id='addr1'></tr>
                     </tbody>
                 </table>
-                                <a id="add_row" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
+                <a id="add_row" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
+                <asp:Button ID="Button2" runat="server" Text="Save all" class="btn btn-info center-block" OnClick="Button2_Click" />
 
 
             </div>
@@ -185,7 +189,7 @@
             $("#add_row").click(function () {
 
 
-                $('#addr' + i).html("<td>  <input type='text' name='date' placeholder='select date' class='form-control datepicker' /></td><td><input name='name[] ' type='text' placeholder='eg.1250' class='form-control input-md'  /> </td><td><input  name='mail" + i + "' type='text' placeholder='eg. 1200'  class='form-control input-md'></td><td><input  name='mobile" + i + "' type='text' placeholder='eg. 1400'  class='form-control input-md'></td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='del(" + i + ")'></button></td>");
+                $('#addr' + i).html("<td>  <input type='text' name='date1' placeholder='select date' class='form-control datepicker' /></td><td><input name='peak' type='text' placeholder='eg.1250' class='form-control input-md'  /> </td><td><input  name='off' type='text' placeholder='eg. 1200'  class='form-control input-md'></td><td><input  name='holiday' type='text' placeholder='eg. 1400'  class='form-control input-md'></td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='del(" + i + ")'></button></td>");
                 $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
                 i++;
                 functionOne();

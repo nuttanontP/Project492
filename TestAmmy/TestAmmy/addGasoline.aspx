@@ -1,19 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/adminMaster.Master" AutoEventWireup="true" CodeBehind="addOccupancy.aspx.cs" Inherits="TestAmmy.addOccupancy" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/adminMaster.Master" AutoEventWireup="true" CodeBehind="addGasoline.aspx.cs" Inherits="TestAmmy.addGasoline" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head1" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head2" runat="server">
-    <link href="assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/themes/default.css" rel="stylesheet" />
+     <link href="assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/themes/default.css" rel="stylesheet" />
     <link href="assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/themes/default.date.css" rel="stylesheet" />
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="rightmenu" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="content_col9" runat="server">
-    <%------------%>
+
+       <%------------%>
     <div id="datePopup"></div>
     <div>
-        <h3>Details of Occupancy</h3>
+        <h3>Details of Gasoline Consumption	</h3>
         <hr />
         <div class="col-sm-4">
             <h4>Building Name:</h4>
@@ -21,13 +20,15 @@
                  <asp:ListItem Text="No Building" Value="" />
             </asp:DropDownList>
         </div>
+        <%--<div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>--%>
         <br />
         <br />
         <br />
         <br />
         <hr />
         <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a href="#profile" data-toggle="tab"><strong>Occupancy Details</strong></a></li>
+            <li class="active"><a href="#profile" data-toggle="tab"><strong>Gasoline Consumption</strong></a></li>
 
         </ul>
 
@@ -38,36 +39,25 @@
                 <table class="table table-bordered table-hover" id="tab_logics">
                     <thead>
                         <tr>
-                            <th class="text-center col-xs-2" rowspan="2">Date   
+                            <th class="text-center col-xs-2">Date   
                             </th>
-                            <th class="text-center" colspan="2">Room
+                            <th class="text-center">Gasoline Purchased(Liter)
                             </th>
-                            <th class="text-center" rowspan="2">Number of Guests(Number)
+                            <th class="text-center">Gasoline Consumed(Liter)
                             </th>
-                            <th class="text-center col-xs-3" rowspan="2">Tools</th>
-
-                        </tr>
-                        <tr>
-
-                            <th class="text-center">Available</th>
-                            <th class="text-center">Occupied</th>
-
+                            <th class="text-center col-xs-3">Tools</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <tr id='addrs0'>
                             <td>
                                 <input type="text" name='date' placeholder='select date' class="form-control datepicker" />
                             </td>
                             <td>
-                                <input type="text" name='av_room' placeholder='eg. 123' class="form-control" />
+                                <input type="text" name='per' placeholder='eg. 123' class="form-control" />
                             </td>
                             <td>
-                                <input type="text" name='oc_room' placeholder='eg. 123' class="form-control" />
-                            </td>
-                            <td>
-                                <input type="text" name='number' placeholder='eg. 123' class="form-control" />
+                                <input type="text" name='con' placeholder='eg. 123' class="form-control" />
                             </td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk"></button>
@@ -78,7 +68,7 @@
                         <tr id='addrs1'></tr>
                     </tbody>
                 </table>
-                               <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
+                <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
 
                 <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-info center-block" OnClick="Button1_Click" />
 
@@ -99,8 +89,7 @@
 <asp:Content ID="Content9" ContentPlaceHolderID="content_footer" runat="server">
 </asp:Content>
 <asp:Content ID="Content10" ContentPlaceHolderID="forScripts" runat="server">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="assets/js/bootstrap_dash.min.js"></script>
     <script src="assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/picker.js"></script>
@@ -108,6 +97,7 @@
     <script src="assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/legacy.js"></script>
 
     <script>
+
         //delete one by one in tab 1
         function dels(j) {
             console.log("del it");
@@ -121,7 +111,7 @@
             functionOne();
             $("#add_rows").click(function () {
                 $('#tab_logics').append('<tr id="addrs' + (j + 1) + '"></tr>');
-                $('#addrs' + j).html("<td><input type 'text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='av_room' type='text' placeholder='eg. 123' class='form-control input-md'  /> </td><td><input name='oc_room' type='text' placeholder='eg. 123' class='form-control input-md' /></td><td><input name='number' type='text' placeholder='eg. 123' class='form-control input-md'  /> </td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='dels(" + j + ")'></button></td>");
+                $('#addrs' + j).html("<td><input type 'text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='per' type='text' placeholder='eg. 123' class='form-control input-md'  /> </td><td><input name='con' type='text' placeholder='eg. 123' class='form-control input-md' /></td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='dels(" + j + ")'></button></td>");
                 j++;
                 functionOne();
             });
@@ -139,7 +129,8 @@
     </script>
     <script type="text/javascript">
 
-        function functionOne() {
+        function functionOne(j) {
+            console.log(j);
             var $input = $('.datepicker').pickadate({
                 format: 'dd/mm/yyyy',
                 formatSubmit: 'dd/mm/yyyy',

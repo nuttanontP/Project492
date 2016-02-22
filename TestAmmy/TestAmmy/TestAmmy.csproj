@@ -105,7 +105,7 @@
     <Content Include="addBuilding.aspx" />
     <Content Include="addData.aspx" />
     <Content Include="addDiesel.aspx" />
-    <Content Include="addenergytype.aspx" />
+    <Content Include="addGasoline.aspx" />
     <Content Include="addLPG.aspx" />
     <Content Include="addOccupancy.aspx" />
     <Content Include="addElectric.aspx" />
@@ -678,6 +678,7 @@
     <Content Include="assets\js\jquery.fittext.js" />
     <Content Include="assets\js\jquery.js" />
     <Content Include="assets\js\wow.min.js" />
+    <Content Include="assets\script\canvasjs.min.js" />
     <Content Include="forTest.aspx" />
     <Content Include="gridviewBuilding.aspx" />
     <Content Include="homePage.aspx" />
@@ -805,12 +806,12 @@
     <Compile Include="addDiesel.aspx.designer.cs">
       <DependentUpon>addDiesel.aspx</DependentUpon>
     </Compile>
-    <Compile Include="addenergytype.aspx.cs">
-      <DependentUpon>addenergytype.aspx</DependentUpon>
+    <Compile Include="addGasoline.aspx.cs">
+      <DependentUpon>addGasoline.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="addenergytype.aspx.designer.cs">
-      <DependentUpon>addenergytype.aspx</DependentUpon>
+    <Compile Include="addGasoline.aspx.designer.cs">
+      <DependentUpon>addGasoline.aspx</DependentUpon>
     </Compile>
     <Compile Include="addLPG.aspx.cs">
       <DependentUpon>addLPG.aspx</DependentUpon>
