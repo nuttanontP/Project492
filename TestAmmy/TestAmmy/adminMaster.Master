@@ -152,6 +152,7 @@
 
 
     <asp:ContentPlaceHolder ID="forScripts" runat="server">
+        <script></script>
     </asp:ContentPlaceHolder>
 </body>
 </html>

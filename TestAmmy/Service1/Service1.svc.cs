@@ -109,6 +109,36 @@ namespace Service1
             conn.Close();
             return json;
         }
+
+        public string getcompanydetial(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT * FROM company where companycode = @companycode";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@companycode", data_pro[0]);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
+
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
         /// <summary>
         /// Have a people in this system?
         /// </summary>
@@ -624,6 +654,36 @@ namespace Service1
             return json;
         }
         public string selectdiesel(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT * FROM diesel order by date asc";
+                cmd = new MySqlCommand(CommandText, conn);
+                //cmd.Parameters.AddWithValue("@email", data_pro[0]);
+                //cmd.Parameters.AddWithValue("@energy_id", data_pro[1]);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
+
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string selectdiesel2(string[] data_pro)
         {
             string json = "no";
             MySqlCommand cmd = null;

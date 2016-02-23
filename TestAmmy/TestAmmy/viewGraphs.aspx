@@ -51,9 +51,19 @@
 </asp:Content>
 
 <asp:Content ID="Content10" ContentPlaceHolderID="forScripts" runat="server">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript">
-
+        $(function () {
+            var customer = { contact_name: "Scott", company_name: "HP" };
+            var nont = ["1111", "2222"];
+            var nont1 = "eiei";
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(nont),
+                url: "http://localhost:1291/Service1/selectdiesel2",
+                contentType: "application/json; charset=utf-8",
+            });
+        });
         window.onload = function () {
             var date= [<%foreach (var s in date){%>'<%=s%>',<%}%>];
             var data1 = [<%foreach (var s in dg){%>'<%=s%>',<%}%>];

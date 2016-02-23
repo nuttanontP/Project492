@@ -61,10 +61,12 @@
                                 <hr />
 
                                 <p>
-                                    <strong>Organization :</strong> Entaneer Hotel
+                                    <strong>Organization :</strong> <%= companyname %>
                                     <br />
-                                    <strong>Address :</strong> 1/11 Suthep, Maeung, Chiang Mai, Thailand<br />
-                                    <strong>Joined :</strong> 03/2014
+                                    <strong>Code :</strong> <%= code %>
+                                    <br />
+                                    <strong>Address :</strong> <%= address %><br />
+                                    <strong>Joined :</strong>  <%= joined %>
                                     <br />
                                     <strong>Buildings :</strong> 7 buildings in responsibility.
                                     <br />

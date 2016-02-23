@@ -28,7 +28,7 @@
 
     </asp:GridView>
     <br />
-    <asp:Button ID="addbuild" runat="server" class="btn btn-info pull-left" Text="Add buildingnont" OnClick="addbuild_Click" />
+    <%--<asp:Button ID="addbuild" runat="server" class="btn btn-info pull-left" Text="Add buildingnont" OnClick="addbuild_Click" />--%>
     <%--button addbuilding--%>
     <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#exampleModal">Add Building</button>
     <%--modal window--%>

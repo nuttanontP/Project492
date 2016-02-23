@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web.Http;
 
 namespace Service1
 {
@@ -168,10 +169,26 @@ namespace Service1
         /// </summary>
         /// <param name="data_pro">month</param>
         /// <returns>dt </returns>
+        
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string selectdiesel(string[] data_pro);
 
+
+        [HttpPost]
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string selectdiesel2([FromBody]string[] data_pro);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data_pro">company code</param>
+        /// <returns>dt of company </returns>
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string getcompanydetial(string[] data_pro);
 
 
 

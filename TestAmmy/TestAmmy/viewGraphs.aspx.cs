@@ -23,7 +23,7 @@ namespace TestAmmy
             string[] y = { "hi", "co" };
             DataTable dt = new DataTable();
             string[] pro_data = new string[2];
-            string result = apiconnecter.PostData("selectdiesel", pro_data);
+            string result = apiconnecter.PostData("selectdiesel",pro_data);
             string s = JsonConvert.DeserializeObject<string>(result);
             if (s != "no")
             {
@@ -42,26 +42,6 @@ namespace TestAmmy
 
 
         }
-        protected string[] senddate
-        {
-            set { date = value; }
-            get { return date; }
-        }
-        protected string[] senddg
-        {
-            get { return dg; }
-        }
-        protected string[] sendVehicle
-        {
-            get { return Vehicle; }
-        }
-        protected string[] sendOther
-        {
-            get { return Other; }
-        }
-        protected string test
-        {
-            get { return "someword"; }
-        }
+        
     }
 }
