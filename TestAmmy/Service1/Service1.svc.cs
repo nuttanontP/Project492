@@ -694,9 +694,9 @@ namespace Service1
             try
             {
                 conn.Open();
-                CommandText = "SELECT * FROM diesel order by date asc";
+                CommandText = "SELECT * FROM diesel where month(`date`) = @month order by `date` asc";
                 cmd = new MySqlCommand(CommandText, conn);
-                //cmd.Parameters.AddWithValue("@email", data_pro[0]);
+                cmd.Parameters.AddWithValue("@month", data_pro[0]);
                 //cmd.Parameters.AddWithValue("@energy_id", data_pro[1]);
                 adap = new MySqlDataAdapter(cmd);
                 adap.Fill(dt);

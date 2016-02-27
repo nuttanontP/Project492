@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Service1
 {
@@ -175,16 +176,10 @@ namespace Service1
         string selectdiesel(string[] data_pro);
 
 
-        [HttpPost]
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        string selectdiesel2([FromBody]string[] data_pro);
+        string selectdiesel2(string[] data_pro);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="data_pro">company code</param>
-        /// <returns>dt of company </returns>
 
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
