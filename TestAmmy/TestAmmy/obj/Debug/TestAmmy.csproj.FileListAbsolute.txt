@@ -211,7 +211,6 @@ D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.Web.xml
 D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.WindowsServer.xml
 D:\github\TestAmmy\TestAmmy\bin\Microsoft.ApplicationInsights.xml
 D:\github\TestAmmy\TestAmmy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\github\TestAmmy\TestAmmy\bin\System.Web.Http.xml
 D:\github\TestAmmy\TestAmmy\bin\System.Net.Http.Formatting.xml
 D:\github\TestAmmy\TestAmmy\bin\System.Web.Http.WebHost.xml
 D:\github\TestAmmy\TestAmmy\bin\EntityFramework.xml

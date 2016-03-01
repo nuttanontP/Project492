@@ -3,8 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head_title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head_css" runat="server">
-  <link href="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/themes/default.css" rel="stylesheet" />
-    <link href="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/themes/default.date.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="content_title" runat="server">
     Gasoline
@@ -87,9 +85,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="for_script" runat="server">
-    <script src="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/picker.js"></script>
-    <script src="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/picker.date.js"></script>
-    <script src="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/legacy.js"></script>
-    <script src="javascripts/add_gasoline.js"></script>
+       <script src="javascripts/add_gasoline.js"></script>
 
 </asp:Content>

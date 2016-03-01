@@ -15,11 +15,21 @@ using System.Runtime.Serialization.Json;
 using System.Configuration;
 using TestAmmy.webconn;
 using System.Data;
+using System.Web.Services;
 
 namespace TestAmmy
 {
     public partial class loginRegister : System.Web.UI.Page
     {
+        protected static string ReCaptcha_Key = "6LeAqxkTAAAAAOsw6IObSyJHea1kDeF0KNRrKV3e";
+        protected static string ReCaptcha_Secret = "6LeAqxkTAAAAAIs4pMb6w6ZwA-Kpj238dPotGbda";
+
+        [WebMethod]
+        public static string VerifyCaptcha(string response)
+        {
+            string url = "https://www.google.com/recaptcha/api/siteverify?secret=" + ReCaptcha_Secret + "&response=" + response;
+            return (new WebClient()).DownloadString(url);
+        }
         public string mis_service_ip = ConfigurationManager.AppSettings["service_ip"];
         public string mis_service_port = ConfigurationManager.AppSettings["service_port"];
         public string mis_service_name = ConfigurationManager.AppSettings["service_name"];
@@ -126,5 +136,7 @@ namespace TestAmmy
 
 
         }
+
+        
     }
 }

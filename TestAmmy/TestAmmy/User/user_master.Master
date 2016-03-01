@@ -25,6 +25,8 @@
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="../assets/adminLTE/dist/css/skins/skin-blue-light.min.css" />
+    <link href="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/themes/default.css" rel="stylesheet" />
+    <link href="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/themes/default.date.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head_css" runat="server">
     </asp:ContentPlaceHolder>
@@ -160,18 +162,18 @@
                     <li class="active"><a href="user_dashboard.aspx"><i class="fa fa-dashboard"></i><span>DASHBOARD</span></a></li>
 
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-plus-square-o"></i><span>MANAGE ENERGY DATA</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-plus-square-o"></i><span>ENERGY DATA</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <li><a href="user_addElectric.aspx">ELECTRICITY</a></li>
                             <li><a href="user_addDiesel.aspx">DIESEL</a></li>
                             <li><a href="user_addGasoline.aspx">GASOLINE</a></li>
-                            <li><a href="#">LPG</a></li>
-                            <li><a href="#">WATER CONSUMPTION</a></li>
-                            <li><a href="#">OCCUPANCY</a></li>
+                            <li><a href="user_addLPG.aspx">LPG</a></li>
+                            <li><a href="user_addWater.aspx">WATER CONSUMPTION</a></li>
+                            <li><a href="user_addOccupancy.aspx">OCCUPANCY</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-bar-chart-o"></i><span>DATA SUMMARY</span></a></li>
-                    <li><a href="#"><i class="fa fa-folder-open-o"></i><span>LIBRARY</span></a></li>
+                    <li><a href="user_dataSummary.aspx"><i class="fa fa-bar-chart-o"></i><span>DATA SUMMARY</span></a></li>
+                    <li><a href="user_library.aspx"><i class="fa fa-folder-open-o"></i><span>LIBRARY</span></a></li>
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>
@@ -308,6 +310,12 @@
     <script src="../assets/adminLTE/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../assets/adminLTE/dist/js/app.min.js"></script>
+
+    <%--date picker--%>
+     <script src="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/picker.js"></script>
+    <script src="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/compressed/picker.date.js"></script>
+    <script src="../assets/pickadate.js-3.5.6/pickadate.js-3.5.6/lib/legacy.js"></script>
+    <%--./date picker--%>
 
     <%--for script--%>
 

@@ -7,9 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace TestAmmy.User
 {
-    public partial class testlte : System.Web.UI.Page
+    public partial class user_addLPG : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void Button1_Click(object sender, EventArgs e)
         {
 
         }

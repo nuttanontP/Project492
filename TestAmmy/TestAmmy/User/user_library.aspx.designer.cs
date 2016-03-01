@@ -11,7 +11,7 @@ namespace TestAmmy.User
 {
 
 
-    public partial class testlte
+    public partial class user_library
     {
     }
 }

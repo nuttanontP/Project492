@@ -29,3 +29,11 @@ C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\Te
 C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
 C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.dll
 C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\MODEL\obj\Debug\MODEL.pdb
+D:\github\TestAmmy\MODEL\bin\Debug\MODEL.dll.config
+D:\github\TestAmmy\MODEL\bin\Debug\MODEL.dll
+D:\github\TestAmmy\MODEL\bin\Debug\MODEL.pdb
+D:\github\TestAmmy\MODEL\bin\Debug\EntityFramework.dll
+D:\github\TestAmmy\MODEL\bin\Debug\EntityFramework.xml
+D:\github\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
+D:\github\TestAmmy\MODEL\obj\Debug\MODEL.dll
+D:\github\TestAmmy\MODEL\obj\Debug\MODEL.pdb

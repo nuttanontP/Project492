@@ -98,9 +98,9 @@ function recall(result) {
 }
 
 
-$('#content_col9_ddl_month').change(function () {
+$('#main_content_ddl_month').change(function () {
     //alert($('#content_col9_ddl_month').val());
-    var nont = [$('#content_col9_ddl_month').val()];
+    var nont = [$('#main_content_ddl_month').val()];
     $.ajax({
         type: "POST",
         data: JSON.stringify(nont),

@@ -1715,11 +1715,17 @@
     </None>
     <Content Include="User\javascripts\add_diesel.js" />
     <Content Include="User\javascripts\add_gasoline.js" />
+    <Content Include="User\javascripts\add_lpg.js" />
+    <Content Include="User\javascripts\add_occupancy.js" />
+    <Content Include="User\javascripts\add_water.js" />
     <Content Include="User\javascripts\datasum.js" />
-    <Content Include="User\testlte.aspx" />
     <Content Include="User\user_addDiesel.aspx" />
     <Content Include="User\user_addGasoline.aspx" />
+    <Content Include="User\user_addLPG.aspx" />
+    <Content Include="User\user_addOccupancy.aspx" />
+    <Content Include="User\user_addWater.aspx" />
     <Content Include="User\user_dataSummary.aspx" />
+    <Content Include="User\user_library.aspx" />
     <Content Include="User\user_master.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1882,13 +1888,6 @@
     <Compile Include="userManage.aspx.designer.cs">
       <DependentUpon>userManage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="User\testlte.aspx.cs">
-      <DependentUpon>testlte.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="User\testlte.aspx.designer.cs">
-      <DependentUpon>testlte.aspx</DependentUpon>
-    </Compile>
     <Compile Include="User\user_addDiesel.aspx.cs">
       <DependentUpon>user_addDiesel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1910,6 +1909,27 @@
     <Compile Include="User\user_addGasoline.aspx.designer.cs">
       <DependentUpon>user_addGasoline.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User\user_addLPG.aspx.cs">
+      <DependentUpon>user_addLPG.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addLPG.aspx.designer.cs">
+      <DependentUpon>user_addLPG.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_addOccupancy.aspx.cs">
+      <DependentUpon>user_addOccupancy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addOccupancy.aspx.designer.cs">
+      <DependentUpon>user_addOccupancy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_addWater.aspx.cs">
+      <DependentUpon>user_addWater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addWater.aspx.designer.cs">
+      <DependentUpon>user_addWater.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User\user_dashboard.aspx.cs">
       <DependentUpon>user_dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1923,6 +1943,13 @@
     </Compile>
     <Compile Include="User\user_dataSummary.aspx.designer.cs">
       <DependentUpon>user_dataSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_library.aspx.cs">
+      <DependentUpon>user_library.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_library.aspx.designer.cs">
+      <DependentUpon>user_library.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\user_master.Master.cs">
       <DependentUpon>user_master.Master</DependentUpon>
