@@ -190,6 +190,7 @@ D:\github\TestAmmy\TestAmmy\bin\TestAmmy.dll.config
 D:\github\TestAmmy\TestAmmy\bin\TestAmmy.dll
 D:\github\TestAmmy\TestAmmy\bin\TestAmmy.pdb
 D:\github\TestAmmy\TestAmmy\bin\API.dll
+D:\github\TestAmmy\TestAmmy\bin\aspsnippets.facebookapi.dll
 D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.Agent.Intercept.dll
 D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.DependencyCollector.dll
 D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.PerfCounterCollector.dll

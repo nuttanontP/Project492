@@ -133,10 +133,8 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="scirpt" runat="server">
-  <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-async defer></script>
-
-<script type="text/javascript">
+  <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
+    <script type="text/javascript">
 var onloadCallback = function () {
     grecaptcha.render('dvCaptcha', {
         'sitekey': '<%=ReCaptcha_Key %>',
@@ -164,4 +162,5 @@ var onloadCallback = function () {
     });
 };
 </script>
+
 </asp:Content>

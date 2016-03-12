@@ -8,6 +8,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="content_title" runat="server">
     DASHBOARD
 </asp:Content>
+<asp:Content ID="Content7" ContentPlaceHolderID="breadcrumb" runat="server">
+     <li class="active">Dashboard</li>
+</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="main_content" runat="server">
@@ -275,9 +278,9 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body no-padding">
-                        <ul class="users-list clearfix">
-
-                            <li>
+                        <ul id="user_create" class="users-list clearfix">
+                            <li id="create0"></li>
+<%--                            <li>
                                 <img src="../assets/img/person6.png" alt="User Image" />
                                 <a class="users-list-name" href="#">Jane</a>
                                 <span class="users-list-date">12 Jan</span>
@@ -306,7 +309,7 @@
                                 <img src="../assets/img/person1.png" alt="User Image" />
                                 <a class="users-list-name" href="#">Nadia</a>
                                 <span class="users-list-date">15 Jan</span>
-                            </li>
+                            </li>--%>
                         </ul>
                         <!-- /.users-list -->
                     </div>
@@ -372,7 +375,11 @@
 
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="for_script" runat="server">
+    <script src="../jstogether/user.js"></script>
     <script>
-
+        $(document).ready(function (){
+            var data_pro = <%=Session["codecompany"].ToString()%>;
+            getuser(data_pro);
+        });
     </script>
 </asp:Content>

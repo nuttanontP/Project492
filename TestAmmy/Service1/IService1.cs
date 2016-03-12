@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Services;
 
 namespace Service1
 {
@@ -29,8 +30,9 @@ namespace Service1
         /// </summary>
         /// <returns>json list user</returns>
         [OperationContract]
-        [WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}/{temp}", ResponseFormat = WebMessageFormat.Json)]
-        string getuser(string id, string temp);
+        //[WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}/{temp}", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string getuser(string email);
 
         /// <summary>
         /// get all company by admin of company
@@ -146,6 +148,25 @@ namespace Service1
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string AddDiesel(string[] data_pro);
 
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string Addgasoline(string[] data_pro);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string AddLPG(string[] data_pro);
+
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string AddWater(string[] data_pro);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+            string AddOccupancy(string[] data_pro);
         /// <summary>
         /// 
         /// </summary>
@@ -181,12 +202,18 @@ namespace Service1
         string selectdiesel2(string[] data_pro);
 
 
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string getuserbycompany(string company);
+
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string getcompanydetial(string[] data_pro);
 
-
-
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string VerifyCaptcha(string response);
 
 
     }

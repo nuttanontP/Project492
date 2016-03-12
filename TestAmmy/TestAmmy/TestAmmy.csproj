@@ -47,6 +47,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="aspsnippets.facebookapi">
+      <HintPath>C:\Users\nont\Downloads\FaceBookLogin\Bin\aspsnippets.facebookapi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -103,7 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addBuilding.aspx" />
-    <Content Include="addData.aspx" />
     <Content Include="addDiesel.aspx" />
     <Content Include="addGasoline.aspx" />
     <Content Include="addLPG.aspx" />
@@ -111,6 +113,22 @@
     <Content Include="addElectric.aspx" />
     <Content Include="addWater.aspx" />
     <Content Include="adminDashBoard.aspx" />
+    <Content Include="Admin\admin_addDiesel.aspx" />
+    <Content Include="Admin\admin_addElectric.aspx" />
+    <Content Include="Admin\admin_addGasoline.aspx" />
+    <Content Include="Admin\admin_addLPG.aspx" />
+    <Content Include="Admin\admin_addOccupancy.aspx" />
+    <Content Include="Admin\admin_addWater.aspx" />
+    <Content Include="Admin\admin_building.aspx" />
+    <Content Include="Admin\admin_dashboard.aspx" />
+    <Content Include="Admin\admin_permission.aspx" />
+    <Content Include="Admin\javascripts\add_diesel.js" />
+    <Content Include="Admin\javascripts\add_electric.js" />
+    <Content Include="Admin\javascripts\add_gasoline.js" />
+    <Content Include="Admin\javascripts\add_lpg.js" />
+    <Content Include="Admin\javascripts\add_occupancy.js" />
+    <Content Include="Admin\javascripts\add_water.js" />
+    <Content Include="Admin\javascripts\datasum.js" />
     <Content Include="assets\adminLTE\bootstrap\css\bootstrap.css" />
     <Content Include="assets\adminLTE\bootstrap\css\bootstrap.min.css" />
     <Content Include="assets\adminLTE\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -1522,6 +1540,7 @@
     <Content Include="jsnont\jquery.dataTables.min.css" />
     <Content Include="jsnont\jquery.dataTables.min.js" />
     <Content Include="jsnont\jquery.js" />
+    <Content Include="jstogether\user.js" />
     <Content Include="loginRegister.aspx" />
     <Content Include="managebuilding.aspx" />
     <Content Include="packages.config" />
@@ -1708,23 +1727,30 @@
     <Content Include="assets\adminLTE\plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="assets\adminLTE\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="assets\adminLTE\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Admin\admin_master.Master" />
     <None Include="Properties\PublishProfiles\ammy - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="testFBAPI\WebForm1.aspx" />
     <Content Include="User\javascripts\add_diesel.js" />
     <Content Include="User\javascripts\add_gasoline.js" />
     <Content Include="User\javascripts\add_lpg.js" />
     <Content Include="User\javascripts\add_occupancy.js" />
     <Content Include="User\javascripts\add_water.js" />
     <Content Include="User\javascripts\datasum.js" />
+    <Content Include="User\user_upload.aspx" />
+    <Content Include="View\login.aspx" />
+    <Content Include="View\register.aspx" />
+    <Content Include="User\testdesign.aspx" />
     <Content Include="User\user_addDiesel.aspx" />
     <Content Include="User\user_addGasoline.aspx" />
     <Content Include="User\user_addLPG.aspx" />
     <Content Include="User\user_addOccupancy.aspx" />
     <Content Include="User\user_addWater.aspx" />
     <Content Include="User\user_dataSummary.aspx" />
+    <Content Include="User\user_detail.aspx" />
     <Content Include="User\user_library.aspx" />
     <Content Include="User\user_master.Master" />
     <None Include="Web.Debug.config">
@@ -1735,7 +1761,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="firstPage.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="userManage.aspx" />
@@ -1755,13 +1780,6 @@
     </Compile>
     <Compile Include="addBuilding.aspx.designer.cs">
       <DependentUpon>addBuilding.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="addData.aspx.cs">
-      <DependentUpon>addData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="addData.aspx.designer.cs">
-      <DependentUpon>addData.aspx</DependentUpon>
     </Compile>
     <Compile Include="addDiesel.aspx.cs">
       <DependentUpon>addDiesel.aspx</DependentUpon>
@@ -1819,12 +1837,75 @@
     <Compile Include="adminMaster.Master.designer.cs">
       <DependentUpon>adminMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="firstPage.aspx.cs">
-      <DependentUpon>firstPage.aspx</DependentUpon>
+    <Compile Include="Admin\admin_addDiesel.aspx.cs">
+      <DependentUpon>admin_addDiesel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="firstPage.aspx.designer.cs">
-      <DependentUpon>firstPage.aspx</DependentUpon>
+    <Compile Include="Admin\admin_addDiesel.aspx.designer.cs">
+      <DependentUpon>admin_addDiesel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_addElectric.aspx.cs">
+      <DependentUpon>admin_addElectric.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_addElectric.aspx.designer.cs">
+      <DependentUpon>admin_addElectric.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_addGasoline.aspx.cs">
+      <DependentUpon>admin_addGasoline.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_addGasoline.aspx.designer.cs">
+      <DependentUpon>admin_addGasoline.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_addLPG.aspx.cs">
+      <DependentUpon>admin_addLPG.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_addLPG.aspx.designer.cs">
+      <DependentUpon>admin_addLPG.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_addOccupancy.aspx.cs">
+      <DependentUpon>admin_addOccupancy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_addOccupancy.aspx.designer.cs">
+      <DependentUpon>admin_addOccupancy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_addWater.aspx.cs">
+      <DependentUpon>admin_addWater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_addWater.aspx.designer.cs">
+      <DependentUpon>admin_addWater.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_building.aspx.cs">
+      <DependentUpon>admin_building.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_building.aspx.designer.cs">
+      <DependentUpon>admin_building.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_dashboard.aspx.cs">
+      <DependentUpon>admin_dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_dashboard.aspx.designer.cs">
+      <DependentUpon>admin_dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_master.Master.cs">
+      <DependentUpon>admin_master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_master.Master.designer.cs">
+      <DependentUpon>admin_master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_permission.aspx.cs">
+      <DependentUpon>admin_permission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_permission.aspx.designer.cs">
+      <DependentUpon>admin_permission.aspx</DependentUpon>
     </Compile>
     <Compile Include="forTest.aspx.cs">
       <DependentUpon>forTest.aspx</DependentUpon>
@@ -1881,12 +1962,47 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="testFBAPI\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testFBAPI\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="userManage.aspx.cs">
       <DependentUpon>userManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="userManage.aspx.designer.cs">
       <DependentUpon>userManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_upload.aspx.cs">
+      <DependentUpon>user_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_upload.aspx.designer.cs">
+      <DependentUpon>user_upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\testdesign.aspx.cs">
+      <DependentUpon>testdesign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\testdesign.aspx.designer.cs">
+      <DependentUpon>testdesign.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\user_addDiesel.aspx.cs">
       <DependentUpon>user_addDiesel.aspx</DependentUpon>
@@ -1944,6 +2060,13 @@
     <Compile Include="User\user_dataSummary.aspx.designer.cs">
       <DependentUpon>user_dataSummary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User\user_detail.aspx.cs">
+      <DependentUpon>user_detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_detail.aspx.designer.cs">
+      <DependentUpon>user_detail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User\user_library.aspx.cs">
       <DependentUpon>user_library.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1976,8 +2099,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\pickadate.js-3.5.6\" />
-    <Folder Include="View\Admin\" />
-    <Folder Include="View\User\" />
+    <Folder Include="FRONT\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\API\API\API.csproj">

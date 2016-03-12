@@ -19,7 +19,7 @@ namespace TestAmmy.User
             {
                 if ((string)Session["email"] == null)
                 {
-                    Response.Redirect("loginRegister.aspx");
+                    Response.Redirect("../View/login.aspx");
                 }
                 string[] data_pro = { Session["email"].ToString(), "1" };
                 string result = apiconnecter.PostData("ddlpermission", data_pro);

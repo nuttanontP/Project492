@@ -115,6 +115,7 @@ namespace TestAmmy
 
         protected void permissionview_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            //del permission
             List<string> data_del = new List<string>();
             int rowIndex = Convert.ToInt32(e.RowIndex);
             data_del.Add(permissionview.DataKeys[rowIndex].Values[0].ToString());

@@ -34,6 +34,6 @@ D:\github\TestAmmy\MODEL\bin\Debug\MODEL.dll
 D:\github\TestAmmy\MODEL\bin\Debug\MODEL.pdb
 D:\github\TestAmmy\MODEL\bin\Debug\EntityFramework.dll
 D:\github\TestAmmy\MODEL\bin\Debug\EntityFramework.xml
-D:\github\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
 D:\github\TestAmmy\MODEL\obj\Debug\MODEL.dll
 D:\github\TestAmmy\MODEL\obj\Debug\MODEL.pdb
+D:\github\TestAmmy\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache

@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Data;
 using Newtonsoft.Json;
 using System.Collections;
+using System.Net;
 
 namespace Service1
 {
@@ -27,6 +28,8 @@ namespace Service1
         private static string database = ConfigurationManager.AppSettings["database"];
         private static string username = ConfigurationManager.AppSettings["username"];
         private static string password = ConfigurationManager.AppSettings["password"];
+        private static string ReCaptcha_Key = ConfigurationManager.AppSettings["ReCaptcha_Key"];
+        private static string ReCaptcha_Secret = ConfigurationManager.AppSettings["ReCaptcha_Secret"];
         private static string connectionString = "Server=" + server + "; PORT = 3306 " + "; Database=" + database + "; Uid=" + username + "; Pwd=" + password + "; Charset=utf8;";
 
         /// <summary>
@@ -70,37 +73,27 @@ namespace Service1
         /// get all user 
         /// </summary>
         /// <returns>json list user</returns>
-        public string getuser(string id, string temp)
+        public string getuser(string email)
         {
 
-            string json = "";
+            string json = "no";
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
             MySqlDataAdapter adap;
-            MySqlDataReader rdr;
             DataTable dt = new DataTable();
-            DataTable dt2 = new DataTable();
-            ArrayList dataArray = new ArrayList();
             string CommandText;
             try
             {
                 conn.Open();
-                CommandText = "SELECT * FROM user";
+                CommandText = "SELECT * FROM user where email = @email";
                 cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@email", email);
                 adap = new MySqlDataAdapter(cmd);
                 adap.Fill(dt);
                 if (dt.Rows.Count > 0)
+                {
                     json = JsonConvert.SerializeObject(dt);
-                else
-                    json = "no";
-                //MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                //if (dataReader.HasRows)
-                //{
-                //    //DataTable dt = new DataTable();
-                //    dt.Load(dataReader);
-                //   // json = JsonConvert.SerializeObject(dt);
-                //}
+                }
             }
             catch
             {
@@ -109,7 +102,34 @@ namespace Service1
             conn.Close();
             return json;
         }
-
+        public string getuserbycompany(string company)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT * FROM user where company_companycode = @company";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@company", company);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    json = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
         public string getcompanydetial(string[] data_pro)
         {
             string json = "no";
@@ -561,7 +581,7 @@ namespace Service1
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 //throw;
@@ -594,6 +614,134 @@ namespace Service1
                     cmd.Parameters.AddWithValue("@vehicle", data_pro[i + 3]);
                     cmd.Parameters.AddWithValue("@otherpurpose", data_pro[i + 4]);
                     cmd.Parameters.AddWithValue("@runtime", data_pro[i + 5]);
+                    cmd.ExecuteNonQuery();
+                }
+                json = "yes";
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string Addgasoline(string[] data_pro)
+        {
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            string json = "no";
+            try
+            {
+                conn.Open();
+                for (int i = 4; i < data_pro.Count(); i += 3)
+                {
+                    CommandText = "INSERT INTO gasoline (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,consumed) VALUES (@userid,@building,@code,@energy,@date,@purchased,@consumed)";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                    cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                    cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                    cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+
+                    cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                    cmd.Parameters.AddWithValue("@purchased", data_pro[i + 1]);
+                    cmd.Parameters.AddWithValue("@consumed", data_pro[i + 2]);
+                    cmd.ExecuteNonQuery();
+                }
+                json = "yes";
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string AddLPG(string[] data_pro)
+        {
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            string json = "no";
+            try
+            {
+                conn.Open();
+                for (int i = 4; i < data_pro.Count(); i += 3)
+                {
+                    CommandText = "INSERT INTO lpg (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,consumed) VALUES (@userid,@building,@code,@energy,@date,@purchased,@consumed)";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                    cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                    cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                    cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                    cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                    cmd.Parameters.AddWithValue("@purchased", data_pro[i + 1]);
+                    cmd.Parameters.AddWithValue("@consumed", data_pro[i + 2]);
+                    cmd.ExecuteNonQuery();
+                }
+                json = "yes";
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string AddWater(string[] data_pro)
+        {
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            string json = "no";
+            try
+            {
+
+                conn.Open();
+                    for (int i = 5; i < data_pro.Count(); i += 2)
+                    {
+                        CommandText = "INSERT INTO water (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,current) VALUES (@userid,@building,@code,@energy,@type,@date,@meter)";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                        cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                        cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                        cmd.Parameters.AddWithValue("@type", data_pro[4]);
+                        cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                        cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
+                        cmd.ExecuteNonQuery();
+                    }
+                    json = "yes";
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string AddOccupancy(string[] data_pro)
+        {
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            string json = "no";
+            try
+            {
+                conn.Open();
+                for (int i = 4; i < data_pro.Count(); i += 4)
+                {
+                    CommandText = "INSERT INTO occupancy (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,Available,Occupied,Number_Guests) VALUES (@userid,@building,@code,@energy,@date,@av_room,@oc_room,@number)";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                    cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                    cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                    cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                    cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                    cmd.Parameters.AddWithValue("@av_room", data_pro[i + 1]);
+                    cmd.Parameters.AddWithValue("@oc_room", data_pro[i + 2]);
+                    cmd.Parameters.AddWithValue("@number", data_pro[i + 3]);
                     cmd.ExecuteNonQuery();
                 }
                 json = "yes";
@@ -727,6 +875,11 @@ namespace Service1
                 sb.Append(hash[i].ToString("X2"));
             }
             return sb.ToString();
+        }
+        public  string VerifyCaptcha(string response)
+        {
+            string url = "https://www.google.com/recaptcha/api/siteverify?secret=" + ReCaptcha_Secret + "&response=" + response;
+            return (new WebClient()).DownloadString(url);
         }
 
 

@@ -7,72 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestAmmy {
+namespace TestAmmy.Admin {
     
     
-    public partial class addData {
+    public partial class admin_permission {
         
         /// <summary>
-        /// txtmeter1 control.
+        /// ddl_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmeter1;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_name;
         
         /// <summary>
-        /// txtmeter2 control.
+        /// ddl_building control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmeter2;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_building;
         
         /// <summary>
-        /// txtmeter3 control.
+        /// YrChkBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmeter3;
+        protected global::System.Web.UI.WebControls.CheckBoxList YrChkBox;
         
         /// <summary>
-        /// txtmeter4 control.
+        /// btn_ok control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmeter4;
+        protected global::System.Web.UI.WebControls.Button btn_ok;
         
         /// <summary>
-        /// txtmeter5 control.
+        /// permissionview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmeter5;
-        
-        /// <summary>
-        /// txtmeter6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmeter6;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.GridView permissionview;
     }
 }
