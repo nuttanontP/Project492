@@ -33,5 +33,12 @@ namespace TestAmmy.User
             }
 
         }
+        protected void singout_Click(object sender, EventArgs e)
+        {
+            Session.Remove("email");
+            Session.Remove("status");
+            Session.Remove("codecompany");
+            Response.Redirect("../View/login.aspx");
+        }
     }
 }

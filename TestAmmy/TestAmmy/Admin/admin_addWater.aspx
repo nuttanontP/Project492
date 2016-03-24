@@ -17,7 +17,7 @@
     <div class="row">
         <div id="datePopup"></div>
         <div class="col-md-12">
-            <div class="box">
+            <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title"></h3>
                     <div class="box-tools pull-right">
@@ -46,7 +46,9 @@
                         <br />
                         <div class="row">
                             <div class="col-sm-10 col-sm-offset-1">
-                                <ul class="nav nav-tabs" id="myTab">
+                                <div class="nav-tabs-custom ">
+                                <ul class="nav nav-tabs " id="myTab">
+
                                     <li class="active"><a href="#profile" data-toggle="tab"><strong>Supply Water system</strong></a></li>
                                     <li><a href="#tab2" data-toggle="tab"><strong>Ground Water system</strong></a></li>
                                     <li><a href="#tab3" data-toggle="tab"><strong>Ground/Supply Water system</strong></a></li>
@@ -163,7 +165,7 @@
                 </div>
             </div>
         </div>
-
+        </div>
     </div>
 
 </asp:Content>

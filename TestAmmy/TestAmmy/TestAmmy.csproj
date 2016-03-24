@@ -121,6 +121,7 @@
     <Content Include="Admin\admin_addWater.aspx" />
     <Content Include="Admin\admin_building.aspx" />
     <Content Include="Admin\admin_dashboard.aspx" />
+    <Content Include="Admin\admin_graph.aspx" />
     <Content Include="Admin\admin_permission.aspx" />
     <Content Include="Admin\javascripts\add_diesel.js" />
     <Content Include="Admin\javascripts\add_electric.js" />
@@ -1735,15 +1736,22 @@
     </None>
     <Content Include="testFBAPI\WebForm1.aspx" />
     <Content Include="User\javascripts\add_diesel.js" />
+    <Content Include="User\javascripts\add_electric.js" />
     <Content Include="User\javascripts\add_gasoline.js" />
     <Content Include="User\javascripts\add_lpg.js" />
     <Content Include="User\javascripts\add_occupancy.js" />
     <Content Include="User\javascripts\add_water.js" />
     <Content Include="User\javascripts\datasum.js" />
+    <Content Include="User\user_addWater2.aspx" />
+    <Content Include="User\user_addOccupancy2.aspx" />
+    <Content Include="User\user_addLPG2.aspx" />
+    <Content Include="User\user_addGasoline2.aspx" />
+    <Content Include="User\user_addElectric2.aspx" />
+    <Content Include="User\user_addDiesel2.aspx" />
+    <Content Include="User\test.aspx" />
     <Content Include="User\user_upload.aspx" />
     <Content Include="View\login.aspx" />
     <Content Include="View\register.aspx" />
-    <Content Include="User\testdesign.aspx" />
     <Content Include="User\user_addDiesel.aspx" />
     <Content Include="User\user_addGasoline.aspx" />
     <Content Include="User\user_addLPG.aspx" />
@@ -1764,7 +1772,6 @@
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="userManage.aspx" />
-    <Content Include="User\javascripts\add_electric.js" />
     <Content Include="User\user_addElectric.aspx" />
     <Content Include="User\user_dashboard.aspx" />
     <Content Include="viewFiles.aspx" />
@@ -1893,6 +1900,13 @@
     <Compile Include="Admin\admin_dashboard.aspx.designer.cs">
       <DependentUpon>admin_dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\admin_graph.aspx.cs">
+      <DependentUpon>admin_graph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_graph.aspx.designer.cs">
+      <DependentUpon>admin_graph.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\admin_master.Master.cs">
       <DependentUpon>admin_master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1976,6 +1990,55 @@
     <Compile Include="userManage.aspx.designer.cs">
       <DependentUpon>userManage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User\user_addWater2.aspx.cs">
+      <DependentUpon>user_addWater2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addWater2.aspx.designer.cs">
+      <DependentUpon>user_addWater2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_addOccupancy2.aspx.cs">
+      <DependentUpon>user_addOccupancy2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addOccupancy2.aspx.designer.cs">
+      <DependentUpon>user_addOccupancy2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_addLPG2.aspx.cs">
+      <DependentUpon>user_addLPG2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addLPG2.aspx.designer.cs">
+      <DependentUpon>user_addLPG2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_addGasoline2.aspx.cs">
+      <DependentUpon>user_addGasoline2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addGasoline2.aspx.designer.cs">
+      <DependentUpon>user_addGasoline2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_addElectric2.aspx.cs">
+      <DependentUpon>user_addElectric2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addElectric2.aspx.designer.cs">
+      <DependentUpon>user_addElectric2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\user_addDiesel2.aspx.cs">
+      <DependentUpon>user_addDiesel2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\user_addDiesel2.aspx.designer.cs">
+      <DependentUpon>user_addDiesel2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User\user_upload.aspx.cs">
       <DependentUpon>user_upload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1996,13 +2059,6 @@
     </Compile>
     <Compile Include="View\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="User\testdesign.aspx.cs">
-      <DependentUpon>testdesign.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="User\testdesign.aspx.designer.cs">
-      <DependentUpon>testdesign.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\user_addDiesel.aspx.cs">
       <DependentUpon>user_addDiesel.aspx</DependentUpon>

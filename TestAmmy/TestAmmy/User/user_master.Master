@@ -115,7 +115,7 @@
                                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <asp:Button ID="singout" class="btn btn-default btn-flat" runat="server" Text="Sign out" OnClick="singout_Click" />
                                         </div>
                                     </li>
                                 </ul>
@@ -154,12 +154,12 @@
                         <li class="treeview">
                             <a href="#"><i class="fa fa-plus-square-o"></i><span>ENERGY DATA</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
-                                <li><a href="user_addElectric.aspx">ELECTRICITY</a></li>
-                                <li><a href="user_addDiesel.aspx">DIESEL</a></li>
-                                <li><a href="user_addGasoline.aspx">GASOLINE</a></li>
-                                <li><a href="user_addLPG.aspx">LPG</a></li>
-                                <li><a href="user_addWater.aspx">WATER CONSUMPTION</a></li>
-                                <li><a href="user_addOccupancy.aspx">OCCUPANCY</a></li>
+                                <li><a href="user_addElectric2.aspx">ELECTRICITY</a></li>
+                                <li><a href="user_addDiesel2.aspx">DIESEL</a></li>
+                                <li><a href="user_addGasoline2.aspx">GASOLINE</a></li>
+                                <li><a href="user_addLPG2.aspx">LPG</a></li>
+                                <li><a href="user_addWater2.aspx">WATER CONSUMPTION</a></li>
+                                <li><a href="user_addOccupancy2.aspx">OCCUPANCY</a></li>
                             </ul>
                         </li>
                         <li><a href="user_dataSummary.aspx"><i class="fa fa-bar-chart-o"></i><span>DATA SUMMARY</span></a></li>
@@ -257,30 +257,7 @@
                         <!-- /.control-sidebar-menu -->
 
                     </div>
-                    <!-- /.tab-pane -->
-
-                    <!-- Stats tab content -->
-                    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                    <!-- /.tab-pane -->
-
-                    <!-- Settings tab content -->
-                    <div class="tab-pane" id="control-sidebar-settings-tab">
-                        <form method="post">
-                            <h3 class="control-sidebar-heading">General Settings</h3>
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Report panel usage
-                 
-                                <input type="checkbox" class="pull-right" checked="checked" />
-                                </label>
-                                <p>
-                                    Some information about this general settings option
-               
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-                        </form>
-                    </div>
+                    
                     <!-- /.tab-pane -->
                 </div>
             </aside>

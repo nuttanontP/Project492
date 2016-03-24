@@ -250,13 +250,43 @@ namespace Service1
             conn.Close();
             return json;
         }
+
+        public string getenergy(string building_id)
+        {
+            string json = "";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT DISTINCT  energy_id,energy_name  FROM permissionview where building_buidlingid = @building_id";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@building_id", building_id);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = JsonConvert.SerializeObject("no");
+
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
         /// <summary>
         /// add user 
         /// </summary>
         /// <param name="user">{email,password,first_name,last_name,status,company_companycode}</param>
         public string Adduser(string[] user)
         {
-            var json = "no!";
+            var json = "no";
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
             string CommandText;
@@ -315,7 +345,7 @@ namespace Service1
             conn.Close();
             return companycode;
         }
-
+       
         public string Addbuilding(string[] building)
         {
             string status = "0";
@@ -340,7 +370,35 @@ namespace Service1
             conn.Close();
             return status;
         }
+        public string checkcomcode(string company)
+        {
+            string json = "";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT * FROM company where companycode = @companycode";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@companycode", company);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = "no";
 
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
         public string CheckPermission(string[] permission)
         {
             string json = "no";

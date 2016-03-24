@@ -21,7 +21,7 @@ $(document).ready(function () {
     functionOne();
     $("#add_rows").click(function () {
         $('#tab_logics').append('<tr id="addrs' + (j + 1) + '"></tr>');
-        $('#addrs' + j).html("<td><input type='text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='meter' type='text' placeholder='eg. 1024' class='form-control input-md'  /> </td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='dels(" + j + ")'></button></td>");
+        $('#addrs' + j).html("<td><input type='text' name='date0' placeholder='select date' class='form-control datepicker'/></td><td><input name='meter0' type='text' placeholder='eg. 1024' class='form-control input-md'  /> </td><td class='text-center'><button type='button' class='btn btn-success btn-xs glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning btn-xs glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-trash' onclick='dels(" + j + ")'></button></td>");
         j++;
         functionOne();
     });
@@ -39,7 +39,7 @@ $(document).ready(function () {
     functionOne();
     $("#add_row").click(function () {
         $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-        $('#addr' + i).html("<td><input type='text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='name[] ' type='text' placeholder='eg. 200' class='form-control input-md'  /> </td><td><input  name='eg. 250' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile' type='text' placeholder='eg. 350'  class='form-control input-md'></td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='del(" + i + ")'></button>");
+        $('#addr' + i).html("<td><input type='text' name='date1' placeholder='select date' class='form-control datepicker'/></td><td><input name='meter1' type='text' placeholder='eg. 1024' class='form-control input-md'  /> </td><td class='text-center'><button type='button' class='btn btn-success btn-xs glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning btn-xs glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-trash' onclick='dels(" + i + ")'></button></td>");
         i++;
         functionOne();
     });
@@ -60,7 +60,7 @@ $(document).ready(function () {
     functionOne();
     $("#add_row3").click(function () {
         $('#tab_logic3').append('<tr id="addrss' + (k + 1) + '"></tr>');
-        $('#addrss' + k).html("<td><input type 'text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='meter' type='text' placeholder='eg. 200' class='form-control input-md'  /> </td> <td><input type='text' name='mail' placeholder='eg. 250' class='form-control' /></td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='delss(" + k + ")'></button>");
+        $('#addrss' + k).html("<td><input type='text' name='date2' placeholder='select date' class='form-control datepicker'/></td><td><input name='meter2' type='text' placeholder='eg. 1024' class='form-control input-md'  /> </td><td class='text-center'><button type='button' class='btn btn-success btn-xs glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning btn-xs glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-trash' onclick='dels(" + k + ")'></button></td>");
         k++;
         functionOne();
     });

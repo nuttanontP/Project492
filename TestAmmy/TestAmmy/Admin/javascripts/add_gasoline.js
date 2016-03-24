@@ -17,6 +17,7 @@ $(document).ready(function () {
     });
     $("#delete_rows").click(function () {
         if (j > 1) {
+
             $("#addrs" + (j - 1)).html('');
             j--;
         }

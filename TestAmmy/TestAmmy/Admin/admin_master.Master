@@ -38,8 +38,9 @@
 
 <body class="hold-transition skin-green-light sidebar-mini">
    <form id="form2" runat="server">
+       <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
      <div class="wrapper">
-
+          
         <!-- Main Header -->
         <header class="main-header">
 
@@ -248,12 +249,7 @@
                     <!-- /.control-sidebar-menu -->
 
                 </div>
-                <!-- /.tab-pane -->
-
-                <!-- Stats tab content -->
-                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                <!-- /.tab-pane -->
-
+                
                 
             </div>
         </aside>

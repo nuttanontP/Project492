@@ -48,7 +48,7 @@
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" id="com_passs" runat="server" class="form-control" placeholder="Retype password" />
+                        <input type="password" id="password2" runat="server" class="form-control" placeholder="Retype password" />
                         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                     </div>
                     <%--<div class="form-group has-feedback">
@@ -59,18 +59,18 @@
                         <div class="form-inline   ">
 
                             <select class="form-control" id="category" runat="server">
-                                <option value="">Select</option>
+                                <option value=""></option>
                                 <option value="0">CODE</option>
                                 <option value="1">NAME</option>
                             </select>
                             <div class="form-group has-feedback">
-                                <input type="text" class="form-control" placeholder="Retype password" />
+                                <input type="text" id="com_passs" runat="server" class="form-control" placeholder="Retype password" />
                                 <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                             </div>
 
                         </div>
                     </div>
-
+                     <asp:Label ID="Labelvalidation" runat="server" Text=""></asp:Label>
                     <div class="row">
                         <div class="col-xs-8">
                             <div id="dvCaptcha"></div>
@@ -103,7 +103,7 @@
         </div>
     </form>
     
-    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
+   <%-- <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
     <script type="text/javascript">
         var onloadCallback = function () {
             grecaptcha.render('dvCaptcha', {
@@ -132,7 +132,7 @@
                 }
             });
         };
-    </script>
+    </script>--%>
     <!-- jQuery 2.1.4 -->
     <script src="../assets/adminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->

@@ -114,7 +114,7 @@ $('#main_content_ddl_month').change(function () {
             else {
                 result = JSON.parse(data);
                 recall(result);
-            }
+            };
 
         }
     });

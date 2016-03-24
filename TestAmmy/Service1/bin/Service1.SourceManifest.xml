@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\Service1\obj\Release\Package\PackageTmp" />
-  <setAcl path="C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\Service1\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\Service1\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <IisApp path="D:\github\TestAmmy\Service1\obj\Release\Package\PackageTmp" />
+  <setAcl path="D:\github\TestAmmy\Service1\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="D:\github\TestAmmy\Service1\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
 </sitemanifest>

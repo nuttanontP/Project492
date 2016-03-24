@@ -20,7 +20,7 @@
             <%------------%>
             <div id="datePopup"></div>
 
-            <div class="box">
+            <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title"></h3>
                     <div class="box-tools pull-right">
@@ -49,7 +49,7 @@
                         <br />
                         <div class="row">
                             <div class="col-sm-10 col-sm-offset-1">
-                                <div class="nav-tabs-custom">
+                                <div class="nav-tabs-custom ">
                                     <%--<div class="col-sm-8 ">--%>
                                     <ul class="nav nav-tabs" id="myTab">
                                         <li class="active"><a href="#profile" data-toggle="tab"><strong>For Non Designated Building</strong></a></li>

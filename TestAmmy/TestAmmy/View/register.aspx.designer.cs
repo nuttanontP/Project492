@@ -58,13 +58,13 @@ namespace TestAmmy.View {
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
         
         /// <summary>
-        /// com_passs control.
+        /// password2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword com_passs;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password2;
         
         /// <summary>
         /// category control.
@@ -74,6 +74,24 @@ namespace TestAmmy.View {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect category;
+        
+        /// <summary>
+        /// com_passs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText com_passs;
+        
+        /// <summary>
+        /// Labelvalidation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Labelvalidation;
         
         /// <summary>
         /// BTNRegister control.

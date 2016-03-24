@@ -11,7 +11,7 @@ namespace TestAmmy.User
 {
 
 
-    public partial class testdesign
+    public partial class test
     {
     }
 }

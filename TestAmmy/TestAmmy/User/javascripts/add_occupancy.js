@@ -12,7 +12,7 @@ $(document).ready(function () {
     functionOne();
     $("#add_rows").click(function () {
         $('#tab_logics').append('<tr id="addrs' + (j + 1) + '"></tr>');
-        $('#addrs' + j).html("<td><input type 'text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='av_room' type='text' placeholder='eg. 123' class='form-control input-md'  /> </td><td><input name='oc_room' type='text' placeholder='eg. 123' class='form-control input-md' /></td><td><input name='number' type='text' placeholder='eg. 123' class='form-control input-md'  /> </td><td class='text-center'><button type='button' class='btn btn-success glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger glyphicon glyphicon-trash' onclick='dels(" + j + ")'></button></td>");
+        $('#addrs' + j).html("<td><input type 'text' name='date' placeholder='select date' class='form-control datepicker'/></td><td><input name='av_room' type='text' placeholder='eg. 123' class='form-control input-md'  /> </td><td><input name='oc_room' type='text' placeholder='eg. 123' class='form-control input-md' /></td><td><input name='number' type='text' placeholder='eg. 123' class='form-control input-md'  /> </td><td class='text-center'><button type='button' class='btn btn-success btn-xs glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning btn-xs glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-trash' onclick='dels(" + j + ")'></button></td>");
         j++;
         functionOne();
     });
