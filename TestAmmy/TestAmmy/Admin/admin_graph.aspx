@@ -61,7 +61,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="reservation" />
+                                <input type="text" id="reservation" class="form-control pull-right" />
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -69,38 +69,17 @@
                     </div>
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
-                        <%--    <input type="button"--%>
-                             <button type="button" class="btn btn-block btn-success" onclick='dosomething()' >Success</button>
+                            <%--    <input type="button"--%>
+                            <button type="button" class="btn btn-block btn-success" onclick='dosomething()'>Success</button>
                         </div>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="box box-danger">
-                <div class="box-header  with-border">
-                    <h3 class="box-title">box1.</h3>
 
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                           <div id="container" style="min-width:100%; height: 400px;"></div>
-                        </div>
-                       
-                        
-                          
                     </div>
                 </div>
             </div>
         </div>
+
         <div id="space"></div>
-         
+
     </div>
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
@@ -151,7 +130,7 @@
                     //$("#state-list").html(data);
                     //console.log(data);
                     var data2 = JSON.parse(data);
-                    console.log(data2);
+                    //console.log(data2);
                     document.getElementById("energy").innerHTML = "";
                     var options = "<option value='0'>-SELECT-</option>";
                     for(var i in data2){
@@ -171,85 +150,91 @@
             });
         }
         function getState2(val){
-            console.log('getState2= ',val);
+            //console.log(val);
         }
+
        
     </script>
     <script>
-        var i = 0;
-        $(function () {
-           
-            
-        });
+        var i2 = 0;
         function dosomething(){
-            $('#space').append(' <div id=appendcol'+i+' class="col-md-12"></div>');
-            $('#appendcol'+i).html(' <div class="box box-danger"><div class="box-header  with-border"><h3 class="box-title">box1.</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="row"><div class="col-md-10 col-md-offset-1"><div id="container'+i+'" style="min-width:100%; height: 400px;"></div></div></div></div> </div>');
-            $('#container'+i).highcharts({
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: 'Monthly Average Rainfall'
-                },
-                subtitle: {
-                    text: 'Source: WorldClimate.com'
-                },
-                xAxis: {
-                    categories: [
-                        'Jan',
-                        'Feb',
-                        'Mar',
-                        'Apr',
-                        'May',
-                        'Jun',
-                        'Jul',
-                        'Aug',
-                        'Sep',
-                        'Oct',
-                        'Nov',
-                        'Dec'
-                    ],
-                    crosshair: true
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Rainfall (mm)'
+            var buidling = document.getElementById('buidling').value;
+            var energy = document.getElementById('energy');
+            var selectedText = energy.options[energy.selectedIndex].text;
+            var reservation = document.getElementById('reservation').value;
+            var temp = reservation.split(/[- ]+ /);
+            var data_pro = [buidling,selectedText];
+            data_pro =  data_pro.concat(temp);
+            console.log(data_pro);
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(data_pro),
+                url: "http://localhost:1291/Service1/getdatagraph",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function(data){
+                    var data2 = JSON.parse(data);
+                    console.log(data2);
+                    console.log(Date.UTC(2012, 2, 6, 10));
+                    for(var i in data2){
+                        //console.log(data2[i]["data"]);
+                        for(var j in data2[i]["data"] ){
+                            //console.log(data2[i]["data"][j][0]);
+                            data2[i]["data"][j][0] = new Date(data2[i]["data"][j][0]).getTime();
+                            //console.log(data2[i]["data"][j][0]);
+                        }
                     }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                },
-                series: [{
-                    name: 'Tokyo',
-                    data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-                }, {
-                    name: 'New York',
-                    data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-                }, {
-                    name: 'London',
-                    data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-                }, {
-                    name: 'Berlin',
-                    data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
-                }]
+                    $('#space').append('<div id=appendcol'+i2+' class="col-md-12"></div>');
+                    $('#appendcol'+i2).html(' <div class="box box-danger"><div class="box-header  with-border"><h3 class="box-title">box1.</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="row"><div class="col-md-10 col-md-offset-1"><div id="container'+i2+'" style="min-width:100%; height: 400px;"></div></div></div></div> </div>');
+                    $('#container'+i2).highcharts({
+                        chart: {
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Monthly Average Rainfall'
+                        },
+                        subtitle: {
+                            text: 'Source: WorldClimate.com'
+                        },
+                        xAxis: {
+                            type:'datetime',
+                            
+                            crosshair: true,
+                            dateTimeLabelFormats: { // don't display the dummy year
+                                month: '%e. %b',
+                                year: '%b'
+                            },
+                            
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Rainfall (mm)'
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                            footerFormat: '</table>',
+                            shared: true,
+                            useHTML: true
+                        },
+                        plotOptions: {
+                            column: {
+                                pointPadding: 0.2,
+                                borderWidth: 0
+                            }
+                        },
+                        series:data2
+                    });
+                    i2++;
+                    console.log(i2);
+                    
+                }
+              
             });
-            i++;
+           
         };
     </script>
 </asp:Content>

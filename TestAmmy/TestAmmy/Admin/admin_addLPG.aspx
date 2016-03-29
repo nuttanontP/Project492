@@ -93,7 +93,7 @@
                                                 </table>
                                                 <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
 
-                                                <asp:Button ID="Button1" runat="server" Text="Save AllData" class="btn btn-info center-block" OnClick="Button1_Click" />
+                                                <asp:Button ID="Button1" runat="server" Text="Add Data" class="btn btn-success center-block" OnClick="Button1_Click" />
 
                                             </div>
                                             <%--end tab1--%>

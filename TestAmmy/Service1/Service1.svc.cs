@@ -345,7 +345,7 @@ namespace Service1
             conn.Close();
             return companycode;
         }
-       
+
         public string Addbuilding(string[] building)
         {
             string status = "0";
@@ -487,6 +487,100 @@ namespace Service1
             }
             catch
             {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
+
+
+        public string getdatagraph(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText = "";
+            try
+            {
+                conn.Open();
+                string energy_id = data_pro[1].ToLower();
+                if (energy_id == "electrical")
+                {
+                    CommandText = "SELECT * FROM electrical ";
+                }
+                else if (energy_id == "diesel")
+                {
+                    CommandText = "SELECT * FROM diesel ";
+                }
+                else if (energy_id == "gasoline")
+                {
+                    CommandText = "SELECT * FROM gasoline ";
+                }
+                else if (energy_id == "lpg")
+                {
+                    CommandText = "SELECT * FROM lpg ";
+                }
+                else if (energy_id == "occupancy")
+                {
+                    CommandText = "SELECT date,Available,Occupied,Number_Guests FROM occupancy ";
+                }
+                else if (energy_id == "water")
+                {
+                    CommandText = "SELECT * FROM water ";
+                }
+                CommandText += " where permission_building_buidlingid =@building_id and date between STR_TO_DATE(@start,'%m/%d/%Y') and STR_TO_DATE(@end,'%m/%d/%Y') ORDER BY date";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@building_id", data_pro[0]);
+                cmd.Parameters.AddWithValue("@start", data_pro[2]);
+                cmd.Parameters.AddWithValue("@end", data_pro[3]);
+
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    List<object> list = new List<object>();
+                    //big list
+                    Dictionary<string, object> categories = new Dictionary<string, object>();
+                    categories["categories"] = new List<DateTime>();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        ((List<DateTime>)categories["categories"]).Add((DateTime)row["date"]);
+                    }
+                    string[] columnNames = dt.Columns.Cast<DataColumn>()
+                                 .Select(x => x.ColumnName)
+                                 .Where(x => x != "date")
+                                 .ToArray();
+                    List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
+                    for (var i = 0; i < columnNames.Length; i++)
+                    {
+                        Dictionary<string, object> aSeries = new Dictionary<string, object>();
+                        aSeries["name"] = columnNames[i];
+                        aSeries["data"] = new List<object>();
+                        //object[] temp = new object[2];
+                        int N = dt.Rows.Count;
+                        for (int j = 0; j < N; j++)
+                        {
+                            object[] temp ={(DateTime)dt.Rows[j]["date"],(int)dt.Rows[j][columnNames[i]]};
+                            ((List<object>)aSeries["data"]).Add(temp);
+                           // ((List<object>)aSeries["data"]).Add((DateTime)dt.Rows[j]["date"]);
+                           //((List<object>)aSeries["data"]).Add((int)dt.Rows[j][columnNames[i]]);
+                        }
+                        dict.Add(aSeries);
+                    }
+                    //list.Add(categories);
+                    list.Add(dict);
+                    json = JsonConvert.SerializeObject(dict);
+                }
+
+                else
+                    json = JsonConvert.SerializeObject("no");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 throw;
             }
             conn.Close();
@@ -756,20 +850,20 @@ namespace Service1
             {
 
                 conn.Open();
-                    for (int i = 5; i < data_pro.Count(); i += 2)
-                    {
-                        CommandText = "INSERT INTO water (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,current) VALUES (@userid,@building,@code,@energy,@type,@date,@meter)";
-                        cmd = new MySqlCommand(CommandText, conn);
-                        cmd.Parameters.AddWithValue("@userid", data_pro[0]);
-                        cmd.Parameters.AddWithValue("@building", data_pro[1]);
-                        cmd.Parameters.AddWithValue("@code", data_pro[2]);
-                        cmd.Parameters.AddWithValue("@energy", data_pro[3]);
-                        cmd.Parameters.AddWithValue("@type", data_pro[4]);
-                        cmd.Parameters.AddWithValue("@date", data_pro[i]);
-                        cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
-                        cmd.ExecuteNonQuery();
-                    }
-                    json = "yes";
+                for (int i = 5; i < data_pro.Count(); i += 2)
+                {
+                    CommandText = "INSERT INTO water (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,current) VALUES (@userid,@building,@code,@energy,@type,@date,@meter)";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                    cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                    cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                    cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                    cmd.Parameters.AddWithValue("@type", data_pro[4]);
+                    cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                    cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
+                    cmd.ExecuteNonQuery();
+                }
+                json = "yes";
             }
             catch (Exception)
             {
@@ -934,7 +1028,7 @@ namespace Service1
             }
             return sb.ToString();
         }
-        public  string VerifyCaptcha(string response)
+        public string VerifyCaptcha(string response)
         {
             string url = "https://www.google.com/recaptcha/api/siteverify?secret=" + ReCaptcha_Secret + "&response=" + response;
             return (new WebClient()).DownloadString(url);

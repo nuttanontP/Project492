@@ -15,23 +15,27 @@ namespace TestAmmy.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((string)Session["email"] == null)
+            if (!IsPostBack)
             {
-                Response.Redirect("../View/login.aspx");
-            }
-            string[] data_pro = { Session["email"].ToString(), "3" };
-            string result = apiconnecter.PostData("ddlpermission", data_pro);
-            string s = JsonConvert.DeserializeObject<string>(result);
-            if (!s.Equals("no"))
-            {
-                DataTable dt = new DataTable();
-                dt = JsonConvert.DeserializeObject<DataTable>(s);
-                ddl_building.DataSource = dt;
-                ddl_building.DataValueField = "building_buidlingid";
-                ddl_building.DataTextField = "building_name";
-                ddl_building.DataBind();
+                if ((string)Session["email"] == null)
+                {
+                    Response.Redirect("../View/login.aspx");
+                }
+                string[] data_pro = { Session["email"].ToString(), "3" };
+                string result = apiconnecter.PostData("ddlpermission", data_pro);
+                string s = JsonConvert.DeserializeObject<string>(result);
+                if (!s.Equals("no"))
+                {
+                    DataTable dt = new DataTable();
+                    dt = JsonConvert.DeserializeObject<DataTable>(s);
+                    ddl_building.DataSource = dt;
+                    ddl_building.DataValueField = "building_buidlingid";
+                    ddl_building.DataTextField = "building_name";
+                    ddl_building.DataBind();
 
+                }
             }
+            
         }
          protected void Button1_Click(object sender, EventArgs e)
         {

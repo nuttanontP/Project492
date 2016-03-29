@@ -217,6 +217,15 @@ namespace Service1
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string getenergy(string building_id);
 
+        /// <summary>
+        /// show ghrap
+        /// </summary>
+        /// <param name="data_pro">building_id,energy_id,date_start,date_end</param>
+        /// <returns>data table list for show gharp in ajax page admin_graph</returns>
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string getdatagraph(string[] data_pro);
+
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string VerifyCaptcha(string response);
