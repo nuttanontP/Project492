@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestAmmy
+namespace TestAmmy.Admin
 {
 
 
-    public partial class adminDashBoard
+    public partial class admin_griddata
     {
     }
 }

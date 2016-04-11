@@ -19,6 +19,21 @@
         <div class="col-md-12">
             <%------------%>
             <div id="datePopup"></div>
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Preview lasted data</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                      
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+
+                    </div>
+                </div>
+
+            </div>
             <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title"></h3>

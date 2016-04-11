@@ -13,6 +13,7 @@ using System.Data;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Net;
+using System.IO;
 
 namespace Service1
 {
@@ -28,6 +29,7 @@ namespace Service1
         private static string database = ConfigurationManager.AppSettings["database"];
         private static string username = ConfigurationManager.AppSettings["username"];
         private static string password = ConfigurationManager.AppSettings["password"];
+        private static string folderpath = ConfigurationManager.AppSettings["folderpath"];
         private static string ReCaptcha_Key = ConfigurationManager.AppSettings["ReCaptcha_Key"];
         private static string ReCaptcha_Secret = ConfigurationManager.AppSettings["ReCaptcha_Secret"];
         private static string connectionString = "Server=" + server + "; PORT = 3306 " + "; Database=" + database + "; Uid=" + username + "; Pwd=" + password + "; Charset=utf8;";
@@ -100,6 +102,38 @@ namespace Service1
                 throw;
             }
             conn.Close();
+            return json;
+        }
+        public string edituser(string[] data_pro)
+        {
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            string json = "no";
+            try
+            {
+                conn.Open();
+                CommandText = "UPDATE user set first_name=@first_name,last_name=@last_name,job=@job,dob=@dob,address=@address,phone=@phone where email = @email";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@first_name", data_pro[0]);
+                cmd.Parameters.AddWithValue("@last_name", data_pro[1]);
+                cmd.Parameters.AddWithValue("@job", data_pro[2]);
+                cmd.Parameters.AddWithValue("@dob", data_pro[3]);
+                cmd.Parameters.AddWithValue("@address", data_pro[4]);
+                cmd.Parameters.AddWithValue("@phone", data_pro[5]);
+                cmd.Parameters.AddWithValue("@email", data_pro[6]);
+                cmd.ExecuteNonQuery();
+                json = "yes";
+
+            }
+            catch
+            {
+
+               // throw;
+            }
+            
+            conn.Close();
+            json = JsonConvert.SerializeObject(json);
             return json;
         }
         public string getuserbycompany(string company)
@@ -315,6 +349,93 @@ namespace Service1
             conn.Close();
             return json;
         }
+
+        public string Grid_electric(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText = "";
+            try
+            {
+                conn.Open();
+                string energy_id = data_pro[1].ToLower();
+                if (energy_id == "electrical")
+                {
+                    CommandText = "SELECT date,`current meter`,type,peak,`off peak`,holiday FROM electrical ";
+                }
+                else if (energy_id == "diesel")
+                {
+                    CommandText = "SELECT * FROM diesel ";
+                }
+                else if (energy_id == "gasoline")
+                {
+                    CommandText = "SELECT * FROM gasoline ";
+                }
+                else if (energy_id == "lpg")
+                {
+                    CommandText = "SELECT * FROM lpg ";
+                }
+                else if (energy_id == "occupancy")
+                {
+                    CommandText = "SELECT date,Available,Occupied,Number_Guests FROM occupancy ";
+                }
+                else if (energy_id == "water")
+                {
+                    CommandText = "SELECT * FROM water ";
+                }
+                CommandText += " where permission_building_buidlingid =@building_id and month(date)=@month and year(date)=@year  ORDER BY date";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@building_id", data_pro[0]);
+                cmd.Parameters.AddWithValue("@month", data_pro[2]);
+                cmd.Parameters.AddWithValue("@year", data_pro[3]);
+
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    Dictionary<string, List<Dictionary<string, object>>> dict = new Dictionary<string, List<Dictionary<string, object>>>();
+                    dict["design"] = new List<Dictionary<string, object>>();
+                    dict["non_design"] = new List<Dictionary<string, object>>();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var type = (string)row["type"];
+                        if (type  == "Design")
+                        {
+                            Dictionary<string, object> temp = new Dictionary<string, object>();
+                            temp.Add("date", (DateTime)row["date"]);
+                            temp.Add("peak", (float)row["peak"]);
+                            temp.Add("off_peak", (float)row["off peak"]);
+                            temp.Add("holiday", (float)row["holiday"]);
+                            dict["design"].Add(temp);
+                        }
+                        else
+                        {
+                            Dictionary<string, object> temp = new Dictionary<string, object>();
+                            temp.Add("date",(DateTime)row["date"]);
+                            temp.Add("current", (float)row["current meter"]);
+                            dict["non_design"].Add(temp);
+                        }
+                    }
+                    json = JsonConvert.SerializeObject(dict);
+                }
+                
+                else
+                    json = JsonConvert.SerializeObject("no");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
+
         /// <summary>
         /// get company code by Email
         /// </summary>
@@ -493,6 +614,7 @@ namespace Service1
             return json;
         }
 
+      
 
         public string getdatagraph(string[] data_pro)
         {
@@ -562,10 +684,10 @@ namespace Service1
                         int N = dt.Rows.Count;
                         for (int j = 0; j < N; j++)
                         {
-                            object[] temp ={(DateTime)dt.Rows[j]["date"],(int)dt.Rows[j][columnNames[i]]};
+                            object[] temp = { (DateTime)dt.Rows[j]["date"], (int)dt.Rows[j][columnNames[i]] };
                             ((List<object>)aSeries["data"]).Add(temp);
-                           // ((List<object>)aSeries["data"]).Add((DateTime)dt.Rows[j]["date"]);
-                           //((List<object>)aSeries["data"]).Add((int)dt.Rows[j][columnNames[i]]);
+                            // ((List<object>)aSeries["data"]).Add((DateTime)dt.Rows[j]["date"]);
+                            //((List<object>)aSeries["data"]).Add((int)dt.Rows[j][columnNames[i]]);
                         }
                         dict.Add(aSeries);
                     }

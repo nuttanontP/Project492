@@ -54,13 +54,13 @@ namespace TestAmmy.View
                         this.Labelvalidation.Text = "can't add this user because email used";
                     }
                 }
-                else
+                else 
                 {
                     this.Labelvalidation.Attributes["style"] = "color:red; font-weight:bold;";
                     this.Labelvalidation.Text = "company code not exist in system ";
                 }
             }
-            else
+            else //add by number
             {
                 Random rnd = new Random();
                 string code = rnd.Next(10000000, 99999999).ToString();

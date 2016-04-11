@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TestAmmy.webconn;
-using MODEL;
 
 namespace TestAmmy.Admin
 {
@@ -51,7 +50,8 @@ namespace TestAmmy.Admin
             data_del.Add(buildgrid.DataKeys[rowIndex].Values[0].ToString());
             string result = apiconnecter.PostData("delbuilding", data_del.ToArray());
             string s = JsonConvert.DeserializeObject<string>(result);
-            if (s != "no")
+            string s2 = JsonConvert.DeserializeObject<string>(s);
+            if (s2 != "no")
             {
 
                 string s_ = "del ok!";
@@ -63,11 +63,7 @@ namespace TestAmmy.Admin
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            building model = new building();
-            model.building_name = this.txtbuildingname.Text;
-            model.building_detail = this.txtdetails.Value;
-            model.company_companycode = (string)Session["codecompany"];
-            string[] prodata = { model.building_name, model.building_detail, model.company_companycode };
+            string[] prodata = { this.txtbuildingname.Text, this.txtdetails.Value, (string)Session["codecompany"] };
             string result = apiconnecter.PostData("Addbuilding", prodata);
             string s = JsonConvert.DeserializeObject<string>(result);
             if (s == "1")

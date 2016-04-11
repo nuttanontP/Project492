@@ -140,6 +140,7 @@
                     <li class="header">MAIN MENU</li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active"><a href="admin_dashboard.aspx"><i class="fa fa-dashboard"></i><span>DASHBOARD</span></a></li>
+                    <li><a href="admin_detail.aspx"><i class="fa fa-child"></i><span>DETAIL</span></a></li>
                     <li><a href="admin_permission.aspx"><i class="fa fa-expeditedssl"></i><span>PERMISSION</span></a></li>
                     <li><a href="admin_building.aspx"><i class="fa fa-building"></i><span>BUILDING DATA</span></a></li>
 
@@ -156,6 +157,8 @@
                     </li>
                     <li><a href="admin_dataSummary.aspx"><i class="fa fa-bar-chart-o"></i><span>DATA SUMMARY</span></a></li>
                     <li><a href="admin_library.aspx"><i class="fa fa-folder-open-o"></i><span>LIBRARY</span></a></li>
+                     <li><a href="admin_griddata.aspx"><i class="fa fa-table"></i><span>DATA GRID</span></a></li>
+                      <li><a href="admin_graph.aspx"><i class="fa fa-area-chart"></i><span>GRAPH</span></a></li>
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -33,6 +34,11 @@ namespace Service1
         //[WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}/{temp}", ResponseFormat = WebMessageFormat.Json)]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string getuser(string email);
+
+        [OperationContract]
+        //[WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}/{temp}", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string edituser(string[] data_pro);
 
         /// <summary>
         /// get all company by admin of company
@@ -155,6 +161,10 @@ namespace Service1
 
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string Grid_electric(string[] data_pro);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string AddLPG(string[] data_pro);
 
 
@@ -225,6 +235,11 @@ namespace Service1
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string getdatagraph(string[] data_pro);
+
+        
+
+
+        
 
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
