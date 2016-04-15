@@ -3,8 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head_title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head_css" runat="server">
-    <link href="http://cdn.jsdelivr.net/bootstrap.datepicker/0.1/css/datepicker.css" rel="stylesheet" />
-    <link href="../assets/adminLTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+    <link href="../assets/adminLTE/plugins/datepicker/datepicker3.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="content_title" runat="server">
 </asp:Content>
@@ -58,7 +57,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" id="reservation" class="form-control pull-right" />
+                                <input type="text" name='date' placeholder='select date' class="form-control datepicker" id="datep"/>
+
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -73,35 +73,48 @@
                     </div>
                 </div>
             </div>
-            <table id="example" class="display">
-                <thead>
-                    <tr>
-                        <th>date</th>
-                        <th>current</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>date</th>
-                        <th>current</th>
-                    </tr>
-                </tfoot>
-            </table>
+
         </div>
 
         <div id="space"></div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table id="example" class="table table-bordered table-striped" >
+                    <thead>
+                        <tr>
+                            <th>date</th>
+                            <th>current</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>date</th>
+                            <th>current</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+
 
     </div>
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-    <script src="../assets/adminLTE/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="http://cdn.jsdelivr.net/bootstrap.datepicker/0.1/js/bootstrap-datepicker.js"></script>
+    <script src="../assets/adminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
+
+
+
+    <%--new--%>
+    <script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/css/datepicker3.css"></script>
     <script>
-        $("#reservation").datepicker({
+        $(".datepicker").datepicker({
             format: "mm-yyyy",
-            viewMode: "months",
+            viewMode: "months", 
             minViewMode: "months"
         });
         var companycode = <%=Session["codecompany"].ToString()%>;
@@ -155,7 +168,7 @@
             var buidling = document.getElementById('buidling').value;
             var energy = document.getElementById('energy');
             var selectedText = energy.options[energy.selectedIndex].text;
-            var reservation = document.getElementById("reservation").value;
+            var reservation = document.getElementById("datep").value;
             var temp = reservation.split('-');
             var data_pro = [buidling,selectedText,temp[0],temp[1]];
             console.log(data_pro);
@@ -165,27 +178,30 @@
                 url: "http://localhost:1291/Service1/Grid_electric",
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
-                success: function(data){
-                    var data2 = JSON.parse(data);
-                    console.log(data);
-                    temp={};
-                    temp["data"] = data2["non_design"];
-                    console.log("parse.temp",JSON.stringify(temp));
-                    var dataObj = JSON.stringify(temp);
-                    console.log(temp);
-                    $('#example').DataTable({
-                        //"ajax":{
-
-                        //}
-                        data: dataObj,
-                        columns: [
-                            { title: "date" },
-                            { title: "current" },
-                       ]
-                        
-                    });
-                }
+                success: AjaxGetFieldDataSucceeded,
+                error: AjaxGetFieldDataFailed
             });
-        };
+        }
+        function AjaxGetFieldDataSucceeded(result) {
+            if (result != "[]") {
+
+                dataTab = $.parseJSON(result);
+                console.log("dataTab",dataTab);
+                console.log("dataTab[non_design]",dataTab["non_design"]);
+                //instance of datatable
+                oTable = $('#example').dataTable({
+                    "bProcessing": true,
+                    "aaData": dataTab["non_design"],
+                    //important  -- headers of the json
+                    "aoColumns": [{ "mDataProp": "date" }, { "mDataProp": "current" }],
+                    "sPaginationType": "full_numbers",
+                    "aaSorting": [[0, "asc"]],
+                    "bJQueryUI": true,
+                });
+            }
+        }
+        function AjaxGetFieldDataFailed(result) {
+            alert(result.status + ' ' + result.statusText);
+        }
     </script>
 </asp:Content>

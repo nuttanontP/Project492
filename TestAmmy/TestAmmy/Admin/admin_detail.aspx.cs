@@ -34,7 +34,16 @@ namespace TestAmmy.Admin
                     firstName.Value = myData.Rows[0]["first_name"].ToString();
                     lastName.Value = myData.Rows[0]["last_name"].ToString();
                     jobTitle.Value = myData.Rows[0]["job"].ToString();
-                    temp =  Convert.ToDateTime(myData.Rows[0]["dob"]).Date;
+                    var temp2 = myData.Rows[0]["dob"].ToString();
+                    
+                    if(temp2.Length != 0)
+                    {
+                        temp = Convert.ToDateTime(myData.Rows[0]["dob"]).Date;
+                    }
+                    else
+                    {
+                        temp = DateTime.Now;
+                    }
                     address.Value = myData.Rows[0]["address"].ToString();
                     phone.Value = myData.Rows[0]["phone"].ToString();
 

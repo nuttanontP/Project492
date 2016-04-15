@@ -115,6 +115,7 @@
     <Content Include="Admin\admin_dashboard.aspx" />
     <Content Include="Admin\admin_detail.aspx" />
     <Content Include="Admin\admin_graph.aspx" />
+    <Content Include="Admin\admin_grid.aspx" />
     <Content Include="Admin\admin_griddata.aspx" />
     <Content Include="Admin\admin_permission.aspx" />
     <Content Include="Admin\javascripts\add_diesel.js" />
@@ -1978,6 +1979,13 @@
     </Compile>
     <Compile Include="Admin\admin_graph.aspx.designer.cs">
       <DependentUpon>admin_graph.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_grid.aspx.cs">
+      <DependentUpon>admin_grid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_grid.aspx.designer.cs">
+      <DependentUpon>admin_grid.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\admin_griddata.aspx.cs">
       <DependentUpon>admin_griddata.aspx</DependentUpon>

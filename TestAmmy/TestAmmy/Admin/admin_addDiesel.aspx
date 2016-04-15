@@ -24,12 +24,28 @@
                     <h3 class="box-title">Preview lasted data</h3>
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                      
+
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <table id="example" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>date</th>
+                                        <th>current</th>
 
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>date</th>
+                                        <th>current</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -152,5 +168,5 @@
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
     <script src="javascripts/add_diesel.js"></script>
-
+    <script>$('#example').dataTable();</script>
 </asp:Content>

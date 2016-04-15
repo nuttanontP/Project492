@@ -136,6 +136,40 @@ namespace Service1
             json = JsonConvert.SerializeObject(json);
             return json;
         }
+        public string about_organization(string  email)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = " SELECT first_name,last_name,`status`,companycode,company_name,IFNULL(responsibility,0) as building_control  FROM user LEFT JOIN company ON user.company_companycode = company.companycode LEFT JOIN (select user_id,count(*) as  responsibility from (SELECT DISTINCT user_id,building_buidlingid  FROM `energy2.3`.permission) as a group by a.user_id ) as b ON user.id = b.user_id where email=@email";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    Dictionary<string,object> dict = new Dictionary<string,object>();
+                    dict["companycode"] = dt.Rows[0]["companycode"].ToString() ; //row["peak"]
+                    dict["company_name"] = dt.Rows[0]["company_name"].ToString();
+                    dict["building_control"] = dt.Rows[0]["building_control"].ToString();
+                    dict["status"] = dt.Rows[0]["status"].ToString();
+
+                    json = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
         public string getuserbycompany(string company)
         {
             string json = "no";
@@ -614,7 +648,164 @@ namespace Service1
             return json;
         }
 
-      
+        public string getprevious(string[] data_pro)
+        {
+            string json = "";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "";
+                if (data_pro[1] == "admin")
+                {
+                    if(data_pro[2] == "1")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.electrical where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                    }
+                    else if (data_pro[2] == "2")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.diesel where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                    }
+                    else if (data_pro[2] == "3")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.gasoline where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                    }
+                    else if (data_pro[2] == "4")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.lpg where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                    }
+                    else if (data_pro[2] == "5")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.water where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                    }
+                    else if (data_pro[2] == "6")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.occupancy where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                    }
+
+                }
+                else
+                {
+                    if (data_pro[2] == "1")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.electrical where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
+                    }
+                    else if (data_pro[2] == "2")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.diesel where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
+                    }
+                    if (data_pro[2] == "3")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.gasoline where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
+                    }
+                    if (data_pro[2] == "4")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.lpg where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
+                    }
+                    if (data_pro[2] == "5")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.water where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
+                    }
+                    if (data_pro[2] == "6")
+                    {
+                        CommandText = "SELECT * FROM `energy2.3`.occupancy where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@code", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
+                    }
+                }
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    json = JsonConvert.SerializeObject(dt);
+                else
+                    json = JsonConvert.SerializeObject("no");
+
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string deleteprevious(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText="";
+            try
+            {
+                conn.Open();
+                if (data_pro[1] == "1")
+                {
+                    CommandText = "DELETE FROM `energy2.3`.`electrical` WHERE `randomID`= @id";
+                }
+                else if (data_pro[1] == "2")
+                {
+                    CommandText = "DELETE FROM `energy2.3`.`diesel` WHERE `randomID`= @id";
+                }
+                else if (data_pro[1] == "3")
+                {
+                    CommandText = "DELETE FROM `energy2.3`.`gasoline` WHERE `randomID`= @id";
+                }
+                else if (data_pro[1] == "4")
+                {
+                    CommandText = "DELETE FROM `energy2.3`.`lpg` WHERE `randomID`= @id";
+                }
+                else if (data_pro[1] == "5")
+                {
+                    CommandText = "DELETE FROM `energy2.3`.`water` WHERE `randomID`= @id";
+                }
+                else if (data_pro[1] == "6")
+                {
+                    CommandText = "DELETE FROM `energy2.3`.`occupancy` WHERE `randomID`= @id";
+                }
+
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@id", data_pro[2]);
+                cmd.ExecuteNonQuery();
+                json = "yes";
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return JsonConvert.SerializeObject(json);
+        }
 
         public string getdatagraph(string[] data_pro)
         {
@@ -1073,7 +1264,7 @@ namespace Service1
                 throw;
             }
             conn.Close();
-            return json;
+            return JsonConvert.SerializeObject(json);
         }
         public string selectdiesel(string[] data_pro)
         {

@@ -26,6 +26,16 @@ namespace Service1
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string login(string[] userlogin);
 
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string getprevious(string[] data_pro);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string deleteprevious(string[] data_pro);
+
+
         /// <summary>
         /// get all user 
         /// </summary>
@@ -39,6 +49,11 @@ namespace Service1
         //[WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}/{temp}", ResponseFormat = WebMessageFormat.Json)]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string edituser(string[] data_pro);
+
+        [OperationContract]
+        //[WebGet(RequestFormat = WebMessageFormat.Json, UriTemplate = "/user/{id}/{temp}", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string about_organization(string email);
 
         /// <summary>
         /// get all company by admin of company

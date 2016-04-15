@@ -172,68 +172,73 @@
                 url: "http://localhost:1291/Service1/getdatagraph",
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
-                success: function(data){
-                    var data2 = JSON.parse(data);
-                    console.log(data2);
-                    console.log(Date.UTC(2012, 2, 6, 10));
-                    for(var i in data2){
-                        //console.log(data2[i]["data"]);
-                        for(var j in data2[i]["data"] ){
-                            //console.log(data2[i]["data"][j][0]);
-                            data2[i]["data"][j][0] = new Date(data2[i]["data"][j][0]).getTime();
-                            //console.log(data2[i]["data"][j][0]);
-                        }
-                    }
-                    $('#space').append('<div id=appendcol'+i2+' class="col-md-12"></div>');
-                    $('#appendcol'+i2).html(' <div class="box box-danger"><div class="box-header  with-border"><h3 class="box-title">box1.</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="row"><div class="col-md-10 col-md-offset-1"><div id="container'+i2+'" style="min-width:100%; height: 400px;"></div></div></div></div> </div>');
-                    $('#container'+i2).highcharts({
-                        chart: {
-                            type: 'column'
-                        },
-                        title: {
-                            text: 'Monthly Average Rainfall'
-                        },
-                        subtitle: {
-                            text: 'Source: WorldClimate.com'
-                        },
-                        xAxis: {
-                            type:'datetime',
-                            
-                            crosshair: true,
-                            dateTimeLabelFormats: { // don't display the dummy year
-                                month: '%e. %b',
-                                year: '%b'
-                            },
-                            
-                        },
-                        yAxis: {
-                            min: 0,
-                            title: {
-                                text: 'Rainfall (mm)'
-                            }
-                        },
-                        tooltip: {
-                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                            footerFormat: '</table>',
-                            shared: true,
-                            useHTML: true
-                        },
-                        plotOptions: {
-                            column: {
-                                pointPadding: 0.2,
-                                borderWidth: 0
-                            }
-                        },
-                        series:data2
-                    });
-                    i2++;
-                    console.log(i2);
-                    
-                }
+                success: aa,
+                error: bb
               
             });
+            function aa(data){
+                var data2 = JSON.parse(data);
+                console.log(data2);
+                console.log(Date.UTC(2012, 2, 6, 10));
+                for(var i in data2){
+                    //console.log(data2[i]["data"]);
+                    for(var j in data2[i]["data"] ){
+                        //console.log(data2[i]["data"][j][0]);
+                        data2[i]["data"][j][0] = new Date(data2[i]["data"][j][0]).getTime();
+                        //console.log(data2[i]["data"][j][0]);
+                    }
+                }
+                $('#space').append('<div id=appendcol'+i2+' class="col-md-12"></div>');
+                $('#appendcol'+i2).html(' <div class="box box-danger"><div class="box-header  with-border"><h3 class="box-title">box1.</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="row"><div class="col-md-10 col-md-offset-1"><div id="container'+i2+'" style="min-width:100%; height: 400px;"></div></div></div></div> </div>');
+                $('#container'+i2).highcharts({
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Monthly Average Rainfall'
+                    },
+                    subtitle: {
+                        text: 'Source: WorldClimate.com'
+                    },
+                    xAxis: {
+                        type:'datetime',
+                            
+                        crosshair: true,
+                        dateTimeLabelFormats: { // don't display the dummy year
+                            month: '%e. %b',
+                            year: '%b'
+                        },
+                            
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Rainfall (mm)'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+                    series:data2
+                });
+                i2++;
+                console.log(i2);
+                    
+            }
+            function bb(result){
+                alert(result.status + ' ' + result.statusText);
+            }
            
         };
     </script>
