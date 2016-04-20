@@ -11,7 +11,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
-    <li class="active">Dashboard</li>
+   
 
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="main_content" runat="server">
@@ -22,6 +22,73 @@
             <%--col 8--%>
             <div class="col-md-8">
                 <%--Monthly Recap Report--%>
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Ability to care</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-aqua"><i class="fa fa-building"></i></span>
+
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">COMPANY NAME</span>
+                                        <span class="info-box-text"></span>
+                                        <span class="info-box-number">1,410</span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box bg-yellow">
+                                    <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Events</span>
+                                        <span class="info-box-number">41,410</span>
+
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 70%"></div>
+                                        </div>
+                                        <span class="progress-description">70% Increase in 30 Days
+                                        </span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+                        </div>
+
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
                 <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title">Monthly Recap Report</h3>
@@ -232,6 +299,10 @@
                 </div>
                 <!-- /.box -->
 
+
+                <%--nont--%>
+
+                <%--nont end--%>
             </div>
             <!--/.col8-->
 

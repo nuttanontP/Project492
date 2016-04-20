@@ -189,16 +189,16 @@
                     }
                 }
                 $('#space').append('<div id=appendcol'+i2+' class="col-md-12"></div>');
-                $('#appendcol'+i2).html(' <div class="box box-danger"><div class="box-header  with-border"><h3 class="box-title">box1.</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="row"><div class="col-md-10 col-md-offset-1"><div id="container'+i2+'" style="min-width:100%; height: 400px;"></div></div></div></div> </div>');
-                $('#container'+i2).highcharts({
+                $('#appendcol'+i2).html(' <div class="box box-danger"><div class="box-header  with-border"><h3 class="box-title">box1.</h3><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="row"><div class="col-md-10 col-md-offset-1"><div id="container'+i2+''+selectedText+'" style="min-width:100%; height: 400px;"></div></div></div></div> </div>');
+                $('#container'+i2 +'Occupancy').highcharts({
                     chart: {
                         type: 'column'
                     },
                     title: {
-                        text: 'Monthly Average Rainfall'
+                        text: 'Water'
                     },
                     subtitle: {
-                        text: 'Source: WorldClimate.com'
+                        text: 'graph shows the relation of current Meter water and date  '
                     },
                     xAxis: {
                         type:'datetime',
@@ -211,15 +211,15 @@
                             
                     },
                     yAxis: {
-                        min: 0,
+                        min: 0, 
                         title: {
-                            text: 'Rainfall (mm)'
+                            text: 'number of guest(person)'
                         }
                     },
                     tooltip: {
                         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                            '<td style="padding:0"><b>{point.y} person</b></td></tr>',
                         footerFormat: '</table>',
                         shared: true,
                         useHTML: true

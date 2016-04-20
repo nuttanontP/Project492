@@ -207,3 +207,5 @@ D:\github\TestAmmy\TestAmmy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatfo
 D:\github\TestAmmy\TestAmmy\obj\Debug\TestAmmy.csprojResolveAssemblyReference.cache
 D:\github\TestAmmy\TestAmmy\obj\Debug\TestAmmy.dll
 D:\github\TestAmmy\TestAmmy\obj\Debug\TestAmmy.pdb
+D:\github\TestAmmy\TestAmmy\bin\EPPlus.dll
+D:\github\TestAmmy\TestAmmy\bin\EPPlus.xml

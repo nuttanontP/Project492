@@ -48,6 +48,8 @@
                                                         <asp:BoundField DataField="peak" HeaderText="peak" NullDisplayText="-" />
                                                         <asp:BoundField DataField="off peak" HeaderText="off peak" NullDisplayText="-" />
                                                         <asp:BoundField DataField="holiday" HeaderText="holiday" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
                                                             <ItemTemplate>
                                                                 <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('delete ?');"><span class="fa fa-times" aria-hidden="true"></span></asp:LinkButton>
@@ -74,6 +76,8 @@
                                                         <asp:BoundField DataField="OtherPurpose" HeaderText="Other Purpose Consumed" NullDisplayText="-" />
                                                         <asp:BoundField DataField="Runningtime" HeaderText="Running time of DG set (Minutes)" NullDisplayText="-" />
                                                         <asp:BoundField DataField="Dieselcost" HeaderText="Dieselcost" NullDisplayText="-" />
+                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
                                                             <ItemTemplate>
                                                                 <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('delete ?');"><span class="fa fa-times" aria-hidden="true"></span></asp:LinkButton>
@@ -96,6 +100,8 @@
                                                         <asp:BoundField DataField="date" HeaderText="date" DataFormatString="{0:dd , MMMM , yyyy}" />
                                                         <asp:BoundField DataField="purchased" HeaderText="Gasoline Purchased(Liter)" NullDisplayText="-" />
                                                         <asp:BoundField DataField="consumed" HeaderText="Gasoline Consumed(Liter)" NullDisplayText="-" />
+                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
                                                             <ItemTemplate>
                                                                 <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('delete ?');"><span class="fa fa-times" aria-hidden="true"></span></asp:LinkButton>
@@ -118,6 +124,8 @@
                                                         <asp:BoundField DataField="date" HeaderText="date" DataFormatString="{0:dd , MMMM , yyyy}" />
                                                         <asp:BoundField DataField="purchased" HeaderText="LPG Purchased(KG)" NullDisplayText="-" />
                                                         <asp:BoundField DataField="consumed" HeaderText="LPG Consumed(KG)" NullDisplayText="-" />
+                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
                                                             <ItemTemplate>
                                                                 <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('delete ?');"><span class="fa fa-times" aria-hidden="true"></span></asp:LinkButton>
@@ -141,6 +149,8 @@
                                                         <asp:BoundField DataField="factor" HeaderText="factor" NullDisplayText="-" />
                                                         <asp:BoundField DataField="type" HeaderText="type" NullDisplayText="-" />
                                                         <asp:BoundField DataField="current" HeaderText="Current Meter Reading" NullDisplayText="-" />
+                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
                                                             <ItemTemplate>
                                                                 <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('delete ?');"><span class="fa fa-times" aria-hidden="true"></span></asp:LinkButton>
@@ -164,6 +174,8 @@
                                                         <asp:BoundField DataField="Available" HeaderText="Available" NullDisplayText="-" />
                                                         <asp:BoundField DataField="Occupied" HeaderText="Occupied" NullDisplayText="-" />
                                                         <asp:BoundField DataField="Number_Guests" HeaderText="Number of Guests(Number)" NullDisplayText="-" />
+                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
                                                             <ItemTemplate>
                                                                 <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('delete ?');"><span class="fa fa-times" aria-hidden="true"></span></asp:LinkButton>
@@ -200,12 +212,12 @@
         $(document).ready(function () {
             //$(".electric").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
             //$(".Diesel").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
-            $('.electric').dataTable();
-            $('.diesel').dataTable();
-            $('.gasoline').dataTable();
-            $('.lpg').dataTable();
-            $('.water').dataTable();
-            $('.occupancy').dataTable();
+            $('.electric').dataTable({ "scrollX": true});
+            $('.diesel').dataTable({ "scrollX": true });
+            $('.gasoline').dataTable({"scrollX": true });
+            $('.lpg').dataTable({ "scrollX": true });
+            $('.water').dataTable({ "scrollX": true });
+            $('.occupancy').dataTable({ "scrollX": true });
         });
 
     </script>

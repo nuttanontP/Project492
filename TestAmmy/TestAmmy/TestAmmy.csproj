@@ -50,6 +50,9 @@
     <Reference Include="aspsnippets.facebookapi">
       <HintPath>C:\Users\nont\Downloads\FaceBookLogin\Bin\aspsnippets.facebookapi.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>C:\Users\nont\Downloads\EPPlus 3.0\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -117,6 +120,7 @@
     <Content Include="Admin\admin_graph.aspx" />
     <Content Include="Admin\admin_grid.aspx" />
     <Content Include="Admin\admin_griddata.aspx" />
+    <Content Include="Admin\admin_implement.aspx" />
     <Content Include="Admin\admin_permission.aspx" />
     <Content Include="Admin\javascripts\add_diesel.js" />
     <Content Include="Admin\javascripts\add_electric.js" />
@@ -1993,6 +1997,13 @@
     </Compile>
     <Compile Include="Admin\admin_griddata.aspx.designer.cs">
       <DependentUpon>admin_griddata.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_implement.aspx.cs">
+      <DependentUpon>admin_implement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_implement.aspx.designer.cs">
+      <DependentUpon>admin_implement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\admin_master.Master.cs">
       <DependentUpon>admin_master.Master</DependentUpon>

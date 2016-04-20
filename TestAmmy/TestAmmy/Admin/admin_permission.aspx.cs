@@ -99,7 +99,7 @@ namespace TestAmmy.Admin
             List<string> selected = YrChkBox.Items.Cast<ListItem>().Where(li => li.Selected).Select(li => li.Value).ToList();
             if (selected.Count == 0 || ddl_name.SelectedValue == "" || ddl_building.SelectedValue == "")
             {
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey123", "alert('data is not correct');", true);
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey123", "alert('data is not correct');window.location.href='admin_permission.aspx';", true);
             }
             else
             {

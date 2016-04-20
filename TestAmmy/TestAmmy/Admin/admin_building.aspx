@@ -1,17 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/admin_master.Master" AutoEventWireup="true" CodeBehind="admin_building.aspx.cs" Inherits="TestAmmy.Admin.admin_building" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head_title" runat="server">
-    Add building
+    Add Assets
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head_css" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="content_title" runat="server">
-    Building Data
+    Assets Data
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
+        <li class="active">asset</li>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="main_content" runat="server">
     <div class="row">
@@ -22,7 +23,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">
                         <%-- <button class="btn btn-block btn-default" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>Add permission</button>--%>
-                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbsp;Add Building</button>
+                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>&nbsp;Add Asset</button>
 
 
                     </h3>
@@ -32,11 +33,11 @@
                                 <div class="modal-header">
                                     <br />
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4>Add Building</h4>
+                                    <h4>Add Asset</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="ex3">Building Name</label>
+                                        <label for="ex3">Asset Name</label>
                                         <%--<input class="form-control" id="ex3" type="text" />--%>
                                         <asp:TextBox class="form-control" ID="txtbuildingname" runat="server"></asp:TextBox>
                                     </div>
@@ -87,7 +88,7 @@
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
     <script>
         $(function () {
-            $(".table-striped").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
+            $(".table-striped").prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({ "scrollX": true });
             $('#exampleModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 var recipient = button.data('whatever') // Extract info from data-* attributes

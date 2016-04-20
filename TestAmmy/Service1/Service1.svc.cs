@@ -129,14 +129,14 @@ namespace Service1
             catch
             {
 
-               // throw;
+                // throw;
             }
-            
+
             conn.Close();
             json = JsonConvert.SerializeObject(json);
             return json;
         }
-        public string about_organization(string  email)
+        public string about_organization(string email)
         {
             string json = "no";
             MySqlCommand cmd = null;
@@ -154,8 +154,8 @@ namespace Service1
                 adap.Fill(dt);
                 if (dt.Rows.Count > 0)
                 {
-                    Dictionary<string,object> dict = new Dictionary<string,object>();
-                    dict["companycode"] = dt.Rows[0]["companycode"].ToString() ; //row["peak"]
+                    Dictionary<string, object> dict = new Dictionary<string, object>();
+                    dict["companycode"] = dt.Rows[0]["companycode"].ToString(); //row["peak"]
                     dict["company_name"] = dt.Rows[0]["company_name"].ToString();
                     dict["building_control"] = dt.Rows[0]["building_control"].ToString();
                     dict["status"] = dt.Rows[0]["status"].ToString();
@@ -437,7 +437,7 @@ namespace Service1
                     foreach (DataRow row in dt.Rows)
                     {
                         var type = (string)row["type"];
-                        if (type  == "Design")
+                        if (type == "Design")
                         {
                             Dictionary<string, object> temp = new Dictionary<string, object>();
                             temp.Add("date", (DateTime)row["date"]);
@@ -449,14 +449,14 @@ namespace Service1
                         else
                         {
                             Dictionary<string, object> temp = new Dictionary<string, object>();
-                            temp.Add("date",(DateTime)row["date"]);
+                            temp.Add("date", (DateTime)row["date"]);
                             temp.Add("current", (float)row["current meter"]);
                             dict["non_design"].Add(temp);
                         }
                     }
                     json = JsonConvert.SerializeObject(dict);
                 }
-                
+
                 else
                     json = JsonConvert.SerializeObject("no");
 
@@ -617,7 +617,6 @@ namespace Service1
             conn.Close();
             return json;
         }
-
         public string permissiongrid(string codecompany)
         {
             string json = "no";
@@ -647,7 +646,6 @@ namespace Service1
             conn.Close();
             return json;
         }
-
         public string getprevious(string[] data_pro)
         {
             string json = "";
@@ -662,39 +660,45 @@ namespace Service1
                 CommandText = "";
                 if (data_pro[1] == "admin")
                 {
-                    if(data_pro[2] == "1")
+                    if (data_pro[2] == "1")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.electrical where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        //SELECT randomID ,date,type,`current meter`,peak`off peak`,holiday,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from electrical left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid
+                        CommandText = "SELECT randomID ,date,type,`current meter`,peak,`off peak`,holiday,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from electrical left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                     }
                     else if (data_pro[2] == "2")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.diesel where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        //SELECT randomID,date,purchased,DGSet,Vehicle,OtherPurpose,Runningtime,Dieselcost,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from diesel left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid
+                        CommandText = "SELECT randomID,date,purchased,DGSet,Vehicle,OtherPurpose,Runningtime,Dieselcost,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from diesel left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                     }
                     else if (data_pro[2] == "3")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.gasoline where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        //SELECT randomID,date,purchased,consumed,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from gasoline left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid
+                        CommandText = "SELECT randomID,date,purchased,consumed,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from gasoline left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                     }
                     else if (data_pro[2] == "4")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.lpg where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        //SELECT randomID,date,purchased,consumed,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from lpg left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid
+                        CommandText = "SELECT randomID,date,purchased,consumed,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from lpg left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                     }
                     else if (data_pro[2] == "5")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.water where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        //SELECT randomID,date,factor,current,type,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from water left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid
+                        CommandText = "SELECT randomID,date,factor,current,type,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from water left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                     }
                     else if (data_pro[2] == "6")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.occupancy where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
+                        //SELECT randomID,date,Available,Occupied,Number_Guests,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from occupancy left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid
+                        CommandText = "SELECT randomID,date,Available,Occupied,Number_Guests,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from occupancy left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = permission_building_buidlingid order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                     }
@@ -704,42 +708,42 @@ namespace Service1
                 {
                     if (data_pro[2] == "1")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.electrical where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        CommandText = "SELECT randomID ,date,type,`current meter`,peak`off peak`,holiday,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from electrical left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                         cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
                     }
                     else if (data_pro[2] == "2")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.diesel where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        CommandText = "SELECT randomID,date,purchased,DGSet,Vehicle,OtherPurpose,Runningtime,Dieselcost,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from diesel left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                         cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
                     }
                     if (data_pro[2] == "3")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.gasoline where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        CommandText = "SELECT randomID,date,purchased,consumed,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from gasoline left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                         cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
                     }
                     if (data_pro[2] == "4")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.lpg where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        CommandText = "SELECT randomID,date,purchased,consumed,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from lpg left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                         cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
                     }
                     if (data_pro[2] == "5")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.water where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        CommandText = "SELECT randomID,date,factor,current,type,`bath/unit`,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from water left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                         cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
                     }
                     if (data_pro[2] == "6")
                     {
-                        CommandText = "SELECT * FROM `energy2.3`.occupancy where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
+                        CommandText = "SELECT randomID,date,Available,Occupied,Number_Guests,CONCAT(`user`.`first_name`,' ',`user`.`last_name`) AS `name`,building_name from occupancy left join user on   permission_user_id = user.id left join   building on permission_building_buidlingid = buidlingid where permission_building_company_companycode = @code and permission_building_buidlingid = @user_id order by date DESC ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@code", data_pro[0]);
                         cmd.Parameters.AddWithValue("@user_id", data_pro[1]);
@@ -765,7 +769,7 @@ namespace Service1
             string json = "no";
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
-            string CommandText="";
+            string CommandText = "";
             try
             {
                 conn.Open();
@@ -806,7 +810,6 @@ namespace Service1
             conn.Close();
             return JsonConvert.SerializeObject(json);
         }
-
         public string getdatagraph(string[] data_pro)
         {
             string json = "no";
@@ -899,7 +902,6 @@ namespace Service1
             conn.Close();
             return json;
         }
-
         public string permissionadd(string codecompany)
         {
             string json = "no";
@@ -1159,32 +1161,56 @@ namespace Service1
             MySqlConnection conn = new MySqlConnection(connectionString);
             string CommandText;
             string json = "no";
+            string unit = data_pro[5];
+            int temp = 0; //told the row can't add data
+            int date_ = 6;
             try
             {
-
-                conn.Open();
-                for (int i = 5; i < data_pro.Count(); i += 2)
+                //5 = factor
+                //6 = start
+                for (int i = 6; i < data_pro.Count(); i += 2)
                 {
-                    CommandText = "INSERT INTO water (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,current) VALUES (@userid,@building,@code,@energy,@type,@date,@meter)";
-                    cmd = new MySqlCommand(CommandText, conn);
-                    cmd.Parameters.AddWithValue("@userid", data_pro[0]);
-                    cmd.Parameters.AddWithValue("@building", data_pro[1]);
-                    cmd.Parameters.AddWithValue("@code", data_pro[2]);
-                    cmd.Parameters.AddWithValue("@energy", data_pro[3]);
-                    cmd.Parameters.AddWithValue("@type", data_pro[4]);
-                    cmd.Parameters.AddWithValue("@date", data_pro[i]);
-                    cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
-                    cmd.ExecuteNonQuery();
+                    if (unit != "")
+                    {
+                        conn.Open();
+                        CommandText = "INSERT INTO water (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,current,`bath/unit`) VALUES (@userid,@building,@code,@energy,@type,@date,@meter,@unit)";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@userid", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@building", data_pro[1]);
+                        cmd.Parameters.AddWithValue("@code", data_pro[2]);
+                        cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                        cmd.Parameters.AddWithValue("@type", data_pro[4]);
+                        cmd.Parameters.AddWithValue("@unit", unit);
+                        cmd.Parameters.AddWithValue("@date", data_pro[i]);
+                        cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
+                        temp++;
+                        date_ += 2;
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    else
+                    {
+                        conn.Open();
+                        CommandText = "SELECT `bath/unit` as unit FROM `energy2.3`.water where `bath/unit`  is not null and type = "+ data_pro[4] + " order by date asc limit 1";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        unit = "6";
+                        while (reader.Read())
+                            unit = reader["unit"].ToString();
+                        i -= 2;
+                        conn.Close();
+                    }
+
                 }
                 json = "yes";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //throw;
+                json = "the records were added until the exception date:" + data_pro[date_ - 2] + " record and followed records.";
+
             }
-            conn.Close();
-            return json;
+            return JsonConvert.SerializeObject(json);
         }
         public string AddOccupancy(string[] data_pro)
         {

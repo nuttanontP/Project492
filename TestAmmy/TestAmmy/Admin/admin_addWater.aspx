@@ -32,7 +32,7 @@
                         <div class="col-sm-4">
                             <!-- /.form-group -->
                             <div class="form-group">
-                                <label>Building Name:</label>
+                                <label>Asset Name:</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-building"></i>
@@ -43,128 +43,142 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-5"></div>
+                        <div class="col-sm-3">
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>FACTOR(UNIT/BAHT)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-usd"></i>
+                                    </div>
+                                    <input type="number" runat="server" class="form-control" id='factor' min="0" placeholder='eg. 3' />
+                                    <span class="input-group-addon">.00</span>
+                                </div>
+                            </div>
+                        </div>
                         <br />
                         <div class="row">
                             <div class="col-sm-10 col-sm-offset-1">
                                 <div class="nav-tabs-custom ">
-                                <ul class="nav nav-tabs " id="myTab">
+                                    <ul class="nav nav-tabs " id="myTab">
 
-                                    <li class="active"><a href="#profile" data-toggle="tab"><strong>Supply Water system</strong></a></li>
-                                    <li><a href="#tab2" data-toggle="tab"><strong>Ground Water system</strong></a></li>
-                                    <li><a href="#tab3" data-toggle="tab"><strong>Ground/Supply Water system</strong></a></li>
-                                </ul>
+                                        <li class="active"><a href="#profile" data-toggle="tab"><strong>Supply Water system</strong></a></li>
+                                        <li><a href="#tab2" data-toggle="tab"><strong>Ground Water system</strong></a></li>
+                                        <li><a href="#tab3" data-toggle="tab"><strong>Ground/Supply Water system</strong></a></li>
+                                    </ul>
 
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="profile">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="profile">
 
 
-                                        <table class="table table-bordered table-hover" id="tab_logics">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center col-xs-2">Date   
-                                                    </th>
-                                                    <th class="text-center">Current Meter Reading
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr id='addrs0'>
-                                                    <td>
-                                                        <input type="text" name='date0' placeholder='select date' class="form-control datepicker" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name='meter0' placeholder='eg. 1024' class="form-control" />
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <button type="button" class="btn btn-success btn-xs glyphicon glyphicon-floppy-disk"></button>
-                                                        <button type="button" class="btn btn-warning btn-xs glyphicon glyphicon-pencil"></button>
-                                                        <button type="button" class="btn btn-danger btn-xs glyphicon glyphicon-trash" onclick='dels(0)'></button>
-                                                    </td>
-                                                </tr>
-                                                <tr id='addrs1'></tr>
-                                            </tbody>
-                                        </table>
-                                        <a id="add_rows" class="btn btn-success  pull-right glyphicon glyphicon-plus"></a>
+                                            <table class="table table-bordered table-hover" id="tab_logics">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center col-xs-2">Date   
+                                                        </th>
+                                                        <th class="text-center">Current Meter Reading
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr id='addrs0'>
+                                                        <td>
+                                                            <input type="text" name='date0' placeholder='select date' class="form-control datepicker" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name='meter0' placeholder='eg. 1024' class="form-control" />
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <button type="button" class="btn btn-success btn-xs glyphicon glyphicon-floppy-disk"></button>
+                                                            <button type="button" class="btn btn-warning btn-xs glyphicon glyphicon-pencil"></button>
+                                                            <button type="button" class="btn btn-danger btn-xs glyphicon glyphicon-trash" onclick='dels(0)'></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id='addrs1'></tr>
+                                                </tbody>
+                                            </table>
+                                            <a id="add_rows" class="btn btn-success  pull-right glyphicon glyphicon-plus"></a>
 
-                                        <asp:Button ID="Button1" runat="server" Text="Add Data" class="btn btn-success center-block" OnClick="Button1_Click" />
+                                            <asp:Button ID="Button1" runat="server" Text="Add Data" class="btn btn-success center-block" OnClick="Button1_Click" />
 
+                                        </div>
+                                        <%--end tab1--%>
+                                        <%--tab2--%>
+                                        <div class="tab-pane" id="tab2">
+                                            <table class="table table-bordered table-hover" id="tab_logic">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center col-xs-2">Date   
+                                                        </th>
+                                                        <th class="text-center">Current Meter Reading
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr id='addr0'>
+                                                        <td>
+                                                            <input type="text" name='date1' placeholder='select date' class="form-control datepicker" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name='meter1' placeholder='eg. 1024' class="form-control" />
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <button type="button" class="btn btn-success  btn-xs glyphicon glyphicon-floppy-disk"></button>
+                                                            <button type="button" class="btn btn-warning  btn-xs glyphicon glyphicon-pencil"></button>
+                                                            <button type="button" class="btn btn-danger  btn-xs glyphicon glyphicon-trash" onclick='del(0)'></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id='addr1'></tr>
+                                                </tbody>
+                                            </table>
+                                            <a id="add_row" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
+                                            <asp:Button ID="Button2" runat="server" Text="Add Data" class="btn btn-success center-block" OnClick="Button2_Click" />
+                                        </div>
+
+                                        <%--end tab2--%>
+
+                                        <%--tab3--%>
+                                        <div class="tab-pane" id="tab3">
+                                            <table class="table table-bordered table-hover" id="tab_logic3">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center col-xs-2">Date   
+                                                        </th>
+                                                        <th class="text-center">Current Meter Reading
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr id='addrss0'>
+                                                        <td>
+                                                            <input type="text" name='date2' placeholder='select date' class="form-control datepicker" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name='meter2' placeholder='eg. 1024' class="form-control" />
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <button type="button" class="btn btn-success  btn-xs glyphicon glyphicon-floppy-disk"></button>
+                                                            <button type="button" class="btn btn-warning  btn-xs glyphicon glyphicon-pencil"></button>
+                                                            <button type="button" class="btn btn-danger  btn-xs glyphicon glyphicon-trash" onclick='delss(0)'></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id='addrss1'></tr>
+                                                </tbody>
+                                            </table>
+                                            <a id="add_row3" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
+                                            <asp:Button ID="Button3" runat="server" Text="Add Data" class="btn btn-success center-block" OnClick="Button3_Click" />
+
+                                        </div>
+                                        <%--end tab3--%>
                                     </div>
-                                    <%--end tab1--%>
-                                    <%--tab2--%>
-                                    <div class="tab-pane" id="tab2">
-                                        <table class="table table-bordered table-hover" id="tab_logic">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center col-xs-2">Date   
-                                                    </th>
-                                                    <th class="text-center">Current Meter Reading
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr id='addr0'>
-                                                    <td>
-                                                        <input type="text" name='date1' placeholder='select date' class="form-control datepicker" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name='meter1' placeholder='eg. 1024' class="form-control" />
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <button type="button" class="btn btn-success  btn-xs glyphicon glyphicon-floppy-disk"></button>
-                                                        <button type="button" class="btn btn-warning  btn-xs glyphicon glyphicon-pencil"></button>
-                                                        <button type="button" class="btn btn-danger  btn-xs glyphicon glyphicon-trash" onclick='del(0)'></button>
-                                                    </td>
-                                                </tr>
-                                                <tr id='addr1'></tr>
-                                            </tbody>
-                                        </table>
-                                        <a id="add_row" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
-                                         <asp:Button ID="Button2" runat="server" Text="Add Data" class="btn btn-success center-block" OnClick="Button2_Click" />
-                                    </div>
 
-                                    <%--end tab2--%>
-
-                                    <%--tab3--%>
-                                    <div class="tab-pane" id="tab3">
-                                        <table class="table table-bordered table-hover" id="tab_logic3">
-                                            <thead>
-                                                <tr>
-                                                   <th class="text-center col-xs-2">Date   
-                                                    </th>
-                                                    <th class="text-center">Current Meter Reading
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr id='addrss0'>
-                                                   <td>
-                                                        <input type="text" name='date2' placeholder='select date' class="form-control datepicker" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name='meter2' placeholder='eg. 1024' class="form-control" />
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <button type="button" class="btn btn-success  btn-xs glyphicon glyphicon-floppy-disk"></button>
-                                                        <button type="button" class="btn btn-warning  btn-xs glyphicon glyphicon-pencil"></button>
-                                                        <button type="button" class="btn btn-danger  btn-xs glyphicon glyphicon-trash" onclick='delss(0)'></button>
-                                                    </td>
-                                                </tr>
-                                                <tr id='addrss1'></tr>
-                                            </tbody>
-                                        </table>
-                                        <a id="add_row3" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
-                                        <asp:Button ID="Button3" runat="server" Text="Add Data" class="btn btn-success center-block" OnClick="Button3_Click" />
-
-                                    </div>
-                                    <%--end tab3--%>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 

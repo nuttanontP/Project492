@@ -71,3 +71,5 @@ D:\github\TestAmmy\Service1\bin\System.Web.Http.WebHost.xml
 D:\github\TestAmmy\Service1\obj\Debug\Service1.dll
 D:\github\TestAmmy\Service1\obj\Debug\Service1.pdb
 D:\github\TestAmmy\Service1\obj\Debug\Service1.csprojResolveAssemblyReference.cache
+D:\github\TestAmmy\Service1\bin\EPPlus.dll
+D:\github\TestAmmy\Service1\bin\EPPlus.xml
