@@ -70,7 +70,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-building"></i>
                                     </div>
-                                    <asp:DropDownList ID="ddl_building" class="form-control select2" runat="server">
+                                    <asp:DropDownList ID="ddl_building" class="form-control select2" runat="server" onchange="ddlbuilding(this.value)" >
                                         <asp:ListItem Text="No Building" Value="" />
                                     </asp:DropDownList>
                                 </div>
@@ -168,5 +168,11 @@
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
     <script src="javascripts/add_diesel.js"></script>
+    <script>
+        function ddlbuilding(value) {
+            alert(value);
+        }
+    
+    </script>
     <script>$('#example').dataTable();</script>
 </asp:Content>

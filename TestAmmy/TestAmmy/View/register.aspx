@@ -64,7 +64,7 @@
                                 <option value="1">NAME</option>
                             </select>
                             <div class="form-group has-feedback">
-                                <input type="text" id="com_passs" runat="server" class="form-control" placeholder="Retype password" />
+                                <input type="text" id="com_passs" runat="server" class="form-control" placeholder="Code or Name" />
                                 <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                             </div>
 

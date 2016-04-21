@@ -125,6 +125,7 @@
     <Content Include="Admin\javascripts\add_diesel.js" />
     <Content Include="Admin\javascripts\add_electric.js" />
     <Content Include="Admin\javascripts\add_gasoline.js" />
+    <Content Include="Admin\javascripts\add_graph\graph_water.js" />
     <Content Include="Admin\javascripts\add_lpg.js" />
     <Content Include="Admin\javascripts\add_occupancy.js" />
     <Content Include="Admin\javascripts\add_water.js" />

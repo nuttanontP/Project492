@@ -822,6 +822,7 @@ namespace Service1
             {
                 conn.Open();
                 string energy_id = data_pro[1].ToLower();
+                string type = data_pro[4];
                 if (energy_id == "electrical")
                 {
                     CommandText = "SELECT * FROM electrical ";
@@ -844,7 +845,7 @@ namespace Service1
                 }
                 else if (energy_id == "water")
                 {
-                    CommandText = "SELECT * FROM water ";
+
                 }
                 CommandText += " where permission_building_buidlingid =@building_id and date between STR_TO_DATE(@start,'%m/%d/%Y') and STR_TO_DATE(@end,'%m/%d/%Y') ORDER BY date";
                 cmd = new MySqlCommand(CommandText, conn);
@@ -900,6 +901,181 @@ namespace Service1
                 throw;
             }
             conn.Close();
+            return json;
+        }
+        public string getdatagrap2h(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText = "";
+            try
+            {
+
+                string energy_id = data_pro[2].ToLower();
+                string type = data_pro[5];
+                string kind = data_pro[6];
+                if (energy_id == "electrical")
+                {
+                    CommandText = "SELECT * FROM electrical ";
+                }
+                else if (energy_id == "diesel")
+                {
+                    CommandText = "SELECT * FROM diesel ";
+                }
+                else if (energy_id == "gasoline")
+                {
+                    CommandText = "SELECT * FROM gasoline ";
+                }
+                else if (energy_id == "lpg")
+                {
+                    CommandText = "SELECT * FROM lpg ";
+                }
+                else if (energy_id == "occupancy")
+                {
+                    CommandText = "SELECT date,Available,Occupied,Number_Guests FROM occupancy ";
+                }
+                else if (energy_id == "water")
+                {
+                    if (type == "day")
+                    {
+                        //select day
+                        conn.Open();
+                        CommandText = "SELECT * from `water_day` where building = @building and code = @code and date between STR_TO_DATE(@start,'%m/%d/%Y') and STR_TO_DATE(@end,'%m/%d/%Y') ORDER BY date";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@building", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@code", data_pro[1]);
+                        cmd.Parameters.AddWithValue("@start", data_pro[3]);
+                        cmd.Parameters.AddWithValue("@end", data_pro[4]);
+                        adap = new MySqlDataAdapter(cmd);
+                        conn.Close();
+                        adap.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+
+                            Dictionary<string, object> dict_nont = new Dictionary<string, object>();
+                            dict_nont["categories"] = new List<DateTime>();
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                ((List<DateTime>)dict_nont["categories"]).Add((DateTime)row["date"]);
+                            }
+                            string[] columnNames = new string[1];
+                            //string[] columnNames = { "current" };
+                            if (kind == "current")
+                                columnNames[0] = "current";
+                            else if (kind == "different")
+                                columnNames[0] = "diff";
+                            else if (kind == "money")
+                                columnNames[0] = "money";
+                            List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
+                            for (var i = 0; i < columnNames.Length; i++)
+                            {
+                                Dictionary<string, object> aSeries = new Dictionary<string, object>();
+                                aSeries["name"] = columnNames[i];
+                                aSeries["data"] = new List<object>();
+                                //object[] temp = new object[2];
+                                int N = dt.Rows.Count;
+                                for (int j = 0; j < N; j++)
+                                {
+                                    object[] temp = { (DateTime)dt.Rows[j]["date"], dt.Rows[j][columnNames[i]] };
+                                    ((List<object>)aSeries["data"]).Add(temp);
+                                }
+                                dict.Add(aSeries);
+                                json = JsonConvert.SerializeObject(dict);
+
+                            }
+                        }
+                        else
+                            json = JsonConvert.SerializeObject("no");
+
+                    }
+                    else if (type == "month")
+                    {
+                        //select month
+                        conn.Open();
+                        CommandText = "SELECT  DATE_FORMAT(`water_day`.`date`, '%m-%Y') AS `month`,(MAX(`water_day`.`current`) - MIN(`water_day`.`current`)) AS `different_current`,SUM(`water_day`.`diff`) AS `sum_unit`,SUM(`water_day`.`money`) AS `sum_money`,`water_day`.`id` AS `id`, `water_day`.`building` AS `building`, `water_day`.`code` AS `code` ";
+                        CommandText += "FROM  `water_day`  where building = @building and code = @code and date between STR_TO_DATE(@start,'%m/%d/%Y') and STR_TO_DATE(@end,'%m/%d/%Y') GROUP BY DATE_FORMAT(`water_day`.`date`, '%m-%Y')";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@building", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@code", data_pro[1]);
+                        cmd.Parameters.AddWithValue("@start", data_pro[3]);
+                        cmd.Parameters.AddWithValue("@end", data_pro[4]);
+                        adap = new MySqlDataAdapter(cmd);
+                        conn.Close();
+                        adap.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+                            List<object> list = new List<object>();
+                            Dictionary<string, object> dict_nont = new Dictionary<string, object>();
+                            dict_nont["categories"] = new List<string>();
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                ((List<string>)dict_nont["categories"]).Add((string)row["month"]);
+                            }
+                            string[] columnNames = new string[1];
+                            string[] columnNames2 = new string[1];
+                            if (kind == "current") {
+                                columnNames[0] = "different_current";
+                                columnNames2[0] = "different current";
+                            }
+                               
+
+                            else if (kind == "different") {
+                                columnNames[0] = "sum_unit";
+                                columnNames2[0] = "sum of unit";
+                            }
+                               
+                            else if (kind == "money")
+                            {
+                                columnNames[0] = "sum_money";
+                                columnNames2[0] = "sum of money";
+                            }
+                             
+                            
+                            List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
+                            for (var i = 0; i < columnNames.Length; i++)
+                            {
+                                Dictionary<string, object> aSeries = new Dictionary<string, object>();
+                                aSeries["name"] = columnNames2[i];
+                                aSeries["data"] = new List<object>();
+                                //object[] temp = new object[2];
+                                int N = dt.Rows.Count;
+                                for (int j = 0; j < N; j++)
+                                {
+                                    object temp = dt.Rows[j][columnNames[i]];
+                                    ((List<object>)aSeries["data"]).Add(temp);
+                                }
+                                dict.Add(aSeries);
+                                
+
+                            }
+                            list.Add(dict_nont);
+                            list.Add(dict);
+                            json = JsonConvert.SerializeObject(list);
+                        }
+
+                        else
+                            json = JsonConvert.SerializeObject("no");
+
+
+                    }
+                    else if (type == "year")
+                    {
+                        //select day
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
             return json;
         }
         public string permissionadd(string codecompany)
@@ -1191,7 +1367,7 @@ namespace Service1
                     else
                     {
                         conn.Open();
-                        CommandText = "SELECT `bath/unit` as unit FROM `energy2.3`.water where `bath/unit`  is not null and type = "+ data_pro[4] + " order by date asc limit 1";
+                        CommandText = "SELECT `bath/unit` as unit FROM `energy2.3`.water where `bath/unit`  is not null and type = " + data_pro[4] + " order by date asc limit 1";
                         cmd = new MySqlCommand(CommandText, conn);
                         MySqlDataReader reader = cmd.ExecuteReader();
                         unit = "6";

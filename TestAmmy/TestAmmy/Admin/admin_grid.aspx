@@ -116,7 +116,7 @@
                                     <div class="tab-pane" id="tab4">
                                         <div class="row">
                                             <div class="col-sm-12 col-sm-offset-1">
-                                                <asp:GridView ID="lpg" AutoGenerateColumns="False" class="Diesel table table-bordered table-striped" HeaderStyle-HorizontalAlign="Center" DataKeyNames="randomID" runat="server" OnRowDeleting="lpg_RowDeleting">
+                                                <asp:GridView ID="lpg" AutoGenerateColumns="False" class="lpg table table-bordered table-striped" HeaderStyle-HorizontalAlign="Center" DataKeyNames="randomID" runat="server" OnRowDeleting="lpg_RowDeleting">
                                                     <Columns>
                                                         <asp:TemplateField HeaderText="No">
                                                             <ItemTemplate><%# Container.DataItemIndex + 1 %></ItemTemplate>
