@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Net;
 using System.IO;
+using System.Globalization;
 
 namespace Service1
 {
@@ -919,7 +920,164 @@ namespace Service1
                 string kind = data_pro[6];
                 if (energy_id == "electrical")
                 {
-                    CommandText = "SELECT * FROM electrical ";
+                    if (type == "day")
+                    {
+                        //day electrical
+                        conn.Open();
+                        CommandText = "SELECT * from `electrical_day` where building = @building and code = @code and date between STR_TO_DATE(@start,'%m/%d/%Y') and STR_TO_DATE(@end,'%m/%d/%Y') ORDER BY date";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@building", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@code", data_pro[1]);
+                        cmd.Parameters.AddWithValue("@start", data_pro[3]);
+                        cmd.Parameters.AddWithValue("@end", data_pro[4]);
+                        adap = new MySqlDataAdapter(cmd);
+                        conn.Close();
+                        adap.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+                            string[] columnNames = new string[2];
+                            List<string> columnNames2 = new List<string>();
+                            columnNames2.Add("Non-Design");
+                            columnNames2.Add("Design");
+                            if (kind == "current")
+                            {
+                                columnNames[0] = "current";
+                                columnNames[1] = "current_D";
+                            }
+
+                            else if (kind == "different")
+                            {
+                                columnNames[0] = "diff";
+                                columnNames[1] = "diff_D";
+                            }
+
+                            else if (kind == "money")
+                            {
+                                columnNames[0] = "money";
+                                columnNames[1] = "money_D";
+                            }
+
+                            List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
+                            for (var i = 0; i < 1; i++)
+                            {
+                                Dictionary<string, object> aSeries = new Dictionary<string, object>();
+                                aSeries["name"] = columnNames2[0];
+                                aSeries["data"] = new List<object>();
+                                Dictionary<string, object> bSeries = new Dictionary<string, object>();
+                                bSeries["name"] = columnNames2[1];
+                                bSeries["data"] = new List<object>();
+                                int N = dt.Rows.Count;
+                                for (int j = 0; j < N; j++)
+                                {
+
+                                    if (dt.Rows[j]["type"].ToString() == columnNames2[0])
+                                    {
+                                        object[] temp = { (DateTime)dt.Rows[j]["date"], dt.Rows[j][columnNames[0]] };
+                                        ((List<object>)aSeries["data"]).Add(temp);
+
+                                    }
+                                    else if (dt.Rows[j]["type"].ToString() == columnNames2[1])
+                                    {
+                                        object[] temp = { (DateTime)dt.Rows[j]["date"], dt.Rows[j][columnNames[1]] };
+                                        ((List<object>)bSeries["data"]).Add(temp);
+
+                                    }
+
+
+                                }
+                                dict.Add(aSeries);
+                                dict.Add(bSeries);
+                                json = JsonConvert.SerializeObject(dict);
+                            }
+                        }
+                        else
+                        {
+                            //no row
+                            json = JsonConvert.SerializeObject("no");
+
+                        }
+
+                    }
+
+                    else if (type == "month")
+                    {
+                        //month electrical
+                        conn.Open();
+                        CommandText = " SELECT DATE_FORMAT(`date`, '%m-%Y') AS `month`,`type` AS `type`,(MAX(`current`) - MIN(`current`)) AS `different_current`,SUM(`diff`) AS `sum_unit`,SUM(`money`) AS `sum_money`,(MAX(`current_D`) - MIN(`current_D`)) AS `different_current_D`,SUM(`diff_D`) AS `sum_unit_D`,SUM(`money_D`) AS `sum_money_D`,`id` AS `id`,`building` AS `building`,`code` AS `code` ";
+                        CommandText += " FROM electrical_day WHERE building =@building and code = @code and  (`date` BETWEEN STR_TO_DATE(@start, '%m/%d/%Y') AND STR_TO_DATE(@end, '%m/%d/%Y'))  ";
+                        CommandText += " GROUP BY DATE_FORMAT(`date`, '%m-%Y') , `type` , `building` , `code` ";
+                        cmd = new MySqlCommand(CommandText, conn);
+                        cmd.Parameters.AddWithValue("@building", data_pro[0]);
+                        cmd.Parameters.AddWithValue("@code", data_pro[1]);
+                        cmd.Parameters.AddWithValue("@start", data_pro[3]);
+                        cmd.Parameters.AddWithValue("@end", data_pro[4]);
+                        adap = new MySqlDataAdapter(cmd);
+                        conn.Close();
+                        adap.Fill(dt);
+                        string[] columnNames = new string[2];
+                        List<string> columnNames2 = new List<string>();
+                        columnNames2.Add("Non-Design");
+                        columnNames2.Add("Design");
+                        if (kind == "current")
+                        {
+                            columnNames[0] = "different_current";
+                            columnNames[1] = "different_current_D";
+                        }
+                        else if (kind == "different")
+                        {
+                            columnNames[0] = "sum_unit";
+                            columnNames[1] = "sum_unit_D";
+                        }
+                        else if (kind == "money")
+                        {
+                            columnNames[0] = "sum_money";
+                            columnNames[1] = "sum_money_D";
+                        }
+                        List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
+                        for (var i = 0; i < 1; i++)
+                        {
+                            Dictionary<string, object> aSeries = new Dictionary<string, object>();
+                            aSeries["name"] = columnNames2[0];
+                            aSeries["data"] = new List<object>();
+                            Dictionary<string, object> bSeries = new Dictionary<string, object>();
+                            bSeries["name"] = columnNames2[1];
+                            bSeries["data"] = new List<object>();
+                            //object[] temp = new object[2];
+                            int N = dt.Rows.Count;
+                            for (int j = 0; j < N; j++)
+                            {
+
+                                DateTime datetime = DateTime.ParseExact((string)dt.Rows[j]["month"], "MM-yyyy", CultureInfo.InvariantCulture);
+                                if (dt.Rows[j]["type"].ToString() == columnNames2[i])
+                                {
+
+                                    object[] temp = { datetime, dt.Rows[j][columnNames[0]] };
+                                    ((List<object>)aSeries["data"]).Add(temp);
+
+
+                                }
+                                else if (dt.Rows[j]["type"].ToString() == columnNames2[1])
+                                {
+                                    object[] temp = { datetime, dt.Rows[j][columnNames[1]] };
+                                    ((List<object>)bSeries["data"]).Add(temp);
+
+                                }
+                            }
+
+                            dict.Add(aSeries);
+                            dict.Add(bSeries);
+
+
+                        }
+                        //list.Add(dict_nont);
+                        //list.Add(dict);
+                        json = JsonConvert.SerializeObject(dict);
+
+                    }
+                    else if (type == "year")
+                    {
+
+                    }
                 }
                 else if (energy_id == "diesel")
                 {
@@ -941,7 +1099,7 @@ namespace Service1
                 {
                     if (type == "day")
                     {
-                        //select day
+                        //day water
                         conn.Open();
                         CommandText = "SELECT * from `water_day` where building = @building and code = @code and date between STR_TO_DATE(@start,'%m/%d/%Y') and STR_TO_DATE(@end,'%m/%d/%Y') ORDER BY date";
                         cmd = new MySqlCommand(CommandText, conn);
@@ -962,7 +1120,10 @@ namespace Service1
                                 ((List<DateTime>)dict_nont["categories"]).Add((DateTime)row["date"]);
                             }
                             string[] columnNames = new string[1];
-                            //string[] columnNames = { "current" };
+                            List<string> columnNames2 = new List<string>();
+                            columnNames2.Add("supply");
+                            columnNames2.Add("ground");
+                            columnNames2.Add("both");
                             if (kind == "current")
                                 columnNames[0] = "current";
                             else if (kind == "different")
@@ -973,16 +1134,42 @@ namespace Service1
                             for (var i = 0; i < columnNames.Length; i++)
                             {
                                 Dictionary<string, object> aSeries = new Dictionary<string, object>();
-                                aSeries["name"] = columnNames[i];
+                                aSeries["name"] = columnNames2[0];
                                 aSeries["data"] = new List<object>();
+                                Dictionary<string, object> bSeries = new Dictionary<string, object>();
+                                bSeries["name"] = columnNames2[1];
+                                bSeries["data"] = new List<object>();
+                                Dictionary<string, object> cSeries = new Dictionary<string, object>();
+                                cSeries["name"] = columnNames2[2];
+                                cSeries["data"] = new List<object>();
                                 //object[] temp = new object[2];
                                 int N = dt.Rows.Count;
                                 for (int j = 0; j < N; j++)
                                 {
-                                    object[] temp = { (DateTime)dt.Rows[j]["date"], dt.Rows[j][columnNames[i]] };
-                                    ((List<object>)aSeries["data"]).Add(temp);
+
+                                    if (dt.Rows[j]["type"].ToString() == "supply")
+                                    {
+                                        object[] temp = { (DateTime)dt.Rows[j]["date"], dt.Rows[j][columnNames[i]] };
+                                        ((List<object>)aSeries["data"]).Add(temp);
+
+                                    }
+                                    else if (dt.Rows[j]["type"].ToString() == "ground")
+                                    {
+                                        object[] temp = { (DateTime)dt.Rows[j]["date"], dt.Rows[j][columnNames[i]] };
+                                        ((List<object>)bSeries["data"]).Add(temp);
+
+                                    }
+                                    else if (dt.Rows[j]["type"].ToString() == "both")
+                                    {
+                                        object[] temp = { (DateTime)dt.Rows[j]["date"], dt.Rows[j][columnNames[i]] };
+                                        ((List<object>)cSeries["data"]).Add(temp);
+
+                                    }
+
                                 }
                                 dict.Add(aSeries);
+                                dict.Add(bSeries);
+                                dict.Add(cSeries);
                                 json = JsonConvert.SerializeObject(dict);
 
                             }
@@ -993,10 +1180,12 @@ namespace Service1
                     }
                     else if (type == "month")
                     {
-                        //select month
+                        //month water
                         conn.Open();
-                        CommandText = "SELECT  DATE_FORMAT(`water_day`.`date`, '%m-%Y') AS `month`,(MAX(`water_day`.`current`) - MIN(`water_day`.`current`)) AS `different_current`,SUM(`water_day`.`diff`) AS `sum_unit`,SUM(`water_day`.`money`) AS `sum_money`,`water_day`.`id` AS `id`, `water_day`.`building` AS `building`, `water_day`.`code` AS `code` ";
-                        CommandText += "FROM  `water_day`  where building = @building and code = @code and date between STR_TO_DATE(@start,'%m/%d/%Y') and STR_TO_DATE(@end,'%m/%d/%Y') GROUP BY DATE_FORMAT(`water_day`.`date`, '%m-%Y')";
+                        CommandText = " SELECT  DATE_FORMAT(`date`, '%m-%Y') AS `month`, `type` AS `type`, (MAX(`current`) - MIN(`current`)) AS `different_current`, SUM(`diff`) AS `sum_unit`,SUM(`money`) AS `sum_money`, `id` AS `id`, `building` AS `building`,`code` AS `code` ";
+                        CommandText += " FROM  `water_day` ";
+                        CommandText += " WHERE building = @building and code = @code and (`date` BETWEEN STR_TO_DATE(@start, '%m/%d/%Y') AND STR_TO_DATE(@end, '%m/%d/%Y')) ";
+                        CommandText += " GROUP BY DATE_FORMAT(`date`, '%m-%Y') , `type` , `building` , `code` ";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@building", data_pro[0]);
                         cmd.Parameters.AddWithValue("@code", data_pro[1]);
@@ -1009,51 +1198,90 @@ namespace Service1
                         {
                             List<object> list = new List<object>();
                             Dictionary<string, object> dict_nont = new Dictionary<string, object>();
-                            dict_nont["categories"] = new List<string>();
+                            //dict_nont["categories"] = new List<DateTime>();
+                            //foreach (DataRow row in dt.Rows)
+                            //{
+                            //    ((List<DateTime>)dict_nont["categories"]).Add((DateTime)row["month"]);
+                            //}
+
+                            List<string> month = new List<string>();
                             foreach (DataRow row in dt.Rows)
                             {
-                                ((List<string>)dict_nont["categories"]).Add((string)row["month"]);
+                                month.Add((string)row["month"]);
                             }
+                            List<string> noDupes = month.Distinct().ToList();
+                            dict_nont["categories"] = noDupes;
                             string[] columnNames = new string[1];
-                            string[] columnNames2 = new string[1];
-                            if (kind == "current") {
+                            List<string> columnNames2 = new List<string>();
+                            columnNames2.Add("supply");
+                            columnNames2.Add("ground");
+                            columnNames2.Add("both");
+                            if (kind == "current")
+                            {
                                 columnNames[0] = "different_current";
-                                columnNames2[0] = "different current";
                             }
-                               
 
-                            else if (kind == "different") {
+
+                            else if (kind == "different")
+                            {
                                 columnNames[0] = "sum_unit";
-                                columnNames2[0] = "sum of unit";
                             }
-                               
+
                             else if (kind == "money")
                             {
                                 columnNames[0] = "sum_money";
-                                columnNames2[0] = "sum of money";
                             }
-                             
-                            
+
+
                             List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
                             for (var i = 0; i < columnNames.Length; i++)
                             {
                                 Dictionary<string, object> aSeries = new Dictionary<string, object>();
-                                aSeries["name"] = columnNames2[i];
+                                aSeries["name"] = columnNames2[0];
                                 aSeries["data"] = new List<object>();
+                                Dictionary<string, object> bSeries = new Dictionary<string, object>();
+                                bSeries["name"] = columnNames2[1];
+                                bSeries["data"] = new List<object>();
+                                Dictionary<string, object> cSeries = new Dictionary<string, object>();
+                                cSeries["name"] = columnNames2[2];
+                                cSeries["data"] = new List<object>();
                                 //object[] temp = new object[2];
                                 int N = dt.Rows.Count;
                                 for (int j = 0; j < N; j++)
                                 {
-                                    object temp = dt.Rows[j][columnNames[i]];
-                                    ((List<object>)aSeries["data"]).Add(temp);
+
+                                    DateTime datetime = DateTime.ParseExact((string)dt.Rows[j]["month"], "MM-yyyy", CultureInfo.InvariantCulture);
+                                    if (dt.Rows[j]["type"].ToString() == "supply")
+                                    {
+
+                                        object[] temp = { datetime, dt.Rows[j][columnNames[i]] };
+                                        ((List<object>)aSeries["data"]).Add(temp);
+
+
+                                    }
+                                    else if (dt.Rows[j]["type"].ToString() == "ground")
+                                    {
+                                        object[] temp = { datetime, dt.Rows[j][columnNames[i]] };
+                                        ((List<object>)bSeries["data"]).Add(temp);
+
+                                    }
+                                    else if (dt.Rows[j]["type"].ToString() == "both")
+                                    {
+                                        object[] temp = { datetime, dt.Rows[j][columnNames[i]] };
+                                        ((List<object>)cSeries["data"]).Add(temp);
+
+                                    }
                                 }
+
                                 dict.Add(aSeries);
-                                
+                                dict.Add(bSeries);
+                                dict.Add(cSeries);
+
 
                             }
-                            list.Add(dict_nont);
-                            list.Add(dict);
-                            json = JsonConvert.SerializeObject(list);
+                            //list.Add(dict_nont);
+                            //list.Add(dict);
+                            json = JsonConvert.SerializeObject(dict);
                         }
 
                         else
@@ -1181,44 +1409,63 @@ namespace Service1
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
             string CommandText;
+            string unit = data_pro[5];
             string json = "no";
+            int date_ = 6;
             try
             {
-
-                conn.Open();
+                if (unit == "")
+                {
+                    conn.Open();
+                    CommandText = "SELECT `bath/unit` as unit FROM `energy2.3`.electrical where `bath/unit`  is not null and type = " + data_pro[4] + " order by date asc limit 1";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    unit = "6";
+                    while (reader.Read())
+                        unit = reader["unit"].ToString();
+                    conn.Close();
+                }
                 if (data_pro[4] == "1")
                 {
-                    for (int i = 5; i < data_pro.Count(); i += 2)
+                    for (int i = 6; i < data_pro.Count(); i += 2)
                     {
-                        CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,`current meter`) VALUES (@userid,@building,@code,@energy,@type,@date,@meter)";
+                        conn.Open();
+                        CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,`current meter`,`bath/unit`) VALUES (@userid,@building,@code,@energy,@type,@date,@meter,@unit)";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@userid", data_pro[0]);
                         cmd.Parameters.AddWithValue("@building", data_pro[1]);
                         cmd.Parameters.AddWithValue("@code", data_pro[2]);
                         cmd.Parameters.AddWithValue("@energy", data_pro[3]);
                         cmd.Parameters.AddWithValue("@type", data_pro[4]);
+                        cmd.Parameters.AddWithValue("@unit", unit);
                         cmd.Parameters.AddWithValue("@date", data_pro[i]);
                         cmd.Parameters.AddWithValue("@meter", data_pro[i + 1]);
+                        date_ += 2;
                         cmd.ExecuteNonQuery();
+                        conn.Close();
                     }
                     json = "yes";
                 }
                 else
                 {
-                    for (int i = 5; i < data_pro.Count(); i += 4)
+                    for (int i = 6; i < data_pro.Count(); i += 4)
                     {
-                        CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,peak,`off peak`,holiday) VALUES (@userid,@building,@code,@energy,@type,@date,@peak,@off,@holiday)";
+                        conn.Open();
+                        CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,type,date,peak,`off peak`,holiday,`bath/unit`) VALUES (@userid,@building,@code,@energy,@type,@date,@peak,@off,@holiday,@unit)";
                         cmd = new MySqlCommand(CommandText, conn);
                         cmd.Parameters.AddWithValue("@userid", data_pro[0]);
                         cmd.Parameters.AddWithValue("@building", data_pro[1]);
                         cmd.Parameters.AddWithValue("@code", data_pro[2]);
                         cmd.Parameters.AddWithValue("@energy", data_pro[3]);
                         cmd.Parameters.AddWithValue("@type", data_pro[4]);
+                        cmd.Parameters.AddWithValue("@unit", unit);
                         cmd.Parameters.AddWithValue("@date", data_pro[i]);
                         cmd.Parameters.AddWithValue("@peak", data_pro[i + 1]);
                         cmd.Parameters.AddWithValue("@off", data_pro[i + 2]);
                         cmd.Parameters.AddWithValue("@holiday", data_pro[i + 3]);
+                        date_ += 4;
                         cmd.ExecuteNonQuery();
+                        conn.Close();
                     }
                     json = "yes";
                 }
@@ -1226,11 +1473,16 @@ namespace Service1
             }
             catch (Exception)
             {
-
-                //throw;
+                if (data_pro[4] == "1")
+                {
+                    json = "the records were added until the exception date:" + data_pro[date_ - 2] + " record and followed records.";
+                }
+                else
+                {
+                    json = "the records were added until the exception date:" + data_pro[date_ - 4] + " record and followed records.";
+                }
             }
-            conn.Close();
-            return json;
+            return JsonConvert.SerializeObject(json);
         }
         public string AddDiesel(string[] data_pro)
         {
@@ -1548,6 +1800,7 @@ namespace Service1
             string url = "https://www.google.com/recaptcha/api/siteverify?secret=" + ReCaptcha_Secret + "&response=" + response;
             return (new WebClient()).DownloadString(url);
         }
+        
 
 
     }

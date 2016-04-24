@@ -36,7 +36,7 @@ $(document).ready(function () {
     $("#add_row").click(function () {
 
 
-        $('#addr' + i).html("<td>  <input type='text' name='date' placeholder='select date' class='form-control datepicker' /></td><td><input name='name[] ' type='text' placeholder='eg.1250' class='form-control input-md'  /> </td><td><input  name='mail" + i + "' type='text' placeholder='eg. 1200'  class='form-control input-md'></td><td><input  name='mobile" + i + "' type='text' placeholder='eg. 1400'  class='form-control input-md'></td><td class='text-center'><button type='button' class='btn btn-success btn-xs  glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning btn-xs  glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger btn-xs  glyphicon glyphicon-trash' onclick='del(" + i + ")'></button></td>");
+        $('#addr' + i).html("<td>  <input type='text' name='date1' placeholder='select date' class='form-control datepicker' /></td><td><input name='peak' type='text' placeholder='eg.1250' class='form-control input-md'  /> </td><td><input  name='off" + i + "' type='text' placeholder='eg. 1200'  class='form-control input-md'></td><td><input  name='holiday" + i + "' type='text' placeholder='eg. 1400'  class='form-control input-md'></td><td class='text-center'><button type='button' class='btn btn-success btn-xs  glyphicon glyphicon-floppy-disk'></button> <button type='button' class='btn btn-warning btn-xs  glyphicon glyphicon-pencil'></button> <button type='button' class='btn btn-danger btn-xs  glyphicon glyphicon-trash' onclick='del(" + i + ")'></button></td>");
         $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
         i++;
         functionOne();

@@ -60,6 +60,7 @@ namespace TestAmmy.Admin
             list1.Add(Session["codecompany"].ToString()); //companycode
             list1.Add("1"); //{energy type } 1:electrical 2:desiel
             list1.Add("1"); //ENUM {0 1 2 ,null non design , design}
+            list1.Add(factor.Value); // unit/bath 
             string[] new_date = new string[date.Count()];
             foreach (var item in date.Select((value, i) => new { i, value }))
             {
@@ -71,7 +72,8 @@ namespace TestAmmy.Admin
             string[] data_pro = list1.ToArray();
             string result = apiconnecter.PostData("AddElectric", data_pro);
             string s = JsonConvert.DeserializeObject<string>(result);
-            if (s != "no")
+            string s_2 = JsonConvert.DeserializeObject<string>(s);
+            if (s_2 == "yes")
             {
                 string s_ = "add  ok ";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33644", "alert('" + s_ + "');window.location.href='admin_addElectric.aspx';", true);
@@ -79,8 +81,8 @@ namespace TestAmmy.Admin
             }
             else
             {
-                string s_ = "can't add ";
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33645", "alert('" + s_ + "');window.location.href='admin_adminDashBoard.aspx';", true);
+                string s_ = s_2;
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');window.location.href='admin_addElectric.aspx';", true);
                 //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('"+s_+"')", true);
             }
         }
@@ -105,6 +107,7 @@ namespace TestAmmy.Admin
             list1.Add(Session["codecompany"].ToString()); //companycode
             list1.Add("1"); //{energy type } 1:electrical 2:desiel
             list1.Add("2"); //ENUM {0 1 2 ,null non design , design}
+            list1.Add(factor.Value); // unit/bath 
             string[] new_date = new string[date.Count()];
             foreach (var item in date.Select((value, i) => new { i, value }))
             {
@@ -119,16 +122,17 @@ namespace TestAmmy.Admin
             string[] data_pro = list1.ToArray();
             string result = apiconnecter.PostData("AddElectric", data_pro);
             string s = JsonConvert.DeserializeObject<string>(result);
-            if (s != "no")
+            string s_2 = JsonConvert.DeserializeObject<string>(s);
+            if (s_2 == "yes")
             {
-                string s_ = "add  ok ";
+                string s_ = "ADD OK";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33674", "alert('" + s_ + "');window.location.href='admin_addElectric.aspx';", true);
                 //ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');", true);
             }
             else
             {
-                string s_ = "can't add ";
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33675", "alert('" + s_ + "');window.location.href='admin_adminDashBoard.aspx';", true);
+                string s_ = s_2;
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');window.location.href='admin_addElectric.aspx';", true);
                 //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('"+s_+"')", true);
             }
 

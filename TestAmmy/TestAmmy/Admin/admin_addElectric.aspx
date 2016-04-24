@@ -46,6 +46,19 @@
                                 </div>
                             </div>
                         </div>
+                         <div class="col-sm-5"></div>
+                        <div class="col-sm-3">
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>FACTOR(UNIT/BAHT)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-usd"></i>
+                                    </div>
+                                    <input type="number" runat="server" class="form-control" id='factor' min="0" placeholder='eg. 3' />
+                                </div>
+                            </div>
+                        </div>
                         <br />
                         <div class="row">
                             <div class="col-sm-10 col-sm-offset-1">
@@ -159,6 +172,6 @@
 
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
-        <script src="javascripts/add_electric.js"></script>
+    <script src="javascripts/add_electric.js"></script>
 
 </asp:Content>

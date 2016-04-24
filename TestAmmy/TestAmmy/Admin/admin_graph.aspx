@@ -77,7 +77,6 @@
                                         <%--    <input type="button"--%>
                                         <button type="button" class="btn btn-block btn-success" onclick='dosomething("day")'>Success</button>
                                     </div>
-
                                 </div>
                             </div>
                             <%--end tab1--%>
@@ -86,8 +85,6 @@
                             <%--end tab2--%>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -113,8 +110,6 @@
                 placeholder: 'Select asset '
             });
             start(companycode);
-            
-           
         });
     </script>
     <script src="javascripts/add_graph/graph_water.js"></script>

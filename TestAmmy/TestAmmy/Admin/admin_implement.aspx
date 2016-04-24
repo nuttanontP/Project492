@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ">
-                                <select id="sheet" name="sheet" runat="server" class="form-control select2">
+                                <select id="sheet" name="sheet" runat="server" class="form-control select2" placeholder='select type'>
                                     <option value='0'>-SELECT-</option>
                                     <option value='1'>ELECTRIC</option>
                                     <option value='2'>DIESEL</option>
@@ -61,4 +61,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
+    <script>
+      
+    </script>
 </asp:Content>

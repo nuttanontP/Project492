@@ -14,9 +14,9 @@ namespace TestAmmy.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
 
-         
+
+
             if (!IsPostBack)
             {
                 if ((string)Session["email"] == null)
@@ -24,10 +24,10 @@ namespace TestAmmy.Admin
                     Response.Redirect("../View/login.aspx");
                 }
                 //electrical
-                string[] data_pro = new string[] { Session["codecompany"].ToString(), "admin" ,"1"};
+                string[] data_pro = new string[] { Session["codecompany"].ToString(), "admin", "1" };
                 string result = apiconnecter.PostData("getprevious", data_pro);
                 string s = JsonConvert.DeserializeObject<string>(result);
-                if (!s.Equals("no"))
+                if (!s.Equals("\"no\""))
                 {
                     DataTable myData = JsonConvert.DeserializeObject<DataTable>(s);
                     this.electric.DataSource = myData;
@@ -38,13 +38,13 @@ namespace TestAmmy.Admin
                         electric.HeaderRow.TableSection = TableRowSection.TableHeader;
                         electric.FooterRow.TableSection = TableRowSection.TableFooter;
                     }
-                      
+
                 }
                 //diesel
-                data_pro = new string[]{ Session["codecompany"].ToString(), "admin", "2" };
+                data_pro = new string[] { Session["codecompany"].ToString(), "admin", "2" };
                 result = apiconnecter.PostData("getprevious", data_pro);
                 s = JsonConvert.DeserializeObject<string>(result);
-                if (!s.Equals("no"))
+                if (!s.Equals("\"no\""))
                 {
                     DataTable myData = JsonConvert.DeserializeObject<DataTable>(s);
                     this.diesel.DataSource = myData;
@@ -55,13 +55,13 @@ namespace TestAmmy.Admin
                         diesel.HeaderRow.TableSection = TableRowSection.TableHeader;
                         diesel.FooterRow.TableSection = TableRowSection.TableFooter;
                     }
-                     
+
                 }
                 //gasoline
                 data_pro = new string[] { Session["codecompany"].ToString(), "admin", "3" };
                 result = apiconnecter.PostData("getprevious", data_pro);
                 s = JsonConvert.DeserializeObject<string>(result);
-                if (!s.Equals("no"))
+                if (!s.Equals("\"no\""))
                 {
                     DataTable myData = JsonConvert.DeserializeObject<DataTable>(s);
                     this.gasoline.DataSource = myData;
@@ -78,7 +78,7 @@ namespace TestAmmy.Admin
                 data_pro = new string[] { Session["codecompany"].ToString(), "admin", "4" };
                 result = apiconnecter.PostData("getprevious", data_pro);
                 s = JsonConvert.DeserializeObject<string>(result);
-                if (!s.Equals("no"))
+                if (!s.Equals("\"no\""))
                 {
                     DataTable myData = JsonConvert.DeserializeObject<DataTable>(s);
                     this.lpg.DataSource = myData;
@@ -95,7 +95,7 @@ namespace TestAmmy.Admin
                 data_pro = new string[] { Session["codecompany"].ToString(), "admin", "5" };
                 result = apiconnecter.PostData("getprevious", data_pro);
                 s = JsonConvert.DeserializeObject<string>(result);
-                if (!s.Equals("no"))
+                if (!s.Equals("\"no\""))
                 {
                     DataTable myData = JsonConvert.DeserializeObject<DataTable>(s);
                     this.water.DataSource = myData;
@@ -112,7 +112,7 @@ namespace TestAmmy.Admin
                 data_pro = new string[] { Session["codecompany"].ToString(), "admin", "6" };
                 result = apiconnecter.PostData("getprevious", data_pro);
                 s = JsonConvert.DeserializeObject<string>(result);
-                if (!s.Equals("no"))
+                if (!s.Equals("\"no\""))
                 {
                     DataTable myData = JsonConvert.DeserializeObject<DataTable>(s);
                     this.occupancy.DataSource = myData;
@@ -133,7 +133,7 @@ namespace TestAmmy.Admin
             List<string> data_del = new List<string>();
             int rowIndex = Convert.ToInt32(e.RowIndex);
             data_del.Add(electric.DataKeys[rowIndex].Values[0].ToString());
-            string[] data_pro = new string[] {Session["codecompany"].ToString(),"1", data_del[0].ToString() };
+            string[] data_pro = new string[] { Session["codecompany"].ToString(), "1", data_del[0].ToString() };
             string result = apiconnecter.PostData("deleteprevious", data_pro);
             string s = JsonConvert.DeserializeObject<string>(result);
             string s2 = JsonConvert.DeserializeObject<string>(s);
@@ -144,7 +144,7 @@ namespace TestAmmy.Admin
                 string myRandomNo = rnd.Next(10000000, 99999999).ToString();
                 ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='admin_grid.aspx';", true);
             }
-          
+
         }
 
         protected void diesel_RowDeleting(object sender, GridViewDeleteEventArgs e)

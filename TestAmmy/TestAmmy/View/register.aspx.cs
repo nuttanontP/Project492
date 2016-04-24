@@ -73,7 +73,7 @@ namespace TestAmmy.View
                 {
                     Session["email"] = email.Value;
                     Session["status"] = "admin";
-                    Session["codecompany"] = com_passs.Value;
+                    Session["codecompany"] = code;
                     Response.Redirect("../Admin/admin_dashboard.aspx");
 
                 }

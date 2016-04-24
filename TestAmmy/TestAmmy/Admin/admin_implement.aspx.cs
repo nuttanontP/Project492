@@ -8,6 +8,8 @@ using OfficeOpenXml;
 using Newtonsoft.Json;
 using System.IO;
 using System.Data;
+//using Newtonsoft.Json;
+using System.Globalization;
 
 namespace TestAmmy.Admin
 
@@ -25,51 +27,112 @@ namespace TestAmmy.Admin
             {
                 if (FileUpload1.HasFile && Path.GetExtension(FileUpload1.FileName) == ".xlsx")
                 {
-                    using (var excel = new ExcelPackage(FileUpload1.PostedFile.InputStream))
-                    {
-                        var tbl = new DataTable();
-                        var nont = excel.Workbook.Worksheets.Count;
-                        var sheet_at = sheet.Value;
-                        var ws = excel.Workbook.Worksheets["Electricity Details"];
+                    var tbl = new DataTable();
+                    var sheet_at = sheet.Value;
+                    string json = import_excel(sheet_at);
+                    //string result = apiconnecter.PostData("ddlpermission", data_pro);
+                    string s = JsonConvert.DeserializeObject<string>(json);
 
-                        var hasHeader = false;  // adjust accordingly
-                                                // add DataColumns to DataTable
-                        var start_row = 8;
-                        var start_col = 1;
-                        foreach (var firstRowCell in ws.Cells[start_row, start_col, start_row, ws.Dimension.End.Column])
-                            tbl.Columns.Add(hasHeader ? firstRowCell.Text : String.Format("Col{0}", firstRowCell.Start.Column));
-
-                        // add DataRows to DataTable
-                        int startRow = hasHeader ? 1 : start_row;
-                        for (int rowNum = startRow; rowNum <= ws.Dimension.End.Row; rowNum++)
-                        {
-                            var wsRow = ws.Cells[rowNum, 1, rowNum, ws.Dimension.End.Column];
-                            DataRow row = tbl.NewRow();
-                            foreach (var cell in wsRow)
-                                row[cell.Start.Column - 1] = cell.Text;
-                            tbl.Rows.Add(row);
-                        }
-                        string dyn = JsonConvert.SerializeObject(tbl);
-                        var msg = String.Format("DataTable successfully created from excel-file. Colum-count:{0} Row-count:{1} , worksheet {2}",
-                                                tbl.Columns.Count, tbl.Rows.Count, nont);
-                        //UploadStatusLabel.Text = dyn;
-                        //GridView1.DataSource = tbl;
-                        //GridView1.DataBind();
-                        List<object> colValues = new List<object>();
-                        //foreach (DataRow row in tbl.Rows)
-                        //{
-                        //    colValues.Add(row["ColumnName"]);
-                        //}
-                        //colValues = (from DataRow row in tbl.Rows select row["ColumnName"]).ToList();
-                        colValues = tbl.AsEnumerable().Select(r => r["Col2"]).ToList();
-                        //TextBox1.Text = colValues;
-                    }
                 }
                 else
                 {
                     //UploadStatusLabel.Text = "You did not specify a file to upload.";
                 }
             }
+        }
+        protected string import_excel(string sheet)
+        {
+            using (var excel = new ExcelPackage(FileUpload1.PostedFile.InputStream))
+            {
+                int[] dimantion = new int[4];
+                var tbl = new DataTable();
+                var ws = excel.Workbook.Worksheets[""];
+                var date = excel.Workbook.Worksheets["General Info"];
+                string month = date.Cells[14, 3].Text;
+                string year = date.Cells[14, 4].Text;
+                if (sheet == "1")
+                {
+                    dimantion = new int[4] { 8, 1, 38, 10 };
+                    ws = excel.Workbook.Worksheets["Electricity Details"];
+                    string factor = ws.Cells[3, 5].Text;
+                    //factor = (3,E)
+
+                }
+                else if (sheet == "2")
+                {
+                    ws = excel.Workbook.Worksheets["Diesel details"];
+                    //factor = (3,H) not sure
+                }
+                else if (sheet == "3")
+                {
+                    ws = excel.Workbook.Worksheets["Gasoline details"];
+                    //factor = (40,C)
+                }
+                else if (sheet == "4")
+                {
+                    ws = excel.Workbook.Worksheets["LPG Details"];
+                    //factor = (5,B)
+                }
+                else if (sheet == "5")
+                {
+                    ws = excel.Workbook.Worksheets["Water Cons Details"];
+                    //factor_supply = 3,E
+                    //factor_ground = 4,G
+                    //factor_both =   4,L
+                }
+                else if (sheet == "6")
+                {
+                    ws = excel.Workbook.Worksheets["Occupancy Details"];
+                    //total floor area = 5,E
+                    //total number of floor = 6,E
+                }
+                if (sheet == "1")
+                {
+                    Dictionary<string, object> electrical = new Dictionary<string, object>();
+                    electrical["design"] = new Dictionary<string, object>();
+                    electrical["nondesign"] = new Dictionary<string, object>();
+                    electrical["factor"] = ws.Cells[3, 5].Text;
+                    Dictionary<string, object> design = new Dictionary<string, object>();
+                    design["date"] = new List<object>();
+                    design["current"] = new List<object>();
+
+                    Dictionary<string, object> nondesign = new Dictionary<string, object>();
+                    nondesign["date"] = new List<object>();
+                    nondesign["peak"] = new List<object>();
+                    nondesign["off"] = new List<object>();
+                    nondesign["holiday"] = new List<object>();
+
+                    foreach (var firstRowCell in ws.Cells[dimantion[0], dimantion[1], dimantion[0], dimantion[3]])
+                        tbl.Columns.Add(String.Format("Col{0}", firstRowCell.Start.Column));
+                    for (int rowNum = dimantion[0]; rowNum <= dimantion[2]; rowNum++)
+                    {
+                        var wsRow = ws.Cells[rowNum, dimantion[1], rowNum, dimantion[3]];
+                        string day = wsRow[rowNum, 1].Text;
+                        day = day.Length == 1 ? ("0" + wsRow[rowNum, 1].Text) : wsRow[rowNum, 1].Text;
+                        DateTime dt = DateTime.ParseExact(year + "-" + month + "-" + day, "yyyy-MMMM-dd", CultureInfo.InvariantCulture);
+                        if (wsRow[rowNum, 3].Text != "")
+                        {
+                            ((List<object>)design["date"]).Add(dt);
+                            ((List<object>)design["current"]).Add(wsRow[rowNum, 3].Text);
+                        }
+                        if (wsRow[rowNum, 7].Text != "" || wsRow[rowNum, 8].Text != "" || wsRow[rowNum, 9].Text != "")
+                        {
+                            ((List<object>)nondesign["date"]).Add(dt);
+                            ((List<object>)nondesign["peak"]).Add(wsRow[rowNum, 7].Text);
+                            ((List<object>)nondesign["off"]).Add(wsRow[rowNum, 8].Text);
+                            ((List<object>)nondesign["holiday"]).Add(wsRow[rowNum, 9].Text);
+                        }
+                    }
+                    electrical["design"] = design;
+                    electrical["nondesign"] = nondesign;
+
+                    string json = JsonConvert.SerializeObject(electrical);
+                    return json;
+                }
+               
+
+            }
+            return "";
         }
     }
 }
