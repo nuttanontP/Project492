@@ -67,11 +67,11 @@ namespace TestAmmy.Admin
             list1.Add(ddl_building.SelectedValue); // building_id
             list1.Add(Session["codecompany"].ToString()); //companycode
             list1.Add("2"); //{energy type } 1:electrical 2:desiel
+            list1.Add(factor.Value); // unit/bath 
             //list1.Add("1"); //ENUM {0 1 2 ,null non design , design}
             string[] new_date = new string[date.Count()];
             foreach (var item in date.Select((value, i) => new { i, value }))
             {
-                //new_date[item.i] = DateTime.Parse(item.value).ToString("yyyy-MM-dd");
                 new_date[item.i] = DateTime.ParseExact(item.value, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
                 list1.Add(new_date[item.i]);
                 list1.Add(purchased[item.i]);
@@ -83,16 +83,17 @@ namespace TestAmmy.Admin
             string[] data_pro = list1.ToArray();
             string result = apiconnecter.PostData("AddDiesel", data_pro);
             string s = JsonConvert.DeserializeObject<string>(result);
-            if (s != "no")
+            string s_2 = JsonConvert.DeserializeObject<string>(s);
+            if (s_2 == "yes")
             {
-                string s_ = "add  ok ";
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey38644", "alert('" + s_ + "');window.location.href='admin_addDiesel.aspx';", true);
+                string s_ = "ADD OK";
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33674", "alert('" + s_ + "');window.location.href='#';", true);
                 //ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');", true);
             }
             else
             {
-                string s_ = "can't add ";
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey73645", "alert('" + s_ + "');window.location.href='admin_adminDashBoard.aspx';", true);
+                string s_ = s_2;
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');window.location.href='#';", true);
                 //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('"+s_+"')", true);
             }
         }

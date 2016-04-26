@@ -75,13 +75,64 @@
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1">
                                         <%--    <input type="button"--%>
-                                        <button type="button" class="btn btn-block btn-success" onclick='dosomething("day")'>Success</button>
+                                        <button type="button" class="btn btn-block btn-success" onclick='dosomething("day")'>view</button>
                                     </div>
                                 </div>
                             </div>
                             <%--end tab1--%>
                             <%--start tab2--%>
-                            <div class="tab-pane" id="tab2"></div>
+                            <div class="tab-pane" id="tab2">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>building</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group ">
+                                            <select id="buidling2" name="buidling2" class="form-control select2" multiple="" data-placeholder=" Select assets" onchange="getState(this.value);" style="width: 100%;">
+                                                <option value='0'>-SELECT-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>energy</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group ">
+                                            <select id="energy2" class="form-control select2" style="width: 100%;">
+                                                <option value='1'>Electrical</option>
+                                                <option value='2'>Diesel</option>
+                                                <option value='3'>Gasoline</option>
+                                                <option value='4'>LPG</option>
+                                                <option value='5'>Water</option>
+                                                <option value='6'>Occupancy</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-8">
+
+                                        <label>Date range:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" id="reservation2" class="form-control pull-right" />
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <%--    <input type="button"--%>
+                                        <button type="button" class="btn btn-block btn-success" onclick='submit_tab2()'>view</button>
+                                    </div>
+                                </div>
+
+                            </div>
                             <%--end tab2--%>
                         </div>
                     </div>
@@ -100,14 +151,20 @@
     <script src="../assets/adminLTE/plugins/daterangepicker/daterangepicker.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    
+
     <script>
         $(document).ready(function () {
             $('#reservation').daterangepicker();
+            $('#reservation2').daterangepicker();
             var companycode = <%=Session["codecompany"].ToString()%>;
             $("#buidling").select2('val',"");
             $("#buidling").select2({
                 placeholder: 'Select asset '
+            });
+
+            $("#energy2").select2('val',"");
+            $("#energy2").select2({
+                placeholder: 'Select energy type'
             });
             start(companycode);
         });

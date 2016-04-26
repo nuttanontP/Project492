@@ -22,76 +22,10 @@
             <%--col 8--%>
             <div class="col-md-8">
                 <%--Monthly Recap Report--%>
+                
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Ability to care</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="info-box">
-                                    <span class="info-box-icon bg-aqua"><i class="fa fa-building"></i></span>
-
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">COMPANY NAME</span>
-                                        <span class="info-box-text"></span>
-                                        <span class="info-box-number">1,410</span>
-                                    </div>
-                                    <!-- /.info-box-content -->
-                                </div>
-                                <!-- /.info-box -->
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="info-box bg-yellow">
-                                    <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
-
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Events</span>
-                                        <span class="info-box-number">41,410</span>
-
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: 70%"></div>
-                                        </div>
-                                        <span class="progress-description">70% Increase in 30 Days
-                                        </span>
-                                    </div>
-                                    <!-- /.info-box-content -->
-                                </div>
-                                <!-- /.info-box -->
-                            </div>
-                            <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>Bounce Rate</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
-                        </div>
-
-                        <!-- /.table-responsive -->
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                    </div>
-                    <!-- /.box-footer -->
-                </div>
-                <div class="box box-default">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Monthly Recap Report</h3>
+                        <h3 class="box-title">Energy cost month</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             <div class="btn-group">
@@ -112,7 +46,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <p class="text-center">
-                                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                                    <strong>unit: 1 Jan, 2016 - 30 Jul, 2016</strong>
                                 </p>
                                 <div class="chart">
                                     <!-- Sales Chart Canvas -->
@@ -123,10 +57,10 @@
                             <!-- /.col -->
                             <div class="col-md-4">
                                 <p class="text-center">
-                                    <strong>Goal Completion</strong>
+                                    <strong>Energy</strong>
                                 </p>
                                 <div class="progress-group">
-                                    <span class="progress-text">Add Products to Cart</span>
+                                    <span class="progress-text">Electric</span>
                                     <span class="progress-number"><b>160</b>/200</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
@@ -134,7 +68,7 @@
                                 </div>
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Complete Purchase</span>
+                                    <span class="progress-text">Diesel</span>
                                     <span class="progress-number"><b>310</b>/400</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-red" style="width: 80%"></div>
@@ -142,7 +76,7 @@
                                 </div>
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Visit Premium Page</span>
+                                    <span class="progress-text">Gasoline</span>
                                     <span class="progress-number"><b>480</b>/800</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-green" style="width: 80%"></div>
@@ -150,7 +84,7 @@
                                 </div>
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Send Inquiries</span>
+                                    <span class="progress-text">LPG</span>
                                     <span class="progress-number"><b>250</b>/500</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
@@ -163,7 +97,7 @@
                         <!-- /.row -->
                     </div>
                     <!-- ./box-body -->
-                    <div class="box-footer">
+                    <%--<div class="box-footer">
                         <div class="row">
                             <div class="col-sm-3 col-xs-6">
                                 <div class="description-block border-right">
@@ -202,7 +136,7 @@
                             </div>
                         </div>
                         <!-- /.row -->
-                    </div>
+                    </div>--%>
                     <!-- /.box-footer -->
                 </div>
                 <!-- /.box month -->
@@ -210,7 +144,7 @@
                 <!-- TABLE: LATEST ORDERS -->
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Latest Orders</h3>
+                        <h3 class="box-title">Log</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -223,7 +157,7 @@
                                 <thead>
                                     <tr>
                                         <th>Order ID</th>
-                                        <th>Item</th>
+                                        <th>Asset</th>
                                         <th>Status</th>
                                         <th>Popularity</th>
                                     </tr>
@@ -231,29 +165,29 @@
                                 <tbody>
                                     <tr>
                                         <td><a href="../assets/adminLTE/pages/examples/invoice.html">OR9842</a></td>
-                                        <td>Call of Duty IV</td>
-                                        <td><span class="label label-success">Shipped</span></td>
+                                        <td>อาคารเรียนปฏิบัติการไฟฟ้า</td>
+                                        <td><span class="label label-success">Complete</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><a href="../assets/adminLTE/pages/examples/invoice.html">OR1848</a></td>
-                                        <td>Samsung Smart TV</td>
-                                        <td><span class="label label-warning">Pending</span></td>
+                                        <td>อาคารบัณฑิตศึกษาวิศวฯ โยธา (ป.โท)</td>
+                                        <td><span class="label label-warning">Process</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><a href="../assets/adminLTE/pages/examples/invoice.html">OR7429</a></td>
-                                        <td>iPhone 6 Plus</td>
+                                        <td>อาคารเรียนรวม 4 ชั้น</td>
                                         <td><span class="label label-danger">Delivered</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                   <%-- <tr>
                                         <td><a href="../assets/adminLTE/pages/examples/invoice.html">OR7429</a></td>
                                         <td>Samsung Smart TV</td>
                                         <td><span class="label label-info">Processing</span></td>
@@ -264,7 +198,7 @@
                                     <tr>
                                         <td><a href="../assets/adminLTE/pages/examples/invoice.html">OR1848</a></td>
                                         <td>Samsung Smart TV</td>
-                                        <td><span class="label label-warning">Pending</span></td>
+                                        <td><span class="label label-warning">Process</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
                                         </td>
@@ -280,11 +214,11 @@
                                     <tr>
                                         <td><a href="../assets/adminLTE/pages/examples/invoice.html">OR9842</a></td>
                                         <td>Call of Duty IV</td>
-                                        <td><span class="label label-success">Shipped</span></td>
+                                        <td><span class="label label-success">Complete</span></td>
                                         <td>
                                             <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
                                         </td>
-                                    </tr>
+                                    </tr>--%>
                                 </tbody>
                             </table>
                         </div>
@@ -322,14 +256,14 @@
                     <div class="box-body">
                         <p id="data_user">
 
-                            <strong>Organization :</strong> Entaneer Hotel
+                            <strong>Organization :</strong> คณะวิศวกรรมศาสตร์
                                     <br />
-                            <strong>Code :</strong> Entaneer Hotel
+                            <strong>Code :</strong> 23654769 
                                     <br />
-                            <strong>Address :</strong> 1/11 Suthep, Maeung, Chiang Mai, Thailand<br />
-                            <strong>Joined :</strong> 03/2014
+                            <strong>Address :</strong> Huai Kaeo Rd, Mueang Chiang Mai District, Chiang Mai 50200<br />
+                            <strong>Joined :</strong> 02/2016
                                     <br />
-                            <strong>Buildings :</strong> 7 buildings in responsibility.
+                            <strong>Buildings :</strong> 7 Assets  in responsibility.
                                     <br />
 
                         </p>
@@ -338,7 +272,51 @@
                 </div>
                 <!-- /.about organi box -->
 
-                <%--about other users box--%>
+                <%--usage box--%>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Usage Cost</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="chart-responsive">
+                                    <canvas id="pieChart" height="250"></canvas>
+                                </div>
+                                <!-- ./chart-responsive -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-4">
+                                <ul class="chart-legend clearfix">
+                                    <li><i class="fa fa-circle-o text-red"></i>Electrical</li>
+                                    <li><i class="fa fa-circle-o text-green"></i>Diesel</li>
+                                    <li><i class="fa fa-circle-o text-yellow"></i>Gasoline</li>
+                                    <li><i class="fa fa-circle-o text-aqua"></i>LPG</li>
+                                    <li><i class="fa fa-circle-o text-light-blue"></i>Water</li>
+                                    <li><i class="fa fa-circle-o text-gray"></i>Occupancy</li>
+                                </ul>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                <%--    <div class="box-footer no-padding">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">United States of America <span class="pull-right text-red"><i class="fa fa-angle-down"></i>12%</span></a></li>
+                            <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i>4%</span></a></li>
+                            <li><a href="#">China <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i>0%</span></a></li>
+                        </ul>
+                    </div>--%>
+                    <!-- /.footer -->
+                </div>
+                <!-- /.box usage -->
+                 <%--about other users box--%>
                 <div class="box box-success box-solid">
                     <div class="box-header with-border">
                         <h3 class="box-title">OTHER USERS</h3>
@@ -396,51 +374,6 @@
 
                 </div>
                 <!-- /. other users box -->
-
-                <%--usage box--%>
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Browser Usage</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="chart-responsive">
-                                    <canvas id="pieChart" height="150"></canvas>
-                                </div>
-                                <!-- ./chart-responsive -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-4">
-                                <ul class="chart-legend clearfix">
-                                    <li><i class="fa fa-circle-o text-red"></i>Chrome</li>
-                                    <li><i class="fa fa-circle-o text-green"></i>IE</li>
-                                    <li><i class="fa fa-circle-o text-yellow"></i>FireFox</li>
-                                    <li><i class="fa fa-circle-o text-aqua"></i>Safari</li>
-                                    <li><i class="fa fa-circle-o text-light-blue"></i>Opera</li>
-                                    <li><i class="fa fa-circle-o text-gray"></i>Navigator</li>
-                                </ul>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer no-padding">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">United States of America <span class="pull-right text-red"><i class="fa fa-angle-down"></i>12%</span></a></li>
-                            <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i>4%</span></a></li>
-                            <li><a href="#">China <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i>0%</span></a></li>
-                        </ul>
-                    </div>
-                    <!-- /.footer -->
-                </div>
-                <!-- /.box usage -->
             </div>
             <!--/.col4-->
         </div>
@@ -451,11 +384,15 @@
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
     <script src="../jstogether/user.js"></script>
+   
     <script>
         $(document).ready(function (){
             var data_pro = <%=Session["codecompany"].ToString()%>;
             getuser(data_pro);
+            start(data_pro);
         });
     </script>
+     <script src="../assets/adminLTE/plugins/chartjs/Chart.min.js"></script>
+    <script src="../assets/adminLTE/dist/js/pages/dashboard2.js"></script>
 </asp:Content>
 

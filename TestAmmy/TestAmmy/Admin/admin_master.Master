@@ -141,8 +141,9 @@
                         <!-- Optionally, you can add icons to the links -->
                         <li class="active"><a href="admin_dashboard.aspx"><i class="fa fa-dashboard"></i><span>DASHBOARD</span></a></li>
                         <li><a href="admin_detail.aspx"><i class="fa fa-child"></i><span>DETAIL</span></a></li>
-                        <li><a href="admin_permission.aspx"><i class="fa fa-expeditedssl"></i><span>PERMISSION</span></a></li>
                         <li><a href="admin_building.aspx"><i class="fa fa-building"></i><span>ADD ASSETS</span></a></li>
+                        <li><a href="admin_permission.aspx"><i class="fa fa-expeditedssl"></i><span>PERMISSION</span></a></li>
+
 
                         <li class="treeview">
                             <a href="#"><i class="fa fa-plus-square-o"></i><span>ENERGY DATA</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -156,10 +157,9 @@
 
                             </ul>
                         </li>
-                        <li><a href="admin_dataSummary.aspx"><i class="fa fa-bar-chart-o"></i><span>DATA SUMMARY</span></a></li>
-                        <li><a href="admin_grid.aspx"><i class="fa fa-bar-chart-o"></i><span>GRID2</span></a></li>
-                        <li><a href="admin_library.aspx"><i class="fa fa-folder-open-o"></i><span>LIBRARY</span></a></li>
-                        <li><a href="admin_griddata.aspx"><i class="fa fa-table"></i><span>DATA GRID</span></a></li>
+                        <li><a href="admin_grid.aspx"><i class="fa fa-bar-chart-o"></i><span>PREVIOUS DATA</span></a></li>
+                        <%--<li><a href="admin_library.aspx"><i class="fa fa-folder-open-o"></i><span>LIBRARY</span></a></li>--%>
+                        <%--   <li><a href="admin_griddata.aspx"><i class="fa fa-table"></i><span>DATA GRID</span></a></li>--%>
                         <li><a href="admin_graph.aspx"><i class="fa fa-area-chart"></i><span>GRAPH</span></a></li>
                         <li><a href="admin_implement.aspx"><i class="fa  fa-download"></i><span>IMPORT</span></a></li>
 

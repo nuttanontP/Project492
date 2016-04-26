@@ -331,7 +331,7 @@ namespace Service1
             try
             {
                 conn.Open();
-                CommandText = "SELECT DISTINCT  energy_id,energy_name  FROM permissionview where building_buidlingid = @building_id";
+                CommandText = "SELECT DISTINCT  energy_id,energy_name  FROM permissionview where building_buidlingid = @building_id order by energy_id";
                 cmd = new MySqlCommand(CommandText, conn);
                 cmd.Parameters.AddWithValue("@building_id", building_id);
                 adap = new MySqlDataAdapter(cmd);
@@ -918,6 +918,7 @@ namespace Service1
                 string energy_id = data_pro[2].ToLower();
                 string type = data_pro[5];
                 string kind = data_pro[6];
+                //muliti_group 
                 if (energy_id == "electrical")
                 {
                     if (type == "day")
@@ -1306,6 +1307,157 @@ namespace Service1
 
             return json;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data_pro">code,energy,type{day,month},start,end,int(building),building_id,building_id,building_id</param>
+        /// <returns></returns>
+        public string getdatagraph3(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText = "";
+            string code = data_pro[0];
+            string energy = data_pro[1].ToLower();
+            string type = data_pro[2];
+            string kind = data_pro[3];
+            string date_start = data_pro[4];
+            string date_end = data_pro[5];
+            int building_count = Int32.Parse(data_pro[6]);
+            string building = data_pro[7];
+            int start_building_index = 7;
+
+            if (energy == "electrical")
+            {
+                if (type == "day")
+                {
+                    conn.Open();
+                    List<string> list_building = new List<string>();
+                    CommandText = "SELECT electrical_day.*,b.building_name as `name` from `electrical_day` ";
+                    CommandText += " left join  building b on  electrical_day.building = b.buidlingid ";
+                    CommandText += "  where code = @code and date between STR_TO_DATE(@start,'%m/%d/%Y') and STR_TO_DATE(@end,'%m/%d/%Y') and ";
+                    for (int i = start_building_index; i < data_pro.Count() - 1; i++)
+                    {
+                        CommandText += "building = " + data_pro[i] + " or ";
+                    }
+                    CommandText += "building = " + data_pro[data_pro.Count() - 1] + " ";
+                    CommandText += " ORDER BY date ";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    cmd.Parameters.AddWithValue("@building", building);
+                    cmd.Parameters.AddWithValue("@code", code);
+                    cmd.Parameters.AddWithValue("@start", date_start);
+                    cmd.Parameters.AddWithValue("@end", date_end);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                        list_building.Add(reader["name"].ToString());
+                    adap = new MySqlDataAdapter(cmd);
+                    conn.Close();
+                    adap.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        string col = "";
+                        if (kind == "current")
+                        {
+                            col = "current";
+                        }
+                        else if (kind == "different")
+                        {
+                            col = "diff";
+                        }
+                        else if (kind == "money")
+                        {
+                            col = "money";
+                        }
+                        List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
+                        List<string> columnNames = new List<string>(list_building.Distinct().ToArray());
+                        for (int i = 0; i < columnNames.Count; i++)
+                        {
+                            Dictionary<string, object> aSeries = new Dictionary<string, object>();
+                            aSeries["name"] = columnNames[i];
+                            aSeries["data"] = new List<object>();
+                            int N = dt.Rows.Count;
+                            for (int j = 0; j < N; j++)
+                            {
+                                if (dt.Rows[j]["name"].ToString() == columnNames[i])
+                                {
+                                    if (dt.Rows[j][col].ToString() != "")
+                                    {
+                                        object[] temp = { (DateTime)dt.Rows[j]["date"], dt.Rows[j][col] };
+                                        ((List<object>)aSeries["data"]).Add(temp);
+                                    }
+
+                                }
+                            }
+                            dict.Add(aSeries);
+                        }
+                        json = JsonConvert.SerializeObject(dict);
+                    }
+                    else if (type == "month")
+                    {
+
+                    }
+                    else if (type == "year")
+                    {
+
+                    }
+                }
+            }
+            else if (energy == "water")
+            {
+
+            }
+
+            return json;
+        }
+
+        public string getcirclegraph(string code)
+        {
+            
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            conn.Open();
+            string CommandText = " SELECT sum(b.money)+sum(b.money_D) as electrical,sum(a.money) as water , sum(c.cost) as diesel , sum(d.cost) as gasoline ";
+            CommandText += " FROM `energy2.3`.water_day a,`energy2.3`.electrical_day b,`energy2.3`.diesel_day c, gasoline_day d ";
+            CommandText += "where a.`code` = @code and b.`code` = @code and c.`code` = @code and d.`code` = @code ";
+            cmd = new MySqlCommand(CommandText, conn);
+            cmd.Parameters.AddWithValue("@code", code);
+            adap = new MySqlDataAdapter(cmd);
+            conn.Close();
+            adap.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                //in this time have 4 electrical , water ,gasoline ,diesel
+                string[] strArray = { "#f56954", "#00a65a", "#f39c12", "#00c0ef" };
+                string[] columnNames = dt.Columns.Cast<DataColumn>().Select(x => x.ColumnName).ToArray();
+                List<string> color = new List<string>(strArray);
+                List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
+                
+                for (int i = 0; i < columnNames.Count();i++)
+                {
+                    Dictionary<string, object> list = new Dictionary<string, object>();
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        
+                        list["value"] = dt.Rows[j][columnNames[i]];
+                        list["color"] = color[i];
+                        list["highlight"] = color[i];
+                        list["label"] = columnNames[i];
+                    }
+                    dict.Add(list);
+                }
+                json = JsonConvert.SerializeObject(dict);
+                
+
+
+            }
+            return json;
+        }
         public string permissionadd(string codecompany)
         {
             string json = "no";
@@ -1489,68 +1641,98 @@ namespace Service1
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
             string CommandText;
+            string unit = data_pro[4];
             string json = "no";
+            int date_ = 5;
             try
             {
-                conn.Open();
-                for (int i = 4; i < data_pro.Count(); i += 6)
+                if (unit == "")
                 {
-                    CommandText = "INSERT INTO diesel (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,DGSet,Vehicle,OtherPurpose,Runningtime) VALUES (@userid,@building,@code,@energy,@date,@purchased,@dgset,@vehicle,@otherpurpose,@runtime)";
+                    conn.Open();
+                    CommandText = "SELECT `bath/unit` as unit FROM `energy2.3`.diesel where `bath/unit`  is not null  order by date asc limit 1";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    unit = "6";
+                    while (reader.Read())
+                        unit = reader["unit"].ToString();
+                    conn.Close();
+                }
+
+                for (int i = 5; i < data_pro.Count(); i += 6)
+                {
+                    conn.Open();
+                    CommandText = "INSERT INTO diesel (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,DGSet,Vehicle,OtherPurpose,Runningtime,`bath/unit`) VALUES (@userid,@building,@code,@energy,@date,@purchased,@dgset,@vehicle,@otherpurpose,@runtime,@unit)";
                     cmd = new MySqlCommand(CommandText, conn);
                     cmd.Parameters.AddWithValue("@userid", data_pro[0]);
                     cmd.Parameters.AddWithValue("@building", data_pro[1]);
                     cmd.Parameters.AddWithValue("@code", data_pro[2]);
                     cmd.Parameters.AddWithValue("@energy", data_pro[3]);
-                    //date,purchased,DGSet,Vehicle,OtherPurpose,Runningtime
-                    //@date,@purchased,@dgset,@vehicle,@otherpurpose,@runtime
+                    cmd.Parameters.AddWithValue("@unit", unit);
                     cmd.Parameters.AddWithValue("@date", data_pro[i]);
                     cmd.Parameters.AddWithValue("@purchased", data_pro[i + 1]);
                     cmd.Parameters.AddWithValue("@dgset", data_pro[i + 2]);
                     cmd.Parameters.AddWithValue("@vehicle", data_pro[i + 3]);
                     cmd.Parameters.AddWithValue("@otherpurpose", data_pro[i + 4]);
                     cmd.Parameters.AddWithValue("@runtime", data_pro[i + 5]);
+                    date_ += 6;
                     cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
                 json = "yes";
             }
-            catch
+            catch (Exception)
             {
-                throw;
+                json = "the records were added until the exception date:" + data_pro[date_ - 6] + " record and followed records.";
             }
-            conn.Close();
-            return json;
+
+            return JsonConvert.SerializeObject(json);
         }
         public string Addgasoline(string[] data_pro)
         {
             MySqlCommand cmd = null;
             MySqlConnection conn = new MySqlConnection(connectionString);
             string CommandText;
+            string unit = data_pro[4];
             string json = "no";
+            int date_ = 3;
             try
             {
-                conn.Open();
-                for (int i = 4; i < data_pro.Count(); i += 3)
+                if (unit == "")
                 {
-                    CommandText = "INSERT INTO gasoline (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,consumed) VALUES (@userid,@building,@code,@energy,@date,@purchased,@consumed)";
+                    conn.Open();
+                    CommandText = "SELECT `bath/unit` as unit FROM `energy2.3`.gasoline where `bath/unit`  is not null  order by date asc limit 1";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    unit = "6";
+                    while (reader.Read())
+                        unit = reader["unit"].ToString();
+                    conn.Close();
+                }
+                for (int i = 5; i < data_pro.Count(); i += 3)
+                {
+                    conn.Open();
+                    CommandText = "INSERT INTO gasoline (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,consumed,`bath/unit`) VALUES (@userid,@building,@code,@energy,@date,@purchased,@consumed,@unit)";
                     cmd = new MySqlCommand(CommandText, conn);
                     cmd.Parameters.AddWithValue("@userid", data_pro[0]);
                     cmd.Parameters.AddWithValue("@building", data_pro[1]);
                     cmd.Parameters.AddWithValue("@code", data_pro[2]);
                     cmd.Parameters.AddWithValue("@energy", data_pro[3]);
-
+                    cmd.Parameters.AddWithValue("@unit", unit);
                     cmd.Parameters.AddWithValue("@date", data_pro[i]);
                     cmd.Parameters.AddWithValue("@purchased", data_pro[i + 1]);
                     cmd.Parameters.AddWithValue("@consumed", data_pro[i + 2]);
+                    date_ += 3;
                     cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
                 json = "yes";
             }
             catch
             {
-                throw;
+                json = "the records were added until the exception date:" + data_pro[date_ - 3] + " record and followed records.";
             }
-            conn.Close();
-            return json;
+
+            return JsonConvert.SerializeObject(json);
         }
         public string AddLPG(string[] data_pro)
         {
@@ -1558,29 +1740,47 @@ namespace Service1
             MySqlConnection conn = new MySqlConnection(connectionString);
             string CommandText;
             string json = "no";
+            string unit = data_pro[4];
+            int date_ = 5;
+
             try
             {
-                conn.Open();
-                for (int i = 4; i < data_pro.Count(); i += 3)
+                if (unit == "")
                 {
-                    CommandText = "INSERT INTO lpg (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,consumed) VALUES (@userid,@building,@code,@energy,@date,@purchased,@consumed)";
+                    conn.Open();
+                    CommandText = "SELECT `bath/unit` as unit FROM `energy2.3`.lpg where `bath/unit`  is not null order by date asc limit 1";
+                    cmd = new MySqlCommand(CommandText, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    unit = "6";
+                    while (reader.Read())
+                        unit = reader["unit"].ToString();
+                    conn.Close();
+                }
+
+                for (int i = 5; i < data_pro.Count(); i += 3)
+                {
+                    conn.Open();
+                    CommandText = "INSERT INTO lpg (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id,date,purchased,consumed,`bath/unit`) VALUES (@userid,@building,@code,@energy,@date,@purchased,@consumed,@unit)";
                     cmd = new MySqlCommand(CommandText, conn);
                     cmd.Parameters.AddWithValue("@userid", data_pro[0]);
                     cmd.Parameters.AddWithValue("@building", data_pro[1]);
                     cmd.Parameters.AddWithValue("@code", data_pro[2]);
                     cmd.Parameters.AddWithValue("@energy", data_pro[3]);
+                    cmd.Parameters.AddWithValue("@unit", unit);
                     cmd.Parameters.AddWithValue("@date", data_pro[i]);
                     cmd.Parameters.AddWithValue("@purchased", data_pro[i + 1]);
                     cmd.Parameters.AddWithValue("@consumed", data_pro[i + 2]);
+                    date_ += 3;
                     cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
                 json = "yes";
             }
             catch
             {
-                throw;
+                json = "the records were added until the exception date:" + data_pro[date_ - 3] + " record and followed records.";
             }
-            conn.Close();
+
             return json;
         }
         public string AddWater(string[] data_pro)
@@ -1780,6 +1980,57 @@ namespace Service1
             conn.Close();
             return json;
         }
+        public string insert_importxcel(string data_pro)
+        {
+            //var list = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, Dictionary<string, object>>>>(data_pro);
+            Dictionary<string, dynamic> electric = JsonConvert.DeserializeObject<Dictionary<string, object>>(data_pro);
+            var date = electric["nondesign"]["date"];
+            var current = electric["nondesign"]["current"];
+            List<DateTime> datetime = new List<DateTime>();
+            List<string> non_current = new List<string>();
+            for (int i = 0; i < date.Count; i++)
+            {
+                datetime.Add(Convert.ToDateTime(date[i]));
+                non_current.Add(current[i].ToString());
+            }
+            var d_date = electric["design"]["date"];
+            var d_peak = electric["design"]["peak"];
+            var d_off = electric["design"]["off"];
+            var d_holiday = electric["design"]["holiday"];
+            List<DateTime> d_datetime = new List<DateTime>();
+            List<string> peak = new List<string>();
+            List<string> off = new List<string>();
+            List<string> holiday = new List<string>();
+
+            for (int i = 0; i < d_date.Count; i++)
+            {
+                d_datetime.Add(Convert.ToDateTime(date[i]));
+                peak.Add(d_peak[i].ToString());
+                off.Add(d_off[i].ToString());
+                holiday.Add(d_holiday[i].ToString());
+            }
+
+
+            //MySqlCommand cmd = null;
+            //MySqlConnection conn = new MySqlConnection(connectionString);
+            //string CommandText;
+            //try
+            //{
+            //    conn.Open();
+            //    CommandText = "INSERT INTO electrical (permission_user_id,permission_building_buidlingid,permission_building_company_companycode,permission_energy_energy_id) VALUES (@companycode,@companyname)";
+            //    cmd = new MySqlCommand(CommandText, conn);
+            //    cmd.Parameters.AddWithValue("@companycode", compandy[0]);
+            //    cmd.Parameters.AddWithValue("@companyname", compandy[1]);
+            //    cmd.ExecuteNonQuery();
+
+            //}
+            //catch
+            //{
+            //    throw;
+            //}
+            //conn.Close();
+            return "d";
+        }
         private string CalculateMD5Hash(string input)
         {
             // step 1, calculate MD5 hash from input
@@ -1795,12 +2046,13 @@ namespace Service1
             }
             return sb.ToString();
         }
+
         public string VerifyCaptcha(string response)
         {
             string url = "https://www.google.com/recaptcha/api/siteverify?secret=" + ReCaptcha_Secret + "&response=" + response;
             return (new WebClient()).DownloadString(url);
         }
-        
+
 
 
     }

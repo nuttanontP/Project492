@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="../assets/adminLTE/dist/css/AdminLTE.min.css" />
     <!-- iCheck -->
     <link rel="stylesheet" href="../assets/adminLTE/plugins/iCheck/square/blue.css" />
+    <%--select 2--%>
+    <link href="../assets/adminLTE/plugins/select2/select2.css" rel="stylesheet" />
 </head>
 <body class="hold-transition register-page">
     <form id="form1" runat="server">
@@ -58,7 +60,7 @@
                     <div class=" form-group has-feedback   " id="yourformID-form">
                         <div class="form-inline   ">
 
-                            <select class="form-control" id="category" runat="server">
+                            <select class="form-control select2" id="category" runat="server">
                                 <option value=""></option>
                                 <option value="0">CODE</option>
                                 <option value="1">NAME</option>
@@ -135,6 +137,10 @@
     </script>--%>
     <!-- jQuery 2.1.4 -->
     <script src="../assets/adminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+        <!-- select 2  -->
+    <script src="../assets/adminLTE/plugins/select2/select2.full.min.js"></script>
+
     <!-- Bootstrap 3.3.5 -->
     <script src="../assets/adminLTE/bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->

@@ -42,3 +42,39 @@ C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\Te
 C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\TestAmmy\obj\Release\TestAmmy.csprojResolveAssemblyReference.cache
 C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\TestAmmy\obj\Release\TestAmmy.dll
 C:\Users\nont\Documents\Visual Studio 2015\Projects\Project492 ของ git2\TestAmmy\TestAmmy\obj\Release\TestAmmy.pdb
+D:\github\TestAmmy\TestAmmy\bin\ApplicationInsights.config
+D:\github\TestAmmy\TestAmmy\bin\roslyn\csc.exe
+D:\github\TestAmmy\TestAmmy\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\github\TestAmmy\TestAmmy\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\github\TestAmmy\TestAmmy\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\github\TestAmmy\TestAmmy\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\github\TestAmmy\TestAmmy\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\github\TestAmmy\TestAmmy\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\github\TestAmmy\TestAmmy\bin\roslyn\System.Collections.Immutable.dll
+D:\github\TestAmmy\TestAmmy\bin\roslyn\System.Reflection.Metadata.dll
+D:\github\TestAmmy\TestAmmy\bin\roslyn\vbc.exe
+D:\github\TestAmmy\TestAmmy\bin\roslyn\VBCSCompiler.exe
+D:\github\TestAmmy\TestAmmy\bin\roslyn\VBCSCompiler.exe.config
+D:\github\TestAmmy\TestAmmy\bin\TestAmmy.dll.config
+D:\github\TestAmmy\TestAmmy\bin\TestAmmy.dll
+D:\github\TestAmmy\TestAmmy\bin\TestAmmy.pdb
+D:\github\TestAmmy\TestAmmy\bin\aspsnippets.facebookapi.dll
+D:\github\TestAmmy\TestAmmy\bin\EPPlus.dll
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.Agent.Intercept.dll
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.DependencyCollector.dll
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.Web.dll
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.WindowsServer.dll
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.ApplicationInsights.dll
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\github\TestAmmy\TestAmmy\bin\EPPlus.xml
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.DependencyCollector.xml
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.Web.xml
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.AI.WindowsServer.xml
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.ApplicationInsights.xml
+D:\github\TestAmmy\TestAmmy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\github\TestAmmy\TestAmmy\obj\Release\TestAmmy.csprojResolveAssemblyReference.cache
+D:\github\TestAmmy\TestAmmy\obj\Release\TestAmmy.dll
+D:\github\TestAmmy\TestAmmy\obj\Release\TestAmmy.pdb

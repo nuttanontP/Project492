@@ -10,6 +10,7 @@ using System.IO;
 using System.Data;
 //using Newtonsoft.Json;
 using System.Globalization;
+using TestAmmy.webconn;
 
 namespace TestAmmy.Admin
 
@@ -31,7 +32,10 @@ namespace TestAmmy.Admin
                     var sheet_at = sheet.Value;
                     string json = import_excel(sheet_at);
                     //string result = apiconnecter.PostData("ddlpermission", data_pro);
-                    string s = JsonConvert.DeserializeObject<string>(json);
+                    //string s = JsonConvert.DeserializeObject<string>(json);
+                    //insert_importxcel
+                    string result = apiconnecter.PostData("insert_importxcel", json);
+                    string s = JsonConvert.DeserializeObject<string>(result);
 
                 }
                 else
@@ -94,13 +98,14 @@ namespace TestAmmy.Admin
                     electrical["factor"] = ws.Cells[3, 5].Text;
                     Dictionary<string, object> design = new Dictionary<string, object>();
                     design["date"] = new List<object>();
-                    design["current"] = new List<object>();
-
+                    design["peak"] = new List<object>();
+                    design["off"] = new List<object>();
+                    design["holiday"] = new List<object>();
+                  
                     Dictionary<string, object> nondesign = new Dictionary<string, object>();
                     nondesign["date"] = new List<object>();
-                    nondesign["peak"] = new List<object>();
-                    nondesign["off"] = new List<object>();
-                    nondesign["holiday"] = new List<object>();
+                    nondesign["current"] = new List<object>();
+
 
                     foreach (var firstRowCell in ws.Cells[dimantion[0], dimantion[1], dimantion[0], dimantion[3]])
                         tbl.Columns.Add(String.Format("Col{0}", firstRowCell.Start.Column));
@@ -112,15 +117,15 @@ namespace TestAmmy.Admin
                         DateTime dt = DateTime.ParseExact(year + "-" + month + "-" + day, "yyyy-MMMM-dd", CultureInfo.InvariantCulture);
                         if (wsRow[rowNum, 3].Text != "")
                         {
-                            ((List<object>)design["date"]).Add(dt);
-                            ((List<object>)design["current"]).Add(wsRow[rowNum, 3].Text);
+                            ((List<object>)nondesign["date"]).Add(dt);
+                            ((List<object>)nondesign["current"]).Add(wsRow[rowNum, 3].Text);
                         }
                         if (wsRow[rowNum, 7].Text != "" || wsRow[rowNum, 8].Text != "" || wsRow[rowNum, 9].Text != "")
                         {
-                            ((List<object>)nondesign["date"]).Add(dt);
-                            ((List<object>)nondesign["peak"]).Add(wsRow[rowNum, 7].Text);
-                            ((List<object>)nondesign["off"]).Add(wsRow[rowNum, 8].Text);
-                            ((List<object>)nondesign["holiday"]).Add(wsRow[rowNum, 9].Text);
+                            ((List<object>)design["date"]).Add(dt);
+                            ((List<object>)design["peak"]).Add(wsRow[rowNum, 7].Text);
+                            ((List<object>)design["off"]).Add(wsRow[rowNum, 8].Text);
+                            ((List<object>)design["holiday"]).Add(wsRow[rowNum, 9].Text);
                         }
                     }
                     electrical["design"] = design;

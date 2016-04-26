@@ -60,6 +60,7 @@ namespace TestAmmy.Admin
             list1.Add(ddl_building.SelectedValue); // building_id
             list1.Add(Session["codecompany"].ToString()); //companycode
             list1.Add("4"); //{energy type } 1:electrical 2:desiel 3: gasoline 4:lpg
+            list1.Add(factor.Value);
             //list1.Add("1"); //ENUM {0 1 2 ,null non design , design}
             string[] new_date = new string[date.Count()];
             foreach (var item in date.Select((value, i) => new { i, value }))
