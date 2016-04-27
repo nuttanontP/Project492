@@ -63,11 +63,11 @@ namespace TestAmmy.Admin
             string s2 = JsonConvert.DeserializeObject<string>(s);
             if (s2 == "yes")
             {
-                string s_ = "edit ok";
+                string s_ = "Your details have been changed.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey38644", "alert('" + s_ + "');window.location.href='admin_detail.aspx';", true);
             }
             else{
-                string s_ = "can't edit";
+                string s_ = "Sorry, Can't save your details.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey38644", "alert('" + s_ + "');window.location.href='admin_detail.aspx';", true);
             }
         }

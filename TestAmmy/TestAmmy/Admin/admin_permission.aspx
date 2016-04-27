@@ -10,6 +10,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
+     <li class="active">Permission</li>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="main_content" runat="server">
     <div class="row">
@@ -83,7 +84,7 @@
                             </asp:BoundField>
                             <asp:TemplateField ShowHeader="False">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('ยืนยันการลบข้อมูล ?');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="Delete" runat="server" CausesValidation="False" CommandName="delete" Text="ลบ" class="btn btn-danger btn-xs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="JavaScript:return confirm('Are you sure you want to delete this item ? \n Your data will be gone.');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></asp:LinkButton>
                                 </ItemTemplate>
 
                             </asp:TemplateField>

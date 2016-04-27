@@ -19,7 +19,10 @@ namespace TestAmmy.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                //ddl_building
+            }
         }
 
         protected void submit_Click(object sender, EventArgs e)
@@ -33,7 +36,7 @@ namespace TestAmmy.Admin
                     string json = import_excel(sheet_at);
                     //string result = apiconnecter.PostData("ddlpermission", data_pro);
                     //string s = JsonConvert.DeserializeObject<string>(json);
-                    //insert_importxcel
+                    string code = Session["code_company"].ToString();
                     string result = apiconnecter.PostData("insert_importxcel", json);
                     string s = JsonConvert.DeserializeObject<string>(result);
 
@@ -138,6 +141,11 @@ namespace TestAmmy.Admin
 
             }
             return "";
+        }
+
+        protected void submit_Command(object sender, CommandEventArgs e)
+        {
+            //string[] data_pro = { , building.Value,, };
         }
     }
 }

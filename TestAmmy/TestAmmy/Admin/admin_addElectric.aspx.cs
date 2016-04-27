@@ -75,7 +75,7 @@ namespace TestAmmy.Admin
             string s_2 = JsonConvert.DeserializeObject<string>(s);
             if (s_2 == "yes")
             {
-                string s_ = "add  ok ";
+                string s_ = "record(s) successfully saved.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33644", "alert('" + s_ + "');window.location.href='admin_addElectric.aspx';", true);
                 //ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');", true);
             }
@@ -125,7 +125,7 @@ namespace TestAmmy.Admin
             string s_2 = JsonConvert.DeserializeObject<string>(s);
             if (s_2 == "yes")
             {
-                string s_ = "ADD OK";
+                string s_ = "record(s) successfully saved.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33674", "alert('" + s_ + "');window.location.href='admin_addElectric.aspx';", true);
                 //ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');", true);
             }

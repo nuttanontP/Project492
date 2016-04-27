@@ -57,6 +57,7 @@ function changemode(i3, select) {
     var type = document.getElementById("datetype" + i3).value;
     var kind = document.getElementById("kind" + i3).value;
     var id = document.getElementById('container' + i3 + select);
+    console.log("id:",id);
     var temp = (id.getAttribute('date')).split(',');
     var data_pro = [id.getAttribute('asset'), code, id.getAttribute('energy'), temp[0], temp[1], type, kind]
     console.log(data_pro);
@@ -100,11 +101,11 @@ function cc(type, kind, i3, select, data) {
     var graph = id.getAttribute('graph_type');
     console.log("graph", graph);
     var data2 = JSON.parse(data);
-    var text = [], type2, values;
+    var text = [];
     console.log(data2);
-    console.log('#container' + i3 + select, kind);
-    if (select == "Water" || select == "Electrical") {
-        if (type == "day" || type == "month") {
+    console.log('#container' + i3 + select, kind,type);
+    if (select == "Water" || select == "Electrical" || select=="Diesel") {
+        if (type == "day" || type == "month" || type == "year") {
             if (type == "day" && select == "Water") {
                 //day
                 text[3] = 'Water Consumption';
@@ -116,33 +117,13 @@ function cc(type, kind, i3, select, data) {
                 else if (kind == "different") {
                     text[0] = "graph shows the relation of usage of water in unit and date";
                     text[1] = "unit(s)";
-                    text[2] = 'column';
+                    text[2] = 'spline';
 
                 }
                 else if (kind == "money") {
                     text[0] = "graph shows the relation of usage cost of water in baht and date";
                     text[1] = "Baht";
-                    text[2] = 'column';
-                }
-            }
-            else if (type == "day" && select == "Electrical") {
-                text[3] = 'Electrical Consumption';
-                if (kind == "current") {
-                    text[0] = "graph shows the relation of current Meter and date";
-                    text[1] = "";
-                    text[2] = 'line';
-                }
-                else if (kind == "different") {
-                    text[0] = "graph shows the relation of usage of Electrical in unit and date";
-                    text[1] = "unit(s)";
-                    text[2] = 'column';
-
-                }
-                else if (kind == "money") {
-                    text[0] = "graph shows the relation of usage cost of Electrical in baht and date";
-                    text[1] = "Baht";
-                    text[2] = 'column';
-
+                    text[2] = 'spline';
                 }
             }
             else if(type == "month" && select == "Water") {
@@ -166,6 +147,47 @@ function cc(type, kind, i3, select, data) {
 
                 }
             }
+            else if (type == "year" && select == "Water") {
+                //month
+                text[3] = 'Water Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and year";
+                    text[1] = "";
+                    text[2] = 'column';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of water in unit and year";
+                    text[1] = "unit(s)";
+                    text[2] = 'column';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of water in baht and year";
+                    text[1] = "Baht";
+                    text[2] = 'column';
+
+                }
+            }
+            else if (type == "day" && select == "Electrical") {
+                text[3] = 'Electrical Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and date";
+                    text[1] = "";
+                    text[2] = 'line';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of Electrical in unit and date";
+                    text[1] = "unit(s)";
+                    text[2] = 'spline';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of Electrical in baht and date";
+                    text[1] = "Baht";
+                    text[2] = 'spline';
+
+                }
+            }
             else if (type == "month" && select == "Electrical"){
                 text[3] = 'Electrical Consumption';
                 if (kind == "current") {
@@ -181,6 +203,86 @@ function cc(type, kind, i3, select, data) {
                 }
                 else if (kind == "money") {
                     text[0] = "graph shows the relation of usage cost of Electrical in baht and month";
+                    text[1] = "Baht";
+                    text[2] = 'column';
+
+                }
+            }
+            else if (type == "year" && select == "Electrical") {
+                text[3] = 'Electrical Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and year";
+                    text[1] = "";
+                    text[2] = 'column';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of Electrical in unit and year";
+                    text[1] = "unit(s)";
+                    text[2] = 'column';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of Electrical in baht and year";
+                    text[1] = "Baht";
+                    text[2] = 'column';
+
+                }
+            }
+            else if (type == "day" && select == "Diesel") {
+                text[3] = 'Diesel Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and day";
+                    text[1] = "";
+                    text[2] = 'line';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of Diesel in unit and day";
+                    text[1] = "unit(s)";
+                    text[2] = 'spline';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of Diesel in baht and day";
+                    text[1] = "Baht";
+                    text[2] = 'spline';
+
+                }
+            }
+            else if (type == "month" && select == "Diesel") {
+                text[3] = 'Diesel Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and month";
+                    text[1] = "";
+                    text[2] = 'column';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of Diesel in unit and month";
+                    text[1] = "unit(s)";
+                    text[2] = 'column';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of Diesel in baht and month";
+                    text[1] = "Baht";
+                    text[2] = 'column';
+
+                }
+            }
+            else if (type == "year" && select == "Diesel") {
+                text[3] = 'Diesel Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and year";
+                    text[1] = "";
+                    text[2] = 'column';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of Diesel in unit and year";
+                    text[1] = "unit(s)";
+                    text[2] = 'column';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of Diesel in baht and year";
                     text[1] = "Baht";
                     text[2] = 'column';
 
@@ -208,9 +310,9 @@ function cc(type, kind, i3, select, data) {
 
                 crosshair: true,
                 dateTimeLabelFormats: { // don't display the dummy year
-                    day: '%e/%b/%Y'
+                    day: '%e/%b/%Y',
                     //month: '%Y',
-                    //year: '%Y'
+                    year: '%Y'
                     //month: '%e. %b',
                     //year: '%b'
                 },
@@ -292,7 +394,7 @@ function dosomething(value) {
         long += '<option value="current">Current Meter</option>';
         long += '<option value="different">Usage in Unit</option>';
         long += '<option value="money">Cost of Usage</option> </select>';
-        long += '<div id="container' + i2 + '' + selectedText + '  graph_type="single" " asset=' + buidling + ' energy=' + selectedText + ' date=' + temp + '  style="min-width:100%; height: 400px;"></div></div></div></div> </div>';
+        long += '<div id="container' + i2 + selectedText  +'"  graph_type="single" " asset=' + buidling + ' energy=' + selectedText + ' date=' + temp + '  style="min-width:100%; height: 400px;"></div></div></div></div> </div>';
         $('#appendcol' + i2).html(long);
         //cc(type_,i2, selectedText, data);
         changemode(i2, selectedText);

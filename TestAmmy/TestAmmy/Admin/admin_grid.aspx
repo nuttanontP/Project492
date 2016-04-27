@@ -48,6 +48,7 @@
                                                                 <asp:BoundField DataField="type" HeaderText="type" />
                                                                 <asp:BoundField DataField="date" HeaderText="date" DataFormatString="{0:dd , MMMM , yyyy}" />
                                                                 <asp:BoundField DataField="current meter" HeaderText="current" NullDisplayText="-" />
+                                                                <asp:BoundField DataField="bath/unit" HeaderText="price/unit" NullDisplayText="-" />
                                                                 <asp:BoundField DataField="peak" HeaderText="peak" NullDisplayText="-" />
                                                                 <asp:BoundField DataField="off peak" HeaderText="off peak" NullDisplayText="-" />
                                                                 <asp:BoundField DataField="holiday" HeaderText="holiday" NullDisplayText="-" />
@@ -80,7 +81,7 @@
                                                         <asp:BoundField DataField="Vehicle" HeaderText="Vehicle Consumed" NullDisplayText="-" />
                                                         <asp:BoundField DataField="OtherPurpose" HeaderText="Other Purpose Consumed" NullDisplayText="-" />
                                                         <asp:BoundField DataField="Runningtime" HeaderText="Running time of DG set (Minutes)" NullDisplayText="-" />
-                                                        <asp:BoundField DataField="Dieselcost" HeaderText="Dieselcost" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="bath/unit" HeaderText="price/unit" NullDisplayText="-" />
                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
                                                         <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
@@ -105,6 +106,7 @@
                                                         <asp:BoundField DataField="date" HeaderText="date" DataFormatString="{0:dd , MMMM , yyyy}" />
                                                         <asp:BoundField DataField="purchased" HeaderText="Gasoline Purchased(Liter)" NullDisplayText="-" />
                                                         <asp:BoundField DataField="consumed" HeaderText="Gasoline Consumed(Liter)" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="bath/unit" HeaderText="price/unit" NullDisplayText="-" />
                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
                                                         <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
@@ -129,6 +131,7 @@
                                                         <asp:BoundField DataField="date" HeaderText="date" DataFormatString="{0:dd , MMMM , yyyy}" />
                                                         <asp:BoundField DataField="purchased" HeaderText="LPG Purchased(KG)" NullDisplayText="-" />
                                                         <asp:BoundField DataField="consumed" HeaderText="LPG Consumed(KG)" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="bath/unit" HeaderText="price/unit" NullDisplayText="-" />
                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
                                                         <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">
@@ -154,6 +157,7 @@
                                                         <asp:BoundField DataField="factor" HeaderText="factor" NullDisplayText="-" />
                                                         <asp:BoundField DataField="type" HeaderText="type" NullDisplayText="-" />
                                                         <asp:BoundField DataField="current" HeaderText="Current Meter Reading" NullDisplayText="-" />
+                                                        <asp:BoundField DataField="bath/unit" HeaderText="price/unit" NullDisplayText="-" />
                                                         <asp:BoundField DataField="name" HeaderText="name" NullDisplayText="-" />
                                                         <asp:BoundField DataField="building_name" HeaderText="name of building" NullDisplayText="-" />
                                                         <asp:TemplateField ShowHeader="False">

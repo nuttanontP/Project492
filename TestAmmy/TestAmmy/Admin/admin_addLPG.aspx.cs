@@ -78,7 +78,7 @@ namespace TestAmmy.Admin
             string s = JsonConvert.DeserializeObject<string>(result);
             if (s != "no")
             {
-                string s_ = "add  ok ";
+                string s_ = "record(s) successfully saved.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey38644", "alert('" + s_ + "');window.location.href='admin_addLPG.aspx';", true);
                 //ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');", true);
             }

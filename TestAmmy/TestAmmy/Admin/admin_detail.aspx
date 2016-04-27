@@ -9,7 +9,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
-    
+    <li class="active">Detail</li>
 
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="main_content" runat="server">

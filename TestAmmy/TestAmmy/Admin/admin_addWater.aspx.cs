@@ -71,7 +71,7 @@ namespace TestAmmy.Admin
             string s_2 = JsonConvert.DeserializeObject<string>(s);
             if (s_2 == "yes")
             {
-                string s_ = "ADD OK";
+                string s_ = "record(s) successfully saved.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');window.location.href='admin_addWater.aspx';", true);
             }
             else
@@ -118,7 +118,7 @@ namespace TestAmmy.Admin
             string s_2 = JsonConvert.DeserializeObject<string>(s);
             if (s_2 == "yes")
             {
-                string s_ = "ADD OK";
+                string s_ = "record(s) successfully saved.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');window.location.href='admin_addWater.aspx';", true);
             }
             else
@@ -165,7 +165,7 @@ namespace TestAmmy.Admin
             string s_2 = JsonConvert.DeserializeObject<string>(s);
             if (s_2 == "yes")
             {
-                string s_ = "ADD OK";
+                string s_ = "record(s) successfully saved.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');window.location.href='admin_addWater.aspx';", true);
             }
             else

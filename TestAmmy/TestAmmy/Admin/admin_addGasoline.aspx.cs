@@ -72,7 +72,7 @@ namespace TestAmmy.Admin
             string s_2 = JsonConvert.DeserializeObject<string>(s);
             if (s_2 == "yes")
             {
-                string s_ = "ADD OK";
+                string s_ = "record(s) successfully saved.";
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33674", "alert('" + s_ + "');window.location.href='#';", true);
                 //ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');", true);
             }

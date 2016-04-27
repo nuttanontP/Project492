@@ -13,6 +13,8 @@
 
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
+        <li class="active">ENERGY DATA</li>
+    <li class="active">Occupancy</li>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="main_content" runat="server">
     <div class="row">

@@ -11,8 +11,6 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
-   
-
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="main_content" runat="server">
     <!--row -->
@@ -187,7 +185,7 @@
                                             <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
                                         </td>
                                     </tr>
-                                   <%-- <tr>
+                                    <%-- <tr>
                                         <td><a href="../assets/adminLTE/pages/examples/invoice.html">OR7429</a></td>
                                         <td>Samsung Smart TV</td>
                                         <td><span class="label label-info">Processing</span></td>
@@ -256,14 +254,14 @@
                     <div class="box-body">
                         <p id="data_user">
 
-                            <strong>Organization :</strong> คณะวิศวกรรมศาสตร์
+                            <strong>Organization :</strong> <%=organization[0] %>
                                     <br />
-                            <strong>Code :</strong> 23654769 
+                            <strong>Code :</strong> <%=organization[1] %>
                                     <br />
                             <strong>Address :</strong> Huai Kaeo Rd, Mueang Chiang Mai District, Chiang Mai 50200<br />
-                            <strong>Joined :</strong> 02/2016
+                            <strong>Joined :</strong> <%=organization[2] %>
                                     <br />
-                            <strong>Buildings :</strong> 7 Assets  in responsibility.
+                            <strong>Buildings :</strong> <%=organization[3] %> Assets  in responsibility.
                                     <br />
 
                         </p>
@@ -271,7 +269,66 @@
                     <!-- /.box-body -->
                 </div>
                 <!-- /.about organi box -->
-
+               <div class="box box-success box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Company Code:</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <h2  >CODE: <font color="green"><%=Session["codecompany"].ToString() %></font></h2>
+                            </div>
+                            
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./box-body -->
+                    <%--<div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i>17%</span>
+                                    <h5 class="description-header">$35,210.43</h5>
+                                    <span class="description-text">TOTAL REVENUE</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i>0%</span>
+                                    <h5 class="description-header">$10,390.90</h5>
+                                    <span class="description-text">TOTAL COST</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i>20%</span>
+                                    <h5 class="description-header">$24,813.53</h5>
+                                    <span class="description-text">TOTAL PROFIT</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="description-block">
+                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i>18%</span>
+                                    <h5 class="description-header">1200</h5>
+                                    <span class="description-text">GOAL COMPLETIONS</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>--%>
+                    <!-- /.box-footer -->
+                </div>
                 <%--usage box--%>
                 <div class="box box-success">
                     <div class="box-header with-border">
@@ -286,7 +343,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="chart-responsive">
-                                    <canvas id="pieChart" height="250"></canvas>
+                                    <canvas id="pieChart" height="150"></canvas>
                                 </div>
                                 <!-- ./chart-responsive -->
                             </div>
@@ -294,11 +351,10 @@
                             <div class="col-md-4">
                                 <ul class="chart-legend clearfix">
                                     <li><i class="fa fa-circle-o text-red"></i>Electrical</li>
-                                    <li><i class="fa fa-circle-o text-green"></i>Diesel</li>
-                                    <li><i class="fa fa-circle-o text-yellow"></i>Gasoline</li>
-                                    <li><i class="fa fa-circle-o text-aqua"></i>LPG</li>
-                                    <li><i class="fa fa-circle-o text-light-blue"></i>Water</li>
-                                    <li><i class="fa fa-circle-o text-gray"></i>Occupancy</li>
+                                    <li><i class="fa fa-circle-o text-green"></i>Water</li>
+                                    <li><i class="fa fa-circle-o text-yellow"></i>Diesel</li>
+                                    <li><i class="fa fa-circle-o text-aqua"></i>Gasoline</li>
+
                                 </ul>
                             </div>
                             <!-- /.col -->
@@ -306,7 +362,7 @@
                         <!-- /.row -->
                     </div>
                     <!-- /.box-body -->
-                <%--    <div class="box-footer no-padding">
+                    <%--    <div class="box-footer no-padding">
                         <ul class="nav nav-pills nav-stacked">
                             <li><a href="#">United States of America <span class="pull-right text-red"><i class="fa fa-angle-down"></i>12%</span></a></li>
                             <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i>4%</span></a></li>
@@ -316,7 +372,7 @@
                     <!-- /.footer -->
                 </div>
                 <!-- /.box usage -->
-                 <%--about other users box--%>
+                <%--about other users box--%>
                 <div class="box box-success box-solid">
                     <div class="box-header with-border">
                         <h3 class="box-title">OTHER USERS</h3>
@@ -384,7 +440,7 @@
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="for_script" runat="server">
     <script src="../jstogether/user.js"></script>
-   
+
     <script>
         $(document).ready(function (){
             var data_pro = <%=Session["codecompany"].ToString()%>;
@@ -392,7 +448,7 @@
             start(data_pro);
         });
     </script>
-     <script src="../assets/adminLTE/plugins/chartjs/Chart.min.js"></script>
+    <script src="../assets/adminLTE/plugins/chartjs/Chart.min.js"></script>
     <script src="../assets/adminLTE/dist/js/pages/dashboard2.js"></script>
 </asp:Content>
 

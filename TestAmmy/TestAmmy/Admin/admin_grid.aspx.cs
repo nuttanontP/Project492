@@ -142,7 +142,7 @@ namespace TestAmmy.Admin
                 string s_ = "del ok!";
                 Random rnd = new Random();
                 string myRandomNo = rnd.Next(10000000, 99999999).ToString();
-                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='#';", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='admin_grid.aspx';", true);
             }
 
         }
@@ -161,7 +161,7 @@ namespace TestAmmy.Admin
                 string s_ = "del ok!";
                 Random rnd = new Random();
                 string myRandomNo = rnd.Next(10000000, 99999999).ToString();
-                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='#';", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='admin_grid.aspx';", true);
             }
         }
 
@@ -179,7 +179,7 @@ namespace TestAmmy.Admin
                 string s_ = "del ok!";
                 Random rnd = new Random();
                 string myRandomNo = rnd.Next(10000000, 99999999).ToString();
-                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='#';", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='admin_grid.aspx';", true);
             }
         }
 
@@ -197,7 +197,7 @@ namespace TestAmmy.Admin
                 string s_ = "del ok!";
                 Random rnd = new Random();
                 string myRandomNo = rnd.Next(10000000, 99999999).ToString();
-                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='#';", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='admin_grid.aspx';", true);
             }
         }
 
@@ -215,7 +215,7 @@ namespace TestAmmy.Admin
                 string s_ = "del ok!";
                 Random rnd = new Random();
                 string myRandomNo = rnd.Next(10000000, 99999999).ToString();
-                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='#';", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='admin_grid.aspx';", true);
             }
         }
 
@@ -233,7 +233,7 @@ namespace TestAmmy.Admin
                 string s_ = "del ok!";
                 Random rnd = new Random();
                 string myRandomNo = rnd.Next(10000000, 99999999).ToString();
-                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='#';", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey" + myRandomNo, "alert('" + s_ + "');window.location.href='admin_grid.aspx';", true);
             }
         }
     }

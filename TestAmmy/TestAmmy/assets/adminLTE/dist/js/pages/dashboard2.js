@@ -43,11 +43,12 @@ $(function () {
               pointHighlightStroke: "rgba(60,141,188,1)",
               data: [28, 48, 40, 19, 86, 27, 90]
           }
+       
         ]
     };
 
     var salesChartOptions = {
-        tooltipTemplate: "<%= datasetLabel %> - <%= value.toLocaleString() %>",
+        
         //Boolean - If we should show the scale at all
         showScale: true,
         //Boolean - Whether grid lines are shown across the chart
@@ -148,7 +149,7 @@ $(function () {
             //String - A legend template
             legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
             //String - A tooltip template
-            tooltipTemplate: "<%=value %> <%=label%> baht"
+            tooltipTemplate: "<%=value.toLocaleString() %> <%=label%> baht"
         };
         pieChart.Doughnut(PieData, pieOptions);
     }

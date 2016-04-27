@@ -35,7 +35,7 @@
                         <div class="col-sm-4">
                             <!-- /.form-group -->
                             <div class="form-group">
-                                <label>Building Name:</label>
+                                <label>Asset Name:</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-building"></i>
@@ -50,12 +50,12 @@
                         <div class="col-sm-3">
                             <!-- /.form-group -->
                             <div class="form-group">
-                                <label>FACTOR(BAHT/UNIT)</label>
+                                <label>Factor (Price/Unit)</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="fa  fa-usd"></i>
+                                        <i class="fa   fa-money"></i>
                                     </div>
-                                    <input type="number" runat="server" class="form-control" id='factor' min="0" placeholder='eg. 3' />
+                                    <input type="number" step="0.05" runat="server" class="form-control" id='factor' min="0" placeholder='eg. 7.00' />
                                 </div>
                             </div>
                         </div>
