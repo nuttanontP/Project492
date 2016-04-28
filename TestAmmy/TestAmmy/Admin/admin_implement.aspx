@@ -41,15 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <label>Uploadfie</label>
-                        </div>
-                        <div class="col-md-6">
-                            <asp:FileUpload ID="FileUpload1" runat="server" />
-                        </div>
-                    </div>
-                    <br />
+                    
                     <div class="row">
                         <div class="col-md-2">
                             <label>Asset Name:</label>
@@ -62,13 +54,23 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-building"></i>
                                     </div>
-                                    <select id="building" class="form-control select2" runat="server" placeholder='select building'>
+                                    <select id="building" name="building" class="form-control select2" runat="server" placeholder='select building'>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+                    
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Uploadfie</label>
+                        </div>
+                        <div class="col-md-6">
+                            <asp:FileUpload ID="FileUpload1" runat="server" />
+                        </div>
+                    </div>
+                    <br />
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <asp:Button ID="submit" class="btn btn-block btn-success" runat="server" Text="submit" OnClick="submit_Click" OnCommand="submit_Command" />

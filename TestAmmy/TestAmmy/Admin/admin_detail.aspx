@@ -24,12 +24,12 @@
                 <div class="col-md-4">
                     <!-- Profile Image -->
 
-                    <h3 class="profile-username text-center">Nina Mcintire</h3>
+                    <h3 class="profile-username text-center"><%=full_name2%></h3>
                     <p class="text-muted text-center">Joined 22 April 2013</p>
-                    <img class="profile-user-img img-responsive img-circle" src="../assets/adminLTE/dist/img/user4-128x128.jpg" alt="User profile picture" />
+                    <img class="profile-user-img img-responsive img-circle" src="../assets/img/Icon-user.png" " alt="User profile picture" />
                     <br />
                     <div class="col-sm-2"></div>
-
+                    
                     <div class="col-sm-8">
                         <asp:FileUpload ID="FileUpload1" runat="server" />
                     </div>
@@ -85,13 +85,7 @@
                                     <input type="text" class="form-control" id="phone" runat="server" placeholder="Phone number" />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="phone" class="col-sm-2 control-label">UPLOAD</label>
-                                <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="upload" runat="server" name="UploadFile_img" />
-                                    
-                                </div>
-                            </div>
+                           
 
                         </div>
 

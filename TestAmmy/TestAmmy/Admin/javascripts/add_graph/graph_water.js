@@ -104,7 +104,7 @@ function cc(type, kind, i3, select, data) {
     var text = [];
     console.log(data2);
     console.log('#container' + i3 + select, kind,type);
-    if (select == "Water" || select == "Electrical" || select=="Diesel") {
+    if (select == "Water" || select == "Electrical" || select == "Diesel" || select == "Gasoline") {
         if (type == "day" || type == "month" || type == "year") {
             if (type == "day" && select == "Water") {
                 //day
@@ -288,6 +288,68 @@ function cc(type, kind, i3, select, data) {
 
                 }
             }
+
+
+            else if (type == "day" && select == "Gasoline") {
+                text[3] = 'Gasoline Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and day";
+                    text[1] = "";
+                    text[2] = 'line';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of Gasoline in unit and day";
+                    text[1] = "unit(s)";
+                    text[2] = 'spline';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of Gasoline in baht and day";
+                    text[1] = "Baht";
+                    text[2] = 'spline';
+
+                }
+            }
+            else if (type == "month" && select == "Gasoline") {
+                text[3] = 'Gasoline Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and month";
+                    text[1] = "";
+                    text[2] = 'column';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of Gasoline in unit and month";
+                    text[1] = "unit(s)";
+                    text[2] = 'column';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of Gasoline in baht and month";
+                    text[1] = "Baht";
+                    text[2] = 'column';
+
+                }
+            }
+            else if (type == "year" && select == "Gasoline") {
+                text[3] = 'Gasoline Consumption';
+                if (kind == "current") {
+                    text[0] = "graph shows the relation of current Meter and year";
+                    text[1] = "";
+                    text[2] = 'column';
+                }
+                else if (kind == "different") {
+                    text[0] = "graph shows the relation of usage of Gasoline in unit and year";
+                    text[1] = "unit(s)";
+                    text[2] = 'column';
+
+                }
+                else if (kind == "money") {
+                    text[0] = "graph shows the relation of usage cost of Gasoline in baht and year";
+                    text[1] = "Baht";
+                    text[2] = 'column';
+
+                }
+            }
         }
         for (var i in data2) {
             for (var j in data2[i]["data"]) {
@@ -391,8 +453,8 @@ function dosomething(value) {
         long += '<option value="month">MONTH</option>';
         long += '<option value="year">YEAR</option> </select></div>';
         long += '<select id="kind' + i2 + '" name="kind" class="form-control select2" onchange="changemode(' + i2 + ',\'' + selectedText + '\');" >';
-        long += '<option value="current">Current Meter</option>';
-        long += '<option value="different">Usage in Unit</option>';
+        long += '<option value="current">Current Meter or purchased</option>';
+        long += '<option value="different">Usage in Unit / consumed</option>';
         long += '<option value="money">Cost of Usage</option> </select>';
         long += '<div id="container' + i2 + selectedText  +'"  graph_type="single" " asset=' + buidling + ' energy=' + selectedText + ' date=' + temp + '  style="min-width:100%; height: 400px;"></div></div></div></div> </div>';
         $('#appendcol' + i2).html(long);

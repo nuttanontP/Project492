@@ -31,15 +31,43 @@ namespace TestAmmy.Admin
             {
                 if (FileUpload1.HasFile && Path.GetExtension(FileUpload1.FileName) == ".xlsx")
                 {
+                    List<string> data_pro = new List<string>();
+                    List<string> data_pro2 = new List<string>();
                     var tbl = new DataTable();
                     var sheet_at = sheet.Value;
                     string json = import_excel(sheet_at);
                     //string result = apiconnecter.PostData("ddlpermission", data_pro);
-                    //string s = JsonConvert.DeserializeObject<string>(json);
-                    string code = Session["code_company"].ToString();
-                    string result = apiconnecter.PostData("insert_importxcel", json);
-                    string s = JsonConvert.DeserializeObject<string>(result);
+                    data_pro2 = JsonConvert.DeserializeObject<List<string>>(json);
+                    List<string> list1 = new List<string>();
+                    string result2 = apiconnecter.PostData("getuser", Session["email"].ToString());
+                    string s2 = JsonConvert.DeserializeObject<string>(result2);
+                    DataTable dt = JsonConvert.DeserializeObject<DataTable>(s2);
+                    var row = (from r in dt.AsEnumerable()
+                               where r.Field<string>("email") == (string)Session["email"]
+                               select r).First();
 
+                    string user_id = (row.ItemArray[0]).ToString();
+                    list1.Add(user_id); //primary key user_id
+                    string[] building2 = Request.Form.GetValues("ctl00$main_content$building");
+                    list1.Add(building2[0]); // building_id
+                    list1.Add(Session["codecompany"].ToString()); //companycode
+                    list1.Add("3"); //{energy type } 1:electrical 2:desiel 3:diesel
+                    list1.AddRange(data_pro2);
+                    string result = apiconnecter.PostData("Addgasoline", list1.ToArray());
+                    string s = JsonConvert.DeserializeObject<string>(result);
+                    string s_2 = JsonConvert.DeserializeObject<string>(s);
+                    if (s_2 == "yes")
+                    {
+                        string s_ = "import complete.";
+                        ScriptManager.RegisterStartupScript(this.Page, GetType(), "YourUniqueScriptKey33674", "alert('" + s_ + "');window.location.href='#';", true);
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');", true);
+                    }
+                    else
+                    {
+                        string s_ = "fail to import";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "YourUniqueScriptKey", "alert('" + s_ + "');window.location.href='#';", true);
+                        //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('"+s_+"')", true);
+                    }
                 }
                 else
                 {
@@ -57,22 +85,26 @@ namespace TestAmmy.Admin
                 var date = excel.Workbook.Worksheets["General Info"];
                 string month = date.Cells[14, 3].Text;
                 string year = date.Cells[14, 4].Text;
+                string factor = "";
                 if (sheet == "1")
                 {
                     dimantion = new int[4] { 8, 1, 38, 10 };
                     ws = excel.Workbook.Worksheets["Electricity Details"];
-                    string factor = ws.Cells[3, 5].Text;
+                     factor = ws.Cells[3, 5].Text;
                     //factor = (3,E)
 
                 }
                 else if (sheet == "2")
                 {
+                   
                     ws = excel.Workbook.Worksheets["Diesel details"];
                     //factor = (3,H) not sure
                 }
                 else if (sheet == "3")
                 {
+                    dimantion = new int[4] { 7, 1, 37, 3 };
                     ws = excel.Workbook.Worksheets["Gasoline details"];
+                     factor = ws.Cells[40,3].Text;
                     //factor = (40,C)
                 }
                 else if (sheet == "4")
@@ -137,10 +169,32 @@ namespace TestAmmy.Admin
                     string json = JsonConvert.SerializeObject(electrical);
                     return json;
                 }
+                if(sheet == "3")
+                {
+                    List<string> data_pro = new List<string>();
+                    data_pro.Add(factor);
+                    foreach (var firstRowCell in ws.Cells[dimantion[0], dimantion[1], dimantion[0], dimantion[3]])
+                        tbl.Columns.Add(String.Format("Col{0}", firstRowCell.Start.Column));
+                    for (int rowNum = dimantion[0]; rowNum <= dimantion[2]; rowNum++)
+                    {
+                        var wsRow = ws.Cells[rowNum, dimantion[1], rowNum, dimantion[3]];
+                        string day = wsRow[rowNum, 1].Text;
+                        day = day.Length == 1 ? ("0" + wsRow[rowNum, 1].Text) : wsRow[rowNum, 1].Text;
+                        DateTime dt = DateTime.ParseExact(year + "-" + month + "-" + day, "yyyy-MMMM-dd", CultureInfo.InvariantCulture);
+                        if(wsRow[rowNum, 2].Text != "" || wsRow[rowNum, 3].Text != "")
+                        {
+                            data_pro.Add(dt.ToString("yyyy-MM-dd"));
+                            data_pro.Add(wsRow[rowNum,2].Text);
+                            data_pro.Add(wsRow[rowNum,3].Text);
+                        }
+                    }
+                    string json = JsonConvert.SerializeObject(data_pro);
+                    return (json);
+                }
                
 
             }
-            return "";
+            return("");
         }
 
         protected void submit_Command(object sender, CommandEventArgs e)
