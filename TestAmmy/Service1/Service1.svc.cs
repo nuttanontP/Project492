@@ -26,14 +26,17 @@ namespace Service1
     public class Service1 : IService1
     {
         //call database 
-        private static string server = ConfigurationManager.AppSettings["server"];
-        private static string database = ConfigurationManager.AppSettings["database"];
-        private static string username = ConfigurationManager.AppSettings["username"];
-        private static string password = ConfigurationManager.AppSettings["password"];
+        private static string db_server = ConfigurationManager.AppSettings["db_server"];
+        private static string db_name = ConfigurationManager.AppSettings["db_name"];
+        private static string db_username = ConfigurationManager.AppSettings["db_username"];
+        private static string db_password = ConfigurationManager.AppSettings["db_password"];
+        private static string db_port = ConfigurationManager.AppSettings["db_port"];
         private static string folderpath = ConfigurationManager.AppSettings["folderpath"];
         private static string ReCaptcha_Key = ConfigurationManager.AppSettings["ReCaptcha_Key"];
         private static string ReCaptcha_Secret = ConfigurationManager.AppSettings["ReCaptcha_Secret"];
-        private static string connectionString = "Server=" + server + "; PORT = 3306 " + "; Database=" + database + "; Uid=" + username + "; Pwd=" + password + "; Charset=utf8;";
+        private static string connectionString = "Server=" + db_server +
+            "; PORT = " + db_port + " " + "; Database=" + db_name +
+            "; Uid=" + db_username + "; Pwd=" + db_password + "; Charset=utf8;";
 
         /// <summary>
         /// check login
@@ -91,6 +94,33 @@ namespace Service1
                 CommandText = "SELECT * FROM user where email = @email";
                 cmd = new MySqlCommand(CommandText, conn);
                 cmd.Parameters.AddWithValue("@email", email);
+                adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    json = JsonConvert.SerializeObject(dt);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            conn.Close();
+            return json;
+        }
+        public string get_companylist(string y)
+        {
+            string json = JsonConvert.SerializeObject("no");
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "SELECT distinct companycode,company_name,company_type,company_area,company_name,company_join FROM `energy2.3`.company";
+                cmd = new MySqlCommand(CommandText, conn);
                 adap = new MySqlDataAdapter(cmd);
                 adap.Fill(dt);
                 if (dt.Rows.Count > 0)
@@ -210,7 +240,7 @@ namespace Service1
             try
             {
                 conn.Open();
-                CommandText = "SELECT company_name as Organization,companycode as `Code` , company_join as `join` ,count(*) as Buildings FROM `energy2.3`.company  left join  building on company_companycode = companycode where companycode = @code group by (company_name)";
+                CommandText = "SELECT company_name as Organization,companycode as `Code`,company_address,company_area  , company_join as `join` ,count(buidlingid) as Buildings FROM `energy2.3`.company  left join  building on company_companycode = companycode where companycode = @code group by (company_name)";
                 cmd = new MySqlCommand(CommandText, conn);
                 cmd.Parameters.AddWithValue("@code", code);
                 adap = new MySqlDataAdapter(cmd);
@@ -227,7 +257,7 @@ namespace Service1
             conn.Close();
             return json;
         }
-        public string getcompanydetial(string[] data_pro)
+        public string getcompanydetial(string data_pro)
         {
             string json = "no";
             MySqlCommand cmd = null;
@@ -240,7 +270,7 @@ namespace Service1
                 conn.Open();
                 CommandText = "SELECT * FROM company where companycode = @companycode";
                 cmd = new MySqlCommand(CommandText, conn);
-                cmd.Parameters.AddWithValue("@companycode", data_pro[0]);
+                cmd.Parameters.AddWithValue("@companycode", data_pro);
                 adap = new MySqlDataAdapter(cmd);
                 adap.Fill(dt);
                 if (dt.Rows.Count > 0)
@@ -255,6 +285,32 @@ namespace Service1
             }
             conn.Close();
             return json;
+        }
+        public string editcompanydetial(string[] data_pro)
+        {
+            MySqlCommand cmd = null;
+            string json = "no";
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            string CommandText;
+            try
+            {
+                conn.Open();
+                CommandText = "UPDATE  company SET company_address=@company_address,company_area=@company_area,company_type=@company_type where companycode = @companycode";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@company_address", data_pro[0]);
+                cmd.Parameters.AddWithValue("@company_area", data_pro[1]);
+                cmd.Parameters.AddWithValue("@companycode", data_pro[2]);
+                cmd.Parameters.AddWithValue("@company_type", data_pro[3]);
+                cmd.ExecuteNonQuery();
+                json = "yes";
+
+            }
+            catch
+            {
+                json = "no";
+            }
+            conn.Close();
+            return JsonConvert.SerializeObject(json);
         }
         /// <summary>
         /// Have a people in this system?
@@ -338,7 +394,6 @@ namespace Service1
                     json = JsonConvert.SerializeObject(dt);
                 else
                     json = "no";
-
             }
             catch
             {
@@ -2179,6 +2234,90 @@ namespace Service1
             }
 
             return json;
+        }
+
+        public string get_graph_benchmark(string[] data_pro)
+        {
+            string json = "no";
+            MySqlCommand cmd = null;
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            MySqlDataAdapter adap;
+            DataTable dt = new DataTable();
+            string CommandText = "";
+            //string code = data_pro[0];
+          
+            //string type = data_pro[2];
+          
+            string date_start = data_pro[0];
+            string date_end = data_pro[1];
+            string kind = data_pro[2];
+            string energy = data_pro[3].ToLower();
+            //int building_count = Int32.Parse(data_pro[6]);
+            //string building = data_pro[7];
+            //int start_building_index = 7;
+            if (energy == "electrical" && kind == "month")
+            {
+                conn.Open();
+                CommandText = " SELECT DATE_FORMAT(`date`, '%m-%Y') AS `month`,`type` AS `type`,(MAX(`current`) - MIN(`current`)) AS `different_current`,SUM(`diff`) AS `sum_unit`,SUM(`money`) AS `sum_money`,(MAX(`current_D`) - MIN(`current_D`)) AS `different_current_D`,SUM(`diff_D`) AS `sum_unit_D`,SUM(`money_D`) AS `sum_money_D`,`id` AS `id`,`building` AS `building`,`code` AS `code` ,company_name,company_area";
+                CommandText += " FROM electrical_day left join company on `code` = companycode WHERE (`date` BETWEEN STR_TO_DATE(@start, '%m/%d/%Y') AND STR_TO_DATE(@end, '%m/%d/%Y'))  ";
+                CommandText += " GROUP BY `code`,DATE_FORMAT(`date`, '%m-%Y') , `type` order by month";
+                cmd = new MySqlCommand(CommandText, conn);
+                cmd.Parameters.AddWithValue("@start", date_start);
+                cmd.Parameters.AddWithValue("@end", date_end);
+                adap = new MySqlDataAdapter(cmd);
+                conn.Close();
+                adap.Fill(dt);
+                //column for loop 1 column name
+                string[] columnNames = new string[1];
+                List<string> columnNames2 = new List<string>();
+                //column name in database
+                columnNames[0] = "sum_unit";
+                columnNames2.Add("non designated building");
+                List<Dictionary<string, object>> dict = new List<Dictionary<string, object>>();
+                
+             
+                for (var i = 0; i < columnNames.Count(); i++)
+                {
+                    int N = dt.Rows.Count;
+                 
+                    for (int j = 0; j < N; j++)
+                    {
+                        Dictionary<string, object> aSeries = new Dictionary<string, object>();
+                        string check="";
+                        if (dt.Rows[j]["type"].ToString() == "Non-Design")
+                        {
+                           
+                            aSeries["name"] = dt.Rows[j]["company_name"];
+                            check = dt.Rows[j]["company_name"].ToString();
+                            aSeries["data"] = new List<object>();
+                            DateTime datetime = DateTime.ParseExact((string)dt.Rows[j]["month"], "MM-yyyy", CultureInfo.InvariantCulture);
+                            var up = Convert.ToSingle(dt.Rows[j][columnNames[0]]);
+                            string down_test = dt.Rows[j]["company_area"].ToString();
+                            var down =  Convert.ToSingle(down_test != ""  ? down_test : "0.00") ;
+                            var value = 0.00; 
+                            if(down != 0.00)
+                            {
+                                value = up / down;
+                            }
+                            object[] temp = { datetime,value};
+                            ((List<object>)aSeries["data"]).Add(temp);
+                        }
+                        if (check != "")
+                            dict.Add(aSeries);
+
+
+                    }
+                    
+                }
+               
+                json = JsonConvert.SerializeObject(dict);
+                return json;
+            }
+            else if (energy == "electrical" && kind == "year")
+            {
+
+            }
+            return "no";
         }
 
         public string getcirclegraph(string code)

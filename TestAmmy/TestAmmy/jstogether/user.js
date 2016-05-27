@@ -18,7 +18,7 @@
                 $('#user_create').append('<li id=create'+(parseInt(i)+1)+'></li>');
                 console.log(parseInt(i));
                 console.log(name);
-                $('#create' + i).html('<img src="../assets/img/nontpic/' + name + '.jpg" alt="User Image"/> <a class="users-list-name" href="#">' + name + '</a> <span class="users-list-date">' + date + '</span> ');
+                $('#create' + i).html('<img src="../assets/img/nontpic/' + name + '.jpg" alt="User Image"/> <a class="users-list-name" href="#">' + name + '</a> <span class="users-list-date">' +'</span> ');
                 i++;
             }
                     

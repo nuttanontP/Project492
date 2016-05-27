@@ -9,11 +9,11 @@
     Occupancy
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
-    Details of Occupancy
+    Daily or monthly of Occupancy Consumption Details
 
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
-        <li class="active">ENERGY DATA</li>
+    <li class="active">ENERGY DATA</li>
     <li class="active">Occupancy</li>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="main_content" runat="server">
@@ -38,7 +38,7 @@
                             <div class="col-sm-4">
                                 <!-- /.form-group -->
                                 <div class="form-group">
-                                    <label>Building Name:</label>
+                                    <label>Asset Name:</label>
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa fa-building"></i>
@@ -77,8 +77,8 @@
                                                         </tr>
                                                         <tr>
 
-                                                            <th class="text-center">Available</th>
-                                                            <th class="text-center">Occupied</th>
+                                                            <th class="text-center">Room Available</th>
+                                                            <th class="text-center">Room Occupied</th>
 
                                                         </tr>
                                                     </thead>
@@ -107,9 +107,7 @@
                                                     </tbody>
                                                 </table>
                                                 <a id="add_rows" class=" btn btn-success  pull-right glyphicon glyphicon-plus"></a>
-
                                                 <asp:Button ID="Button1" runat="server" Text="Add Data" class="btn btn-success center-block" OnClick="Button1_Click" />
-
                                             </div>
                                             <%--end tab1--%>
                                         </div>

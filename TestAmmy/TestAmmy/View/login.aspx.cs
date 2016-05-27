@@ -30,8 +30,10 @@ namespace TestAmmy.View
                 Session["codecompany"] = myData.Rows[0]["company_companycode"].ToString();
                 if (Session["status"].ToString().Equals("admin"))
                     Response.Redirect("../Admin/admin_dashboard.aspx");
-                else
+                else if (Session["status"].ToString().Equals("user"))
                     Response.Redirect("../User/user_dashboard.aspx");
+                else if (Session["status"].ToString().Equals("system"))
+                    Response.Redirect("../Admin_System/Admin_CompanyList.aspx");
             }
             else
             {

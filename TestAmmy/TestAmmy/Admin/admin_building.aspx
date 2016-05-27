@@ -64,7 +64,7 @@
             <asp:TemplateField HeaderText="No">
                 <ItemTemplate><%# Container.DataItemIndex + 1 %></ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="building_name" HeaderText="name" />
+            <asp:BoundField DataField="building_name" HeaderText="Asset Name" />
             <asp:BoundField DataField="building_detail" HeaderText="detail" />
             <asp:TemplateField ShowHeader="False">
                 <ItemTemplate>

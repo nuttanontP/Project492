@@ -8,10 +8,10 @@
     <link href="../assets/adminLTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="content_title" runat="server">
-    Graph
+    Visualization
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
-    graph you want to see
+   Visualize history data
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
 </asp:Content>
@@ -20,7 +20,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">setting.</h3>
+                    <h3 class="box-title">Asset selection</h3>
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     </div>
@@ -29,14 +29,14 @@
                     <div class="nav-tabs-custom ">
                         <ul class="nav nav-tabs " id="myTab">
                             <li class="active"><a href="#profile" data-toggle="tab"><strong>Single Asset</strong></a></li>
-                            <li><a href="#tab2" data-toggle="tab"><strong>Muti Assets</strong></a></li>
+                            <li><a href="#tab2" data-toggle="tab"><strong>Multi Assets</strong></a></li>
                         </ul>
                         <div class="tab-content">
                             <%--start tab1--%>
                             <div class="tab-pane active" id="profile">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <label>building</label>
+                                        <label>Asset</label>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group ">
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <label>energy</label>
+                                        <label>Energy</label>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group ">
@@ -61,7 +61,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-8">
 
-                                        <label>Date range:</label>
+                                        <label>Date range (recently 2 months):</label>
                                         <div class="input-group">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
@@ -75,7 +75,7 @@
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1">
                                         <%--    <input type="button"--%>
-                                        <button type="button" class="btn btn-block btn-success" onclick='dosomething("day")'>view</button>
+                                        <button type="button" class="btn btn-block btn-success" onclick='dosomething("day")'>Add Graph</button>
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                             <div class="tab-pane" id="tab2">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <label>building</label>
+                                        <label>Assets</label>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group ">
@@ -96,12 +96,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <label>energy</label>
+                                        <label>Energy</label>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <select id="energy2" class="form-control select2" style="width: 100%;">
-                                                <option value='1'>Electrical</option>
+                                                <option value='1'>Electricity</option>
                                                 <option value='2'>Diesel</option>
                                                 <option value='3'>Gasoline</option>
                                                 <option value='4'>LPG</option>
@@ -114,7 +114,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-8">
 
-                                        <label>Date range:</label>
+                                        <label>Date range (recently 2 months):</label>
                                         <div class="input-group">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
@@ -128,7 +128,7 @@
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1">
                                         <%--    <input type="button"--%>
-                                        <button type="button" class="btn btn-block btn-success" onclick='submit_tab2()'>view</button>
+                                        <button type="button" class="btn btn-block btn-success" onclick='submit_tab2()'>Add Graph</button>
                                     </div>
                                 </div>
 

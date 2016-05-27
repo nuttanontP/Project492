@@ -57,7 +57,7 @@ function changemode(i3, select) {
     var type = document.getElementById("datetype" + i3).value;
     var kind = document.getElementById("kind" + i3).value;
     var id = document.getElementById('container' + i3 + select);
-    console.log("id:",id);
+    console.log("id:", id);
     var temp = (id.getAttribute('date')).split(',');
     var data_pro = [id.getAttribute('asset'), code, id.getAttribute('energy'), temp[0], temp[1], type, kind]
     console.log(data_pro);
@@ -79,7 +79,7 @@ function changemode2(i3, energy3) {
     var id = document.getElementById('container' + i3 + energy3);
     var temp2 = (id.getAttribute('building')).split(',');
     var temp = (id.getAttribute('date')).split(',');
-    var data_pro = [code, energy3, type,kind, temp[0], temp[1], temp2.length];
+    var data_pro = [code, energy3, type, kind, temp[0], temp[1], temp2.length];
     data_pro = data_pro.concat(temp2);
     console.log(data_pro);
     $.ajax({
@@ -103,7 +103,7 @@ function cc(type, kind, i3, select, data) {
     var data2 = JSON.parse(data);
     var text = [];
     console.log(data2);
-    console.log('#container' + i3 + select, kind,type);
+    console.log('#container' + i3 + select, kind, type);
     if (select == "Water" || select == "Electrical" || select == "Diesel" || select == "Gasoline") {
         if (type == "day" || type == "month" || type == "year") {
             if (type == "day" && select == "Water") {
@@ -126,7 +126,7 @@ function cc(type, kind, i3, select, data) {
                     text[2] = 'spline';
                 }
             }
-            else if(type == "month" && select == "Water") {
+            else if (type == "month" && select == "Water") {
                 //month
                 text[3] = 'Water Consumption';
                 if (kind == "current") {
@@ -188,7 +188,7 @@ function cc(type, kind, i3, select, data) {
 
                 }
             }
-            else if (type == "month" && select == "Electrical"){
+            else if (type == "month" && select == "Electrical") {
                 text[3] = 'Electrical Consumption';
                 if (kind == "current") {
                     text[0] = "graph shows the relation of current Meter and month";
@@ -357,7 +357,7 @@ function cc(type, kind, i3, select, data) {
             }
         }
         $('#container' + i3 + select).highcharts({
-               
+
             chart: {
                 type: text[2]
             },
@@ -381,7 +381,7 @@ function cc(type, kind, i3, select, data) {
 
             },
             yAxis: {
-                   
+
                 title: {
                     text: text[1]
                 }
@@ -426,7 +426,21 @@ function dosomething(value) {
     var energy = document.getElementById('energy');
     var selectedText = energy.options[energy.selectedIndex].text;
     var reservation = document.getElementById('reservation').value;
-    var temp = reservation.split(/[- ]+ /);
+    var temp;
+    if (reservation.length == 0) {
+        var today = new Date();
+        var var1 = today.toISOString().substring(0, 10).split("-");
+        var var11 = var1[1] + "/" + var1[2] + "/" + var1[0];
+        today.setMonth(today.getMonth() - 2);
+        var var2 = today.toISOString().substring(0, 10).split("-");
+        var var22 = var2[1] + "/" + var2[2] + "/" + var2[0];
+        temp = [var22, var11];
+        //console.log("var1:", var11);
+    }
+    else {
+        temp = reservation.split(/[- ]+ /);
+    }
+    
     var data_pro = [buidling, code, selectedText];
     data_pro = data_pro.concat(temp);
     data_pro = data_pro.concat(type_);
@@ -456,7 +470,7 @@ function dosomething(value) {
         long += '<option value="current">Current Meter or purchased</option>';
         long += '<option value="different">Usage in Unit / consumed</option>';
         long += '<option value="money">Cost of Usage</option> </select>';
-        long += '<div id="container' + i2 + selectedText  +'"  graph_type="single" " asset=' + buidling + ' energy=' + selectedText + ' date=' + temp + '  style="min-width:100%; height: 400px;"></div></div></div></div> </div>';
+        long += '<div id="container' + i2 + selectedText + '"  graph_type="single" " asset=' + buidling + ' energy=' + selectedText + ' date=' + temp + '  style="min-width:100%; height: 400px;"></div></div></div></div> </div>';
         $('#appendcol' + i2).html(long);
         //cc(type_,i2, selectedText, data);
         changemode(i2, selectedText);
@@ -471,14 +485,28 @@ function bb(result) {
     alert(result.status + ' ' + result.statusText);
 }
 function submit_tab2() {
-    
+
     var temp2 = $('#buidling2').val();
     var energy2 = document.getElementById("energy2");
     var energy3 = energy2.options[energy2.selectedIndex].text;
     var temp3 = temp2.join(" or ");
     var reservation = document.getElementById('reservation2').value;
-    var temp = reservation.split(/[- ]+ /);
-    var data_pro = [code, energy3, 'day','current', temp[0], temp[1], temp2.length];
+    var temp;
+    if (reservation.length == 0) {
+        var today = new Date();
+        var var1 = today.toISOString().substring(0, 10).split("-");
+        var var11 = var1[1] + "/" + var1[2] + "/" + var1[0];
+        today.setMonth(today.getMonth() - 2);
+        var var2 = today.toISOString().substring(0, 10).split("-");
+        var var22 = var2[1] + "/" + var2[2] + "/" + var2[0];
+        temp = [var22, var11];
+        //console.log("var1:", var11);
+    }
+    else {
+        temp = reservation.split(/[- ]+ /);
+    }
+   
+    var data_pro = [code, energy3, 'day', 'current', temp[0], temp[1], temp2.length];
     data_pro = data_pro.concat(temp2);
     console.log(data_pro);
     $.ajax({

@@ -31,10 +31,10 @@
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <select id="sheet" name="sheet" runat="server" class="form-control select2"  onchange="getbuilding(this.value);">
+                                     <option value='4'>LPG*</option>
                                     <option value='1'>ELECTRIC</option>
                                     <option value='2'>DIESEL</option>
                                     <option value='3'>GASOLINE</option>
-                                    <option value='4'>LPG</option>
                                     <option value='5'>WATER</option>
                                     <option value='6'>OCCUPANCY</option>
                                 </select>
@@ -73,7 +73,7 @@
                     <br />
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
-                            <asp:Button ID="submit" class="btn btn-block btn-success" runat="server" Text="submit" OnClick="submit_Click" OnCommand="submit_Command" />
+                            <asp:Button ID="submit" class="btn btn-block btn-success" runat="server" Text="Import" OnClick="submit_Click" OnCommand="submit_Command" />
                         </div>
                     </div>
                 </div>

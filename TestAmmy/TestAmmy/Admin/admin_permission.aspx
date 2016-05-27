@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head_css" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="content_title" runat="server">
-    Change Permission
+     Permission Management
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
 </asp:Content>
@@ -31,18 +31,18 @@
                                 <div class="modal-header">
                                     <br />
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4>Add permission</h4>
+                                    <h4>Add Permission</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="user-name" class="control-label">Responsible Person:</label>
+                                        <label for="user-name" class="control-label">Responsible User:</label>
                                         <%--   <input type="text" class="form-control" id="recipient-name"/>--%>
                                         <asp:DropDownList ID="ddl_name" class="form-control select2" Style="width: 100%;" runat="server">
                                             <asp:ListItem Text="no name" Value="" />
                                         </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
-                                        <label for="building-name" class="control-label">Building Name:</label>
+                                        <label for="building-name" class="control-label">Asset Name:</label>
                                         <%--<textarea class="form-control" id="message-text"></textarea>--%>
                                         <asp:DropDownList ID="ddl_building" class="form-control select2" Style="width: 100%;" runat="server">
                                             <asp:ListItem Text="no building" Value="" />
@@ -50,7 +50,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="energy-type" class="control-label">Energy Type DDL:</label>
+                                        <label for="energy-type" class="control-label">Energy Type (allowed to manage) :</label>
+                                        <br />
                                         <br />
                                         <%--<textarea class="form-control" id="message-text"></textarea>--%>
 
@@ -73,13 +74,13 @@
                 <div class="box-body">
                     <asp:GridView ID="permissionview" class="table table-bordered table-striped" DataKeyNames="id,building_buidlingid,building_company_companycode,energy_id" runat="server" AutoGenerateColumns="False" OnRowCommand="permissionview_RowCommand" OnRowDeleting="permissionview_RowDeleting">
                         <Columns>
-                            <asp:BoundField DataField="name" HeaderText="full name" HeaderStyle-HorizontalAlign="Center">
+                            <asp:BoundField DataField="name" HeaderText="Full Name" HeaderStyle-HorizontalAlign="Center">
                                 <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="building_name" HeaderText="Building Name" HeaderStyle-HorizontalAlign="Center">
+                            <asp:BoundField DataField="building_name" HeaderText="Asset Name" HeaderStyle-HorizontalAlign="Center">
                                 <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="energy_name" HeaderText="Energy type" HeaderStyle-HorizontalAlign="Center">
+                            <asp:BoundField DataField="energy_name" HeaderText="Energy Type" HeaderStyle-HorizontalAlign="Center">
                                 <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                             </asp:BoundField>
                             <asp:TemplateField ShowHeader="False">

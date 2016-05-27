@@ -8,7 +8,7 @@
     Electricity
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
-      Daily Electricity Consumption Details
+      Daily or monthly electricity consumption details
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
     <li class="active">ENERGY DATA</li>
@@ -65,8 +65,8 @@
                                 <div class="nav-tabs-custom ">
                                     <%--<div class="col-sm-8 ">--%>
                                     <ul class="nav nav-tabs" id="myTab">
-                                        <li class="active"><a href="#profile" data-toggle="tab"><strong>For Non Designated Building</strong></a></li>
-                                        <li><a href="#messages" data-toggle="tab"><strong>For Designated Building (As per AMR)</strong></a></li>
+                                        <li class="active"><a href="#profile" data-toggle="tab"><strong> Non Designated Building</strong></a></li>
+                                        <li><a href="#messages" data-toggle="tab"><strong> Designated Building (as per AMR)</strong></a></li>
                                         <%--            <li><a href="#settings" data-toggle="tab">This year</a></li>--%>
                                     </ul>
                                     <div class="tab-content">
@@ -117,11 +117,11 @@
                                                     <tr>
                                                         <th class="text-center col-xs-2">Date   
                                                         </th>
-                                                        <th class="text-center">Peak (kwh)
+                                                        <th class="text-center">Peak (kWh)
                                                         </th>
-                                                        <th class="text-center">Off Peak (kwh)
+                                                        <th class="text-center">Off Peak (kWh)
                                                         </th>
-                                                        <th class="text-center">Holiday (kwh)
+                                                        <th class="text-center">Holiday (kWh)
                                                         </th>
                                                         <th class="text-center col-xs-3">Tools</th>
                                                     </tr>

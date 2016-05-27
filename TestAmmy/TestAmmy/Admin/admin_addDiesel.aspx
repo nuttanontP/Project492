@@ -9,7 +9,7 @@
     Diesel
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
-    Daily Diesel Consumption Details
+    Daily or monthly diesel consumption details
 
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">

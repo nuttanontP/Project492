@@ -9,7 +9,7 @@
     LPG
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
-    Details of LPG Consumption
+   Daily or monthly of LPG Consumption Details
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
         <li class="active">ENERGY DATA</li>
@@ -79,9 +79,9 @@
                                                         <tr>
                                                             <th class="text-center col-xs-2">Date   
                                                             </th>
-                                                            <th class="text-center">LPG Purchased(KG)
+                                                            <th class="text-center">LPG Purchased (KG)
                                                             </th>
-                                                            <th class="text-center">LPG Consumed(KG)
+                                                            <th class="text-center">LPG Consumed (KG)
                                                             </th>
                                                             <th class="text-center col-xs-3">Tools</th>
                                                         </tr>

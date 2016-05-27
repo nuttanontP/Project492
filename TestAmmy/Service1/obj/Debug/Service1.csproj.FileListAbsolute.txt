@@ -68,8 +68,6 @@ D:\github\TestAmmy\Service1\bin\System.Net.Http.Formatting.xml
 D:\github\TestAmmy\Service1\bin\System.Web.Http.xml
 D:\github\TestAmmy\Service1\bin\System.Web.Http.Cors.xml
 D:\github\TestAmmy\Service1\bin\System.Web.Http.WebHost.xml
+D:\github\TestAmmy\Service1\obj\Debug\Service1.csprojResolveAssemblyReference.cache
 D:\github\TestAmmy\Service1\obj\Debug\Service1.dll
 D:\github\TestAmmy\Service1\obj\Debug\Service1.pdb
-D:\github\TestAmmy\Service1\obj\Debug\Service1.csprojResolveAssemblyReference.cache
-D:\github\TestAmmy\Service1\bin\EPPlus.dll
-D:\github\TestAmmy\Service1\bin\EPPlus.xml

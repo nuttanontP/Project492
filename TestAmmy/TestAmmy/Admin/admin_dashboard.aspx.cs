@@ -12,7 +12,7 @@ namespace TestAmmy.Admin
 {
     public partial class admin_dashboard : System.Web.UI.Page
     {
-        protected string[] organization = new string[4];
+        protected string[] organization = new string[6];
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -32,6 +32,8 @@ namespace TestAmmy.Admin
                     organization[1] = myData.Rows[0]["Code"].ToString();
                     organization[2] = myData.Rows[0]["join"].ToString();
                     organization[3] = myData.Rows[0]["Buildings"].ToString();
+                    organization[4] = myData.Rows[0]["company_address"].ToString();
+                    organization[5] = myData.Rows[0]["company_area"].ToString();
                 }
             }
         }

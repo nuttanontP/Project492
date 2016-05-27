@@ -9,10 +9,10 @@
     Gasoline
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
-    Details of Gasoline Consumption
+    Daily or monthly of gasoline consumption details
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
-        <li class="active">ENERGY DATA</li>
+    <li class="active">ENERGY DATA</li>
     <li class="active">Gasoline</li>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="main_content" runat="server">
@@ -50,7 +50,7 @@
                         <div class="col-sm-5"></div>
                         <div class="col-sm-3">
                             <!-- /.form-group -->
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label>Factor (Price/Unit)</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">

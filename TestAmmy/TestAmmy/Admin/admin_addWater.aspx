@@ -9,7 +9,7 @@
     Water Consumption
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="title_description" runat="server">
-    Daily Water Consumption Detail
+    Daily or monthly water consumption details
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="breadcrumb" runat="server">
         <li class="active">ENERGY DATA</li>
